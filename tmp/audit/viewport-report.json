@@ -1,0 +1,396 @@
+{
+  "generatedAt": "2026-06-12T08:06:40.142Z",
+  "results": [
+    {
+      "viewport": "mobile",
+      "route": "home",
+      "path": "/",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\mobile-home.png",
+      "nextReady": true,
+      "metrics": {
+        "title": "HoloVista Pro X1 | Premium 3D Hologram Fan Display",
+        "h1": "HoloVista Pro X1",
+        "url": "/",
+        "innerWidth": 390,
+        "innerHeight": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 7844,
+        "hasHorizontalOverflow": false,
+        "activeDark": true,
+        "offenders": [],
+        "visibleTextSample": "HoloVi ta\nPro di play  y tem \n2\n17 unit  ready to  hip thi  week\nHoloVi ta Pro X1\n\nPremium 3D holographic fan di play for retail launche , menu , event , and  howroom adverti ing that people  top to film.\n\nShop ₹64,999\nView in tallation \n4.8 (50)\nTru ted by retailer , cafe , and event team \nIn ured  hipping\n12 month warranty\nSetup  upport\nVerified review \nLaunch pricing end   oon\n12\nHOURS\n59\nMINS\n58\nSECS\n\nHOW IT WORKS\n\nLED   pin fa ter than the eye can track, creating a cri p floating di play.\n\n"
+      },
+      "logs": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "product",
+      "path": "/product/hologram-fan-display",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\mobile-product.png",
+      "nextReady": true,
+      "metrics": {
+        "title": "HoloVista Pro X1 | HoloVista",
+        "h1": "HoloVista Pro X1",
+        "url": "/product/hologram-fan-display",
+        "innerWidth": 603,
+        "innerHeight": 1305,
+        "scrollWidth": 603,
+        "clientWidth": 390,
+        "scrollHeight": 6339,
+        "hasHorizontalOverflow": false,
+        "activeDark": true,
+        "offenders": [
+          {
+            "tag": "button",
+            "id": "",
+            "className": "h-10 shrink-0 rounded-full border px-4 text-sm font-semibold transition border-slate-200 bg-white text-slate-600 hover:bg-slate-50 dark:border-white/10 dark:bg-",
+            "text": "Showroom",
+            "left": 522,
+            "right": 627,
+            "width": 105
+          }
+        ],
+        "visibleTextSample": "HoloVi ta\nPro di play  y tem \n2\nHover to zoom\n3D holographic adverti ing fan\nIn  tock\nHoloVi ta Pro X1\n\nA premium LED hologram fan di play that turn  product , menu , offer , and brand vi ual  into floating 3D motion content.\n\n4.8 (50)\n₹64,999\n₹89,999\nSave 28%\nStock counter\n17 left\nLaunch pricing end   oon\n12\nHOURS\n59\nMINS\n58\nSECS\n1\nAdd to Cart\nBuy Now\nWi hli t\nShare\nFree prepaid  hipping\n12 month warranty\nSetup a i tance\n\nDETAILS\n\nEverything needed for a premium in tallation.\n\nHoloVi ta Pro X1 "
+      },
+      "logs": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "cart",
+      "path": "/cart",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\mobile-cart.png",
+      "nextReady": true,
+      "metrics": {
+        "title": "Cart | HoloVista",
+        "h1": "Review your order",
+        "url": "/cart",
+        "innerWidth": 390,
+        "innerHeight": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 1955,
+        "hasHorizontalOverflow": false,
+        "activeDark": true,
+        "offenders": [],
+        "visibleTextSample": "HoloVi ta\nPro di play  y tem \n2\n\nCART\n\nReview your order\nContinue Shopping\nHoloVi ta Pro X1\n\nPremium 72 cm LED hologram fan di play\n\n2\nRemove\n\n₹1,29,998\n\n₹1,79,998\n\nOrder Summary\nSubtotal\n₹1,29,998\nShipping e timate\nFree\nGST e timate\n₹23,400\nTotal\n₹1,53,398\nPrepaid order  qualify for free in ured  hipping.\nCheckout\n\nHoloVi ta\n\nPremium holographic di play  y tem  for retail, event , ho pitality, and launch campaign .\n\nMumbai warehou e, pan-India delivery\n+91 90000 48291\n upport@holovi ta.example\n"
+      },
+      "logs": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "checkout",
+      "path": "/checkout",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\mobile-checkout.png",
+      "nextReady": true,
+      "metrics": {
+        "title": "Checkout | HoloVista",
+        "h1": "Complete your order",
+        "url": "/checkout",
+        "innerWidth": 390,
+        "innerHeight": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 3366,
+        "hasHorizontalOverflow": false,
+        "activeDark": true,
+        "offenders": [],
+        "visibleTextSample": "HoloVi ta\nPro di play  y tem \n2\n\nSECURE CHECKOUT\n\nComplete your order\nCu tomer Information\nFull name\nEmail\nPhone\nCompany\nShipping Addre \nAddre  line\nApartment,  uite\nCity\nState\nPIN code\nIn tallation note\nPayment Method\nUPI\nCredit Card\nDebit Card\nNet Banking\nCa h on Delivery\nOrder Summary\n\nHoloVi ta Pro X1\n\nQty 2\n\n₹1,29,998\n\nSubtotal\n₹1,29,998\nTax\n₹23,400\nShipping\nFree\nTotal\n₹1,53,398\nE timated delivery: Wed, 17 Jun\nPlace Order\n\nHoloVi ta\n\nPremium holographic di play  y tem  for retail, event , h"
+      },
+      "logs": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "confirmation",
+      "path": "/order-confirmation",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\mobile-confirmation.png",
+      "nextReady": true,
+      "metrics": {
+        "title": "Order Confirmation | HoloVista",
+        "h1": "Order confirmed",
+        "url": "/order-confirmation",
+        "innerWidth": 390,
+        "innerHeight": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 1870,
+        "hasHorizontalOverflow": false,
+        "activeDark": true,
+        "offenders": [],
+        "visibleTextSample": "HoloVi ta\nPro di play  y tem \n2\nOrder confirmed\n\nOrder HVX-174921 i  confirmed and queued for warehou e proce ing.\n\nShipping information\n\nIn ured delivery with in tallation  upport follow-up after di patch.\n\nE timated delivery\n\nWed, 17 Jun via tracked courier.\n\nHoloVi ta Pro X1\n\nQuantity 2 · Paid by UPI\n\n₹1,53,398\n\nContinue Shopping\n\nHoloVi ta\n\nPremium holographic di play  y tem  for retail, event , ho pitality, and launch campaign .\n\nMumbai warehou e, pan-India delivery\n+91 90000 48291\n upport@"
+      },
+      "logs": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "admin",
+      "path": "/admin",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\mobile-admin.png",
+      "nextReady": true,
+      "metrics": {
+        "title": "Admin Dashboard | HoloVista",
+        "h1": "Store performance",
+        "url": "/admin",
+        "innerWidth": 397,
+        "innerHeight": 860,
+        "scrollWidth": 397,
+        "clientWidth": 390,
+        "scrollHeight": 3496,
+        "hasHorizontalOverflow": false,
+        "activeDark": false,
+        "offenders": [
+          {
+            "tag": "table",
+            "id": "",
+            "className": "w-full min-w-[760px] text-left text-sm",
+            "text": "Order IDCu tomerAmountStatu DateHVX-10420Aarav MehtaOnline Store₹1,36,988Paid202",
+            "left": 17,
+            "right": 777,
+            "width": 760
+          },
+          {
+            "tag": "thead",
+            "id": "",
+            "className": "bg-slate-50 text-xs uppercase tracking-[0.12em] text-slate-500 dark:bg-white/5 dark:text-slate-400",
+            "text": "Order IDCu tomerAmountStatu Date",
+            "left": 17,
+            "right": 777,
+            "width": 760
+          },
+          {
+            "tag": "tr",
+            "id": "",
+            "className": "",
+            "text": "Order IDCu tomerAmountStatu Date",
+            "left": 17,
+            "right": 777,
+            "width": 760
+          },
+          {
+            "tag": "th",
+            "id": "",
+            "className": "px-5 py-4",
+            "text": "Amount",
+            "left": 330,
+            "right": 462,
+            "width": 132
+          },
+          {
+            "tag": "th",
+            "id": "",
+            "className": "px-5 py-4",
+            "text": "Statu ",
+            "left": 462,
+            "right": 624,
+            "width": 162
+          },
+          {
+            "tag": "th",
+            "id": "",
+            "className": "px-5 py-4",
+            "text": "Date",
+            "left": 624,
+            "right": 777,
+            "width": 153
+          },
+          {
+            "tag": "tbody",
+            "id": "",
+            "className": "divide-y divide-slate-200 dark:divide-white/10",
+            "text": "HVX-10420Aarav MehtaOnline Store₹1,36,988Paid2026-01-01HVX-10421Priya NairSale  ",
+            "left": 17,
+            "right": 777,
+            "width": 760
+          },
+          {
+            "tag": "tr",
+            "id": "",
+            "className": "transition hover:bg-slate-50 dark:hover:bg-white/5",
+            "text": "HVX-10420Aarav MehtaOnline Store₹1,36,988Paid2026-01-01",
+            "left": 17,
+            "right": 777,
+            "width": 760
+          },
+          {
+            "tag": "td",
+            "id": "",
+            "className": "px-5 py-4 font-semibold",
+            "text": "₹1,36,988",
+            "left": 330,
+            "right": 462,
+            "width": 132
+          },
+          {
+            "tag": "td",
+            "id": "",
+            "className": "px-5 py-4",
+            "text": "Paid",
+            "left": 462,
+            "right": 624,
+            "width": 162
+          },
+          {
+            "tag": "span",
+            "id": "",
+            "className": "rounded-full px-3 py-1 text-xs font-bold bg-cyan-400/15 text-cyan-700 dark:text-cyan-300",
+            "text": "Paid",
+            "left": 482,
+            "right": 532,
+            "width": 50
+          },
+          {
+            "tag": "td",
+            "id": "",
+            "className": "px-5 py-4 text-slate-500 dark:text-slate-400",
+            "text": "2026-01-01",
+            "left": 624,
+            "right": 777,
+            "width": 153
+          }
+        ],
+        "visibleTextSample": "HoloVi ta Admin\n\nPrototype operation \n\nDa hboard\nOrder \nCu tomer \nProduct \nAnalytic \n\nDASHBOARD\n\nStore performance\n\nTotal Order \n\n100\n\n+18% v  la t month\n\nRevenue\n\n₹89.2L\n\nAcro  mock order \n\nConver ion Rate\n\n4.9%\n\nStorefront  e ion \n\nVi itor \n\n15,100\n\nThi  month\n\nRevenue trend\n\nMonthly revenue acro  2026\n\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\nNov\nDec\nSale  trend\n\nOrder  by month\n\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\nNov\nDec\nOrder \n\n100 matching order \n\nORDER ID\tCUSTOMER\tAMOUNT\tSTATUS\tDATE\nH"
+      },
+      "logs": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "home",
+      "path": "/",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\desktop-home.png",
+      "nextReady": true,
+      "metrics": {
+        "title": "HoloVista Pro X1 | Premium 3D Hologram Fan Display",
+        "h1": "HoloVista Pro X1",
+        "url": "/",
+        "innerWidth": 1440,
+        "innerHeight": 920,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 4515,
+        "hasHorizontalOverflow": false,
+        "activeDark": true,
+        "offenders": [],
+        "visibleTextSample": "HoloVi ta\nPro di play  y tem \nHome\nProduct\nCart\nAdmin\n2\n17 unit  ready to  hip thi  week\nHoloVi ta Pro X1\n\nPremium 3D holographic fan di play for retail launche , menu , event , and  howroom adverti ing that people  top to film.\n\nShop ₹64,999\nView in tallation \n4.8 (50)\nTru ted by retailer , cafe , and event team \nIn ured  hipping\n12 month warranty\nSetup  upport\nVerified review \nLaunch pricing end   oon\n12\nHOURS\n59\nMINS\n59\nSECS\n\nHOW IT WORKS\n\nLED   pin fa ter than the eye can track, creating a c"
+      },
+      "logs": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "product",
+      "path": "/product/hologram-fan-display",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\desktop-product.png",
+      "nextReady": true,
+      "metrics": {
+        "title": "HoloVista Pro X1 | HoloVista",
+        "h1": "HoloVista Pro X1",
+        "url": "/product/hologram-fan-display",
+        "innerWidth": 1440,
+        "innerHeight": 920,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 4219,
+        "hasHorizontalOverflow": false,
+        "activeDark": true,
+        "offenders": [],
+        "visibleTextSample": "HoloVi ta\nPro di play  y tem \nHome\nProduct\nCart\nAdmin\n2\nHover to zoom\n3D holographic adverti ing fan\nIn  tock\nHoloVi ta Pro X1\n\nA premium LED hologram fan di play that turn  product , menu , offer , and brand vi ual  into floating 3D motion content.\n\n4.8 (50)\n₹64,999\n₹89,999\nSave 28%\nStock counter\n17 left\nLaunch pricing end   oon\n12\nHOURS\n59\nMINS\n58\nSECS\n1\nAdd to Cart\nBuy Now\nWi hli t\nShare\nFree prepaid  hipping\n12 month warranty\nSetup a i tance\n\nDETAILS\n\nEverything needed for a premium in talla"
+      },
+      "logs": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "cart",
+      "path": "/cart",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\desktop-cart.png",
+      "nextReady": true,
+      "metrics": {
+        "title": "Cart | HoloVista",
+        "h1": "Review your order",
+        "url": "/cart",
+        "innerWidth": 1440,
+        "innerHeight": 920,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 1121,
+        "hasHorizontalOverflow": false,
+        "activeDark": true,
+        "offenders": [],
+        "visibleTextSample": "HoloVi ta\nPro di play  y tem \nHome\nProduct\nCart\nAdmin\n2\n\nCART\n\nReview your order\nContinue Shopping\nHoloVi ta Pro X1\n\nPremium 72 cm LED hologram fan di play\n\n2\nRemove\n\n₹1,29,998\n\n₹1,79,998\n\nOrder Summary\nSubtotal\n₹1,29,998\nShipping e timate\nFree\nGST e timate\n₹23,400\nTotal\n₹1,53,398\nPrepaid order  qualify for free in ured  hipping.\nCheckout\n\nHoloVi ta\n\nPremium holographic di play  y tem  for retail, event , ho pitality, and launch campaign .\n\nMumbai warehou e, pan-India delivery\n+91 90000 48291\n u"
+      },
+      "logs": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "checkout",
+      "path": "/checkout",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\desktop-checkout.png",
+      "nextReady": true,
+      "metrics": {
+        "title": "Checkout | HoloVista",
+        "h1": "Complete your order",
+        "url": "/checkout",
+        "innerWidth": 1440,
+        "innerHeight": 920,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 1726,
+        "hasHorizontalOverflow": false,
+        "activeDark": true,
+        "offenders": [],
+        "visibleTextSample": "HoloVi ta\nPro di play  y tem \nHome\nProduct\nCart\nAdmin\n2\n\nSECURE CHECKOUT\n\nComplete your order\nCu tomer Information\nFull name\nEmail\nPhone\nCompany\nShipping Addre \nAddre  line\nApartment,  uite\nCity\nState\nPIN code\nIn tallation note\nPayment Method\nUPI\nCredit Card\nDebit Card\nNet Banking\nCa h on Delivery\nOrder Summary\n\nHoloVi ta Pro X1\n\nQty 2\n\n₹1,29,998\n\nSubtotal\n₹1,29,998\nTax\n₹23,400\nShipping\nFree\nTotal\n₹1,53,398\nE timated delivery: Wed, 17 Jun\nPlace Order\n\nHoloVi ta\n\nPremium holographic di play  y te"
+      },
+      "logs": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "confirmation",
+      "path": "/order-confirmation",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\desktop-confirmation.png",
+      "nextReady": true,
+      "metrics": {
+        "title": "Order Confirmation | HoloVista",
+        "h1": "Order confirmed",
+        "url": "/order-confirmation",
+        "innerWidth": 1440,
+        "innerHeight": 920,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 1240,
+        "hasHorizontalOverflow": false,
+        "activeDark": true,
+        "offenders": [],
+        "visibleTextSample": "HoloVi ta\nPro di play  y tem \nHome\nProduct\nCart\nAdmin\n2\nOrder confirmed\n\nOrder HVX-174921 i  confirmed and queued for warehou e proce ing.\n\nShipping information\n\nIn ured delivery with in tallation  upport follow-up after di patch.\n\nE timated delivery\n\nWed, 17 Jun via tracked courier.\n\nHoloVi ta Pro X1\n\nQuantity 2 · Paid by UPI\n\n₹1,53,398\n\nContinue Shopping\n\nHoloVi ta\n\nPremium holographic di play  y tem  for retail, event , ho pitality, and launch campaign .\n\nMumbai warehou e, pan-India delivery\n"
+      },
+      "logs": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "admin",
+      "path": "/admin",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\desktop-admin.png",
+      "nextReady": true,
+      "metrics": {
+        "title": "Admin Dashboard | HoloVista",
+        "h1": "Store performance",
+        "url": "/admin",
+        "innerWidth": 1440,
+        "innerHeight": 920,
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "scrollHeight": 1711,
+        "hasHorizontalOverflow": false,
+        "activeDark": false,
+        "offenders": [],
+        "visibleTextSample": "HoloVi ta Admin\n\nPrototype operation \n\nDa hboard\nOrder \nCu tomer \nProduct \nAnalytic \n\nDASHBOARD\n\nStore performance\n\nTotal Order \n\n100\n\n+18% v  la t month\n\nRevenue\n\n₹89.2L\n\nAcro  mock order \n\nConver ion Rate\n\n4.9%\n\nStorefront  e ion \n\nVi itor \n\n15,100\n\nThi  month\n\nRevenue trend\n\nMonthly revenue acro  2026\n\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\nNov\nDec\nSale  trend\n\nOrder  by month\n\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\nOct\nNov\nDec\nOrder \n\n100 matching order \n\nORDER ID\tCUSTOMER\tAMOUNT\tSTATUS\tDATE\nH"
+      },
+      "logs": []
+    }
+  ],
+  "darkSmoke": {
+    "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\mobile-home-dark.png",
+    "metrics": {
+      "activeDark": true,
+      "bodyBg": "rgb(2, 6, 23)",
+      "text": "HoloVista\nPro display systems\n2\n17 units ready to ship this week\nHoloVista Pro X1\n\nPremium 3D holographic fan display fo"
+    }
+  }
+}

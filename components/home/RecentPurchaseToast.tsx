@@ -1,0 +1,54 @@
+"use client";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { ShoppingBag } from "lucide-react";
+import { useEffect, useState } from "react";
+import { recentPurchases } from "@/data/mock";
+
+export function RecentPurchaseToast() {
+  const [index, setIndex] = useState(0);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const initial = window.setTimeout(() => setVisible(true), 1800);
+    const timer = window.setInterval(() => {
+      setVisible(false);
+      window.setTimeout(() => {
+        setIndex((value) => (value + 1) % recentPurchases.length);
+        setVisible(true);
+      }, 600);
+    }, 7200);
+
+    return () => {
+      window.clearTimeout(initial);
+      window.clearInterval(timer);
+    };
+  }, []);
+
+  const purchase = recentPurchases[index];
+
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          initial={{ opacity: 0, y: 18, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 18, scale: 0.96 }}
+          className="fixed bottom-5 left-4 z-40 hidden max-w-xs rounded-3xl border border-slate-200 bg-white/90 p-4 shadow-2xl shadow-slate-950/15 backdrop-blur md:block dark:border-white/10 dark:bg-slate-900/90"
+        >
+          <div className="flex items-start gap-3">
+            <span className="grid h-10 w-10 place-items-center rounded-2xl bg-cyan-400/15 text-cyan-600 dark:text-cyan-300">
+              <ShoppingBag className="h-5 w-5" />
+            </span>
+            <div>
+              <p className="text-sm font-semibold text-slate-950 dark:text-white">{purchase.name}</p>
+              <p className="text-xs leading-5 text-slate-500 dark:text-slate-400">
+                Purchased in {purchase.city} {purchase.minutesAgo} minutes ago
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}

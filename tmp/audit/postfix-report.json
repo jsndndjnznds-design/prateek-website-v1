@@ -1,0 +1,171 @@
+{
+  "generatedAt": "2026-06-12T08:11:18.393Z",
+  "results": [
+    {
+      "name": "postfix-mobile-product",
+      "path": "/product/hologram-fan-display",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\postfix-mobile-product.png",
+      "metrics": {
+        "title": "HoloVista Pro X1 | HoloVista",
+        "h1": "HoloVista Pro X1",
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "hasHorizontalOverflow": false,
+        "textSample": "HoloVista Pro display systems 2 Hover to zoom 3D holographic advertising fan In stock HoloVista Pro X1 A premium LED hologram fan display that turns products, menus, offers, and brand visuals into floating 3D motion content. 4.8 (50) ₹64,999 ₹89,999 Save 28% Stock counter 17 left Launch pricing ends soon 12 HOURS 59 MINS 58 SECS 1 Add to Cart Buy Now Wishlist Share Free prepaid shipping 12 month warranty Setup assistance DETAILS Everything needed for a premium installation. HoloVista Pro X1 combines high-density RGB LED blades, Wi-Fi content upload, app scheduling, and an ultra-bright 72 cm viewing field for modern retail, events, hospitality, and showroom advertising. HoloVista Pro X1 holog",
+        "offenders": [
+          {
+            "tag": "button",
+            "text": "Events",
+            "left": 320,
+            "right": 399,
+            "width": 80,
+            "className": "h-10 shrink-0 rounded-full border px-4 text-sm font-semibold transition border-slate-200 bg-white text-slate-600 hover:b"
+          },
+          {
+            "tag": "button",
+            "text": "Hospitality",
+            "left": 407,
+            "right": 514,
+            "width": 107,
+            "className": "h-10 shrink-0 rounded-full border px-4 text-sm font-semibold transition border-slate-200 bg-white text-slate-600 hover:b"
+          },
+          {
+            "tag": "button",
+            "text": "Showroom",
+            "left": 522,
+            "right": 627,
+            "width": 105,
+            "className": "h-10 shrink-0 rounded-full border px-4 text-sm font-semibold transition border-slate-200 bg-white text-slate-600 hover:b"
+          }
+        ]
+      },
+      "logs": []
+    },
+    {
+      "name": "postfix-mobile-confirmation",
+      "path": "/order-confirmation",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\postfix-mobile-confirmation.png",
+      "metrics": {
+        "title": "Order Confirmation | HoloVista",
+        "h1": "Order confirmed",
+        "innerWidth": 390,
+        "scrollWidth": 390,
+        "hasHorizontalOverflow": false,
+        "textSample": "HoloVista Pro display systems 2 Order confirmed Order HVX-174921 is confirmed and queued for warehouse processing. Shipping information Insured delivery with installation support follow-up after dispatch. Estimated delivery Wed, 17 Jun via tracked courier. HoloVista Pro X1 Quantity 2 - Paid by UPI ₹1,53,398 Continue Shopping HoloVista Premium holographic display systems for retail, events, hospitality, and launch campaigns. Mumbai warehouse, pan-India delivery +91 90000 48291 support@holovista.example STORE Contact Shipping Returns Privacy Policy Terms Free insured shipping On prepaid orders across India with tracking and delivery support. 12 month warranty Hardware warranty, setup assistanc",
+        "offenders": []
+      },
+      "logs": []
+    },
+    {
+      "name": "postfix-mobile-admin",
+      "path": "/admin",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\postfix-mobile-admin.png",
+      "metrics": {
+        "title": "Admin Dashboard | HoloVista",
+        "h1": "Store performance",
+        "innerWidth": 397,
+        "scrollWidth": 397,
+        "hasHorizontalOverflow": false,
+        "textSample": "HoloVista Admin Prototype operations Dashboard Orders Customers Products Analytics DASHBOARD Store performance Total Orders 100 +18% vs last month Revenue ₹89.2L Across mock orders Conversion Rate 4.9% Storefront sessions Visitors 15,100 This month Revenue trend Monthly revenue across 2026 Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Sales trend Orders by month Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Orders 100 matching orders ORDER ID CUSTOMER AMOUNT STATUS DATE HVX-10420 Aarav Mehta Online Store ₹1,36,988 Paid 2026-01-01 HVX-10421 Priya Nair Sales Call ₹64,999 Processing 2026-02-02 HVX-10422 Rahul Kapoor Partner ₹64,999 Packed 2026-03-03 HVX-10423 Anika Shah Online Store ₹1,29,9",
+        "offenders": [
+          {
+            "tag": "table",
+            "text": "Order IDCustomerAmountStatusDateHVX-10420Aarav MehtaOnline Store₹1,36,988Paid202",
+            "left": 17,
+            "right": 697,
+            "width": 680,
+            "className": "w-full min-w-[680px] text-left text-sm"
+          },
+          {
+            "tag": "thead",
+            "text": "Order IDCustomerAmountStatusDate",
+            "left": 17,
+            "right": 697,
+            "width": 680,
+            "className": "bg-slate-50 text-xs uppercase tracking-[0.12em] text-slate-500 dark:bg-white/5 dark:text-slate-400"
+          },
+          {
+            "tag": "tr",
+            "text": "Order IDCustomerAmountStatusDate",
+            "left": 17,
+            "right": 697,
+            "width": 680,
+            "className": ""
+          },
+          {
+            "tag": "th",
+            "text": "Amount",
+            "left": 297,
+            "right": 416,
+            "width": 118,
+            "className": "px-5 py-4"
+          },
+          {
+            "tag": "th",
+            "text": "Status",
+            "left": 416,
+            "right": 560,
+            "width": 145,
+            "className": "px-5 py-4"
+          },
+          {
+            "tag": "th",
+            "text": "Date",
+            "left": 560,
+            "right": 697,
+            "width": 137,
+            "className": "px-5 py-4"
+          },
+          {
+            "tag": "tbody",
+            "text": "HVX-10420Aarav MehtaOnline Store₹1,36,988Paid2026-01-01HVX-10421Priya NairSales ",
+            "left": 17,
+            "right": 697,
+            "width": 680,
+            "className": "divide-y divide-slate-200 dark:divide-white/10"
+          },
+          {
+            "tag": "tr",
+            "text": "HVX-10420Aarav MehtaOnline Store₹1,36,988Paid2026-01-01",
+            "left": 17,
+            "right": 697,
+            "width": 680,
+            "className": "transition hover:bg-slate-50 dark:hover:bg-white/5"
+          },
+          {
+            "tag": "td",
+            "text": "₹1,36,988",
+            "left": 297,
+            "right": 416,
+            "width": 118,
+            "className": "px-5 py-4 font-semibold"
+          },
+          {
+            "tag": "td",
+            "text": "Paid",
+            "left": 416,
+            "right": 560,
+            "width": 145,
+            "className": "px-5 py-4"
+          }
+        ]
+      },
+      "logs": []
+    },
+    {
+      "name": "postfix-desktop-admin",
+      "path": "/admin",
+      "screenshot": "C:\\Users\\Pratik Sarkar\\OneDrive\\Desktop\\web3\\tmp\\audit\\postfix-desktop-admin.png",
+      "metrics": {
+        "title": "Admin Dashboard | HoloVista",
+        "h1": "Store performance",
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "hasHorizontalOverflow": false,
+        "textSample": "HoloVista Admin Prototype operations Dashboard Orders Customers Products Analytics DASHBOARD Store performance Total Orders 100 +18% vs last month Revenue ₹89.2L Across mock orders Conversion Rate 4.9% Storefront sessions Visitors 15,100 This month Revenue trend Monthly revenue across 2026 Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Sales trend Orders by month Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Orders 100 matching orders ORDER ID CUSTOMER AMOUNT STATUS DATE HVX-10420 Aarav Mehta Online Store ₹1,36,988 Paid 2026-01-01 HVX-10421 Priya Nair Sales Call ₹64,999 Processing 2026-02-02 HVX-10422 Rahul Kapoor Partner ₹64,999 Packed 2026-03-03 HVX-10423 Anika Shah Online Store ₹1,29,9",
+        "offenders": []
+      },
+      "logs": []
+    }
+  ]
+}
