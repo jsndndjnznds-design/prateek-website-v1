@@ -18,7 +18,7 @@ const navItems = [
 
 const searchableItems = [
   { label: product.name, detail: "Product details and buying options", href: "/product/hologram-fan-display" },
-  { label: "Customer reviews", detail: "50 verified business reviews", href: "/product/hologram-fan-display#reviews" },
+  { label: "Customer reviews", detail: "Verified buyer feedback", href: "/product/hologram-fan-display#reviews" },
   { label: "Shipping and installation", detail: "Pan-India delivery and setup support", href: "/product/hologram-fan-display#shipping" },
   { label: "Cart", detail: "Review items and checkout", href: "/cart" },
   { label: "Admin dashboard", detail: "Orders, revenue, and analytics", href: "/admin" },

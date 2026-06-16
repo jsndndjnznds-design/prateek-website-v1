@@ -3,17 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, BadgeCheck, Headphones, ShieldCheck, Truck } from "lucide-react";
+import { ArrowRight, Headphones, LockKeyhole, ShieldCheck, Truck } from "lucide-react";
 import { product } from "@/data/product";
 import { formatCurrency } from "@/lib/utils";
 import { CountdownTimer } from "@/components/ui/CountdownTimer";
-import { Rating } from "@/components/ui/Rating";
 
 const trustBadges = [
   { label: "Insured shipping", icon: Truck },
   { label: "12 month warranty", icon: ShieldCheck },
   { label: "Setup support", icon: Headphones },
-  { label: "Verified reviews", icon: BadgeCheck },
+  { label: "Secure checkout", icon: LockKeyhole },
 ];
 
 export function HeroSection() {
@@ -51,9 +50,8 @@ export function HeroSection() {
             </Link>
           </div>
           <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
-            <Rating value={product.rating} count={product.reviewCount} />
             <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
-              Trusted by retailers, cafes, and event teams
+              Designed for retailers, cafes, and event teams
             </span>
           </div>
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">

@@ -1,9 +1,23 @@
-import { reviews } from "@/data/mock";
-import { product } from "@/data/product";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { Rating } from "@/components/ui/Rating";
+import { Headphones, PackageCheck, ShieldCheck } from "lucide-react";
 
-const featuredReviews = reviews.slice(0, 3);
+const assuranceCards = [
+  {
+    title: "Checkout-backed orders",
+    body: "Every completed order is written to the order system before confirmation.",
+    icon: PackageCheck,
+  },
+  {
+    title: "Installation follow-up",
+    body: "Shipping and setup details are captured with the order for handoff.",
+    icon: Headphones,
+  },
+  {
+    title: "Clear payment record",
+    body: "Payment method, amount, quantity, and customer details stay attached to the order.",
+    icon: ShieldCheck,
+  },
+];
 
 export function SocialProofSection() {
   return (
@@ -12,32 +26,26 @@ export function SocialProofSection() {
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-600 dark:text-cyan-400">
-              Social proof
+              Buyer assurance
             </p>
             <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-normal text-slate-950 dark:text-white sm:text-4xl">
-              Built for teams that need attention without looking gimmicky.
+              Built for teams that need a clean path from product interest to confirmed order.
             </h2>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-white/5">
-            <Rating value={product.rating} count={product.reviewCount} size="md" />
-            <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Average verified buyer rating</p>
+            <p className="text-3xl font-semibold text-slate-950 dark:text-white">Live</p>
+            <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">Checkout records after every saved order</p>
           </div>
         </div>
         <div className="mt-10 grid gap-4 lg:grid-cols-3">
-          {featuredReviews.map((review) => (
+          {assuranceCards.map((card) => (
             <article
-              key={review.id}
+              key={card.title}
               className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-950/8 dark:border-white/10 dark:bg-white/5"
             >
-              <Rating value={review.rating} size="xs" />
-              <h3 className="mt-5 text-lg font-semibold text-slate-950 dark:text-white">{review.title}</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400">{review.body}</p>
-              <div className="mt-6 border-t border-slate-200 pt-4 dark:border-white/10">
-                <p className="text-sm font-semibold text-slate-950 dark:text-white">{review.customerName}</p>
-                <p className="text-sm text-slate-500 dark:text-slate-400">
-                  {review.role}, {review.location}
-                </p>
-              </div>
+              <card.icon className="h-5 w-5 text-cyan-500" />
+              <h3 className="mt-5 text-lg font-semibold text-slate-950 dark:text-white">{card.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400">{card.body}</p>
             </article>
           ))}
         </div>

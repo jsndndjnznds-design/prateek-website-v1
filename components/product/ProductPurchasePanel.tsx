@@ -6,7 +6,6 @@ import { useState } from "react";
 import { useCart } from "@/components/cart/CartProvider";
 import { QuantitySelector } from "@/components/ui/QuantitySelector";
 import { CountdownTimer } from "@/components/ui/CountdownTimer";
-import { Rating } from "@/components/ui/Rating";
 import { Product } from "@/types";
 import { cn, formatCurrency } from "@/lib/utils";
 
@@ -76,9 +75,6 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
           {product.name}
         </h1>
         <p className="mt-4 text-base leading-7 text-slate-600 dark:text-slate-400">{product.shortDescription}</p>
-        <div className="mt-5">
-          <Rating value={product.rating} count={product.reviewCount} />
-        </div>
       </div>
 
       <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-white/5">

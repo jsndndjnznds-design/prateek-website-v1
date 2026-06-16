@@ -18,8 +18,6 @@ export type Product = {
   compareAtPrice: number;
   currency: "INR";
   stock: number;
-  rating: number;
-  reviewCount: number;
   shortDescription: string;
   description: string;
   images: ProductImage[];
@@ -39,54 +37,14 @@ export type CartItem = {
   quantity: number;
 };
 
-export type Review = {
-  id: string;
-  customerName: string;
-  role: string;
-  location: string;
-  rating: number;
-  title: string;
-  body: string;
-  date: string;
-  verified: boolean;
-  useCase: string;
-  helpful: number;
-};
-
-export type Customer = {
-  id: string;
-  name: string;
+export type SupabaseOrder = {
+  order_number: string;
+  customer_name: string;
   email: string;
-  company: string;
-  location: string;
-  totalSpent: number;
-  joinedAt: string;
-  status: "VIP" | "Returning" | "New";
-};
-
-export type OrderStatus = "Paid" | "Processing" | "Packed" | "Shipped" | "Delivered";
-
-export type Order = {
-  id: string;
-  customer: string;
-  email: string;
+  phone: string;
+  address: string;
+  quantity: number;
   amount: number;
-  status: OrderStatus;
-  date: string;
-  items: number;
-  channel: "Online Store" | "Sales Call" | "Partner";
-};
-
-export type AnalyticsPoint = {
-  label: string;
-  orders: number;
-  revenue: number;
-  visitors: number;
-  conversion: number;
-};
-
-export type RecentPurchase = {
-  name: string;
-  city: string;
-  minutesAgo: number;
+  payment_method: string;
+  created_at: string;
 };

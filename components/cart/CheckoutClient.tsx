@@ -11,8 +11,9 @@ import {
   Truck,
   WalletCards,
 } from "lucide-react";
-import { useState } from "react";
+import { type HTMLInputTypeAttribute, useState } from "react";
 import { useCart } from "@/components/cart/CartProvider";
+import { supabase } from "@/lib/supabase";
 import {
   formatCurrency,
   getEstimatedDeliveryDate,
@@ -29,13 +30,37 @@ const paymentMethods = [
   { label: "Cash on Delivery", icon: Banknote },
 ];
 
-function Field({ label, placeholder, type = "text" }: { label: string; placeholder: string; type?: string }) {
+type FieldProps = {
+  label: string;
+  placeholder: string;
+  value: string;
+  onChange: (value: string) => void;
+  type?: HTMLInputTypeAttribute;
+  required?: boolean;
+};
+
+function createOrderMetadata() {
+  const createdAt = new Date().toISOString();
+  const randomValues = new Uint32Array(1);
+  window.crypto.getRandomValues(randomValues);
+  const randomPart = (randomValues[0] % 10000).toString().padStart(4, "0");
+
+  return {
+    createdAt,
+    orderNumber: `HVX-${createdAt.replace(/\D/g, "").slice(0, 14)}-${randomPart}`,
+  };
+}
+
+function Field({ label, placeholder, value, onChange, type = "text", required = false }: FieldProps) {
   return (
     <label className="block">
       <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{label}</span>
       <input
         type={type}
         placeholder={placeholder}
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        required={required}
         className="mt-2 h-12 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm outline-none transition placeholder:text-slate-400 focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10 dark:border-white/10 dark:bg-white/5 dark:text-white"
       />
     </label>
@@ -46,29 +71,82 @@ export function CheckoutClient() {
   const router = useRouter();
   const { items, subtotal, clearCart } = useCart();
   const [method, setMethod] = useState("UPI");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
+  const [addressLine, setAddressLine] = useState("");
+  const [apartment, setApartment] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [pinCode, setPinCode] = useState("");
+  const [installationNote, setInstallationNote] = useState("");
+  const [isSaving, setIsSaving] = useState(false);
+  const [orderError, setOrderError] = useState("");
   const shipping = getShippingEstimate(subtotal);
   const tax = getTax(subtotal);
   const total = subtotal + shipping + tax;
 
-  const placeOrder = () => {
-    const orderSeed = 104820 + items.reduce((sum, item) => sum + item.quantity * 37, 0) + Math.round(total % 90000);
-    const orderNumber = `HVX-${orderSeed}`;
+  const placeOrder = async () => {
+    if (isSaving) return;
 
-    window.localStorage.setItem(
-      "holovista-last-order",
-      JSON.stringify({
-        orderNumber,
-        items,
-        subtotal,
-        shipping,
-        tax,
-        total,
-        method,
-        delivery: getEstimatedDeliveryDate(),
-      }),
-    );
-    clearCart();
-    router.push("/order-confirmation");
+    setOrderError("");
+
+    const requiredValues = [fullName, email, phone, addressLine, city, state, pinCode];
+    if (requiredValues.some((value) => value.trim().length === 0)) {
+      setOrderError("Please complete all required checkout fields.");
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setOrderError("Please enter a valid email address.");
+      return;
+    }
+
+    if (!supabase) {
+      setOrderError("Checkout is not configured. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.");
+      return;
+    }
+
+    const quantity = items.reduce((sum, item) => sum + item.quantity, 0);
+    const { createdAt, orderNumber } = createOrderMetadata();
+    const address = [
+      addressLine.trim(),
+      apartment.trim(),
+      `${city.trim()}, ${state.trim()} ${pinCode.trim()}`,
+      company.trim() ? `Company: ${company.trim()}` : "",
+      installationNote.trim() ? `Installation note: ${installationNote.trim()}` : "",
+    ]
+      .filter(Boolean)
+      .join(", ");
+
+    setIsSaving(true);
+
+    try {
+      const { error } = await supabase.from("orders").insert({
+        customer_name: fullName.trim(),
+        email: email.trim(),
+        phone: phone.trim(),
+        address,
+        quantity,
+        amount: total,
+        payment_method: method,
+        order_number: orderNumber,
+        created_at: createdAt,
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      clearCart();
+      router.push(`/order-confirmation?order=${encodeURIComponent(orderNumber)}`);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Unable to save order.";
+      setOrderError(`Unable to place order. ${message}`);
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   if (items.length === 0) {
@@ -105,10 +183,10 @@ export function CheckoutClient() {
             <section className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
               <h2 className="text-lg font-semibold text-slate-950 dark:text-white">Customer Information</h2>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                <Field label="Full name" placeholder="Priya Mehta" />
-                <Field label="Email" placeholder="priya@example.com" type="email" />
-                <Field label="Phone" placeholder="+91 98765 43210" />
-                <Field label="Company" placeholder="Aurum Retail Studio" />
+                <Field label="Full name" placeholder="Priya Mehta" value={fullName} onChange={setFullName} required />
+                <Field label="Email" placeholder="priya@example.com" type="email" value={email} onChange={setEmail} required />
+                <Field label="Phone" placeholder="+91 98765 43210" value={phone} onChange={setPhone} required />
+                <Field label="Company" placeholder="Aurum Retail Studio" value={company} onChange={setCompany} />
               </div>
             </section>
 
@@ -118,12 +196,23 @@ export function CheckoutClient() {
                 Shipping Address
               </h2>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                <Field label="Address line" placeholder="12 Carter Road, Bandra West" />
-                <Field label="Apartment, suite" placeholder="Studio 4B" />
-                <Field label="City" placeholder="Mumbai" />
-                <Field label="State" placeholder="Maharashtra" />
-                <Field label="PIN code" placeholder="400050" />
-                <Field label="Installation note" placeholder="Countertop demo before wall mount" />
+                <Field
+                  label="Address line"
+                  placeholder="12 Carter Road, Bandra West"
+                  value={addressLine}
+                  onChange={setAddressLine}
+                  required
+                />
+                <Field label="Apartment, suite" placeholder="Studio 4B" value={apartment} onChange={setApartment} />
+                <Field label="City" placeholder="Mumbai" value={city} onChange={setCity} required />
+                <Field label="State" placeholder="Maharashtra" value={state} onChange={setState} required />
+                <Field label="PIN code" placeholder="400050" value={pinCode} onChange={setPinCode} required />
+                <Field
+                  label="Installation note"
+                  placeholder="Countertop demo before wall mount"
+                  value={installationNote}
+                  onChange={setInstallationNote}
+                />
               </div>
             </section>
 
@@ -195,10 +284,22 @@ export function CheckoutClient() {
             </div>
             <button
               onClick={placeOrder}
-              className="mt-6 h-12 w-full rounded-full bg-slate-950 text-sm font-semibold text-white shadow-xl shadow-slate-950/15 transition hover:-translate-y-0.5 dark:bg-white dark:text-slate-950"
+              disabled={isSaving}
+              className={cn(
+                "mt-6 h-12 w-full rounded-full bg-slate-950 text-sm font-semibold text-white shadow-xl shadow-slate-950/15 transition hover:-translate-y-0.5 dark:bg-white dark:text-slate-950",
+                isSaving && "cursor-not-allowed opacity-70 hover:translate-y-0",
+              )}
             >
-              Place Order
+              {isSaving ? "Saving order..." : "Place Order"}
             </button>
+            {orderError ? (
+              <p
+                role="alert"
+                className="mt-4 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700 dark:border-red-400/20 dark:bg-red-400/10 dark:text-red-200"
+              >
+                {orderError}
+              </p>
+            ) : null}
           </aside>
         </div>
       </div>

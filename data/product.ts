@@ -9,8 +9,6 @@ export const product: Product = {
   compareAtPrice: 89999,
   currency: "INR",
   stock: 17,
-  rating: 4.8,
-  reviewCount: 50,
   shortDescription:
     "A premium LED hologram fan display that turns products, menus, offers, and brand visuals into floating 3D motion content.",
   description:
