@@ -142,11 +142,22 @@ export function CheckoutClient() {
       clearCart();
       router.push(`/order-confirmation?order=${encodeURIComponent(orderNumber)}`);
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Unable to save order.";
-      setOrderError(`Unable to place order. ${message}`);
-    } finally {
-      setIsSaving(false);
-    }
+  console.error("Supabase Error:", error);
+
+  let message = "Unknown error";
+
+  if (error instanceof Error) {
+    message = error.message;
+  } else {
+    message = JSON.stringify(error, null, 2);
+  }
+
+  console.error("Error Message:", message);
+
+  setOrderError(`Unable to place order. ${message}`);
+} finally {
+  setIsSaving(false);
+}
   };
 
   if (items.length === 0) {
