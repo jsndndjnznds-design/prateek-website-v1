@@ -20,6 +20,18 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Admin Authentication
+
+The admin dashboard uses Supabase Auth email/password login. Configure the existing Supabase public env vars, then add one or more admin emails:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+ADMIN_EMAILS=admin@example.com,ops@example.com
+```
+
+`ADMIN_EMAIL` is also supported for a single admin account.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

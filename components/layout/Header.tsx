@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Search, ShoppingBag, Sparkles, X } from "lucide-react";
 import { useMemo, useState } from "react";
+import { useAuth } from "@/components/auth/AuthProvider";
 import { product } from "@/data/product";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/components/cart/CartProvider";
@@ -27,15 +28,21 @@ const searchableItems = [
 export function Header() {
   const pathname = usePathname();
   const { count } = useCart();
+  const { isAdmin } = useAuth();
   const [query, setQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const visibleNavItems = useMemo(() => navItems.filter((item) => item.href !== "/admin" || isAdmin), [isAdmin]);
+  const visibleSearchableItems = useMemo(
+    () => searchableItems.filter((item) => item.href !== "/admin" || isAdmin),
+    [isAdmin],
+  );
 
   const results = useMemo(() => {
-    if (!query.trim()) return searchableItems.slice(0, 3);
-    return searchableItems.filter((item) =>
+    if (!query.trim()) return visibleSearchableItems.slice(0, 3);
+    return visibleSearchableItems.filter((item) =>
       `${item.label} ${item.detail}`.toLowerCase().includes(query.toLowerCase()),
     );
-  }, [query]);
+  }, [query, visibleSearchableItems]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/78 backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/76">
@@ -55,7 +62,7 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-1 rounded-full border border-slate-200 bg-white/70 p-1 shadow-sm dark:border-white/10 dark:bg-white/5 lg:flex">
-          {navItems.map((item) => (
+          {visibleNavItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -132,7 +139,7 @@ export function Header() {
               </button>
             </div>
             <div className="mt-6 space-y-2">
-              {navItems.map((item) => (
+              {visibleNavItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}

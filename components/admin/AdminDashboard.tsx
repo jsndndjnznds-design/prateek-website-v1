@@ -4,6 +4,7 @@ import {
   BarChart3,
   Boxes,
   LayoutDashboard,
+  LogOut,
   Package,
   Search,
   ShoppingCart,
@@ -11,6 +12,8 @@ import {
   Users,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/components/auth/AuthProvider";
 import { product } from "@/data/product";
 import { supabase } from "@/lib/supabase";
 import { cn, formatCompactCurrency, formatCurrency } from "@/lib/utils";
@@ -187,7 +190,9 @@ function SalesBars({ data }: { data: MonthlyOrderPoint[] }) {
   );
 }
 
-export function AdminDashboard() {
+export function AdminDashboard({ adminEmail }: { adminEmail: string }) {
+  const router = useRouter();
+  const { logout } = useAuth();
   const [active, setActive] = useState("Dashboard");
   const [query, setQuery] = useState("");
   const [orders, setOrders] = useState<SupabaseOrder[]>([]);
@@ -247,6 +252,12 @@ export function AdminDashboard() {
     { label: "Latest Order", value: orders[0]?.order_number ?? "None", detail: orders[0] ? formatOrderDate(orders[0].created_at) : "No orders yet" },
   ];
 
+  async function handleLogout() {
+    await logout();
+    router.replace("/login");
+    router.refresh();
+  }
+
   return (
     <div className="min-h-screen bg-slate-100 text-slate-950 dark:bg-slate-950 dark:text-white">
       <div className="grid lg:grid-cols-[280px_1fr]">
@@ -257,7 +268,7 @@ export function AdminDashboard() {
             </span>
             <div>
               <p className="font-semibold">HoloVista Admin</p>
-              <p className="text-xs opacity-70">Live orders</p>
+              <p className="text-xs opacity-70">{adminEmail}</p>
             </div>
           </div>
           <nav className="mt-5 grid gap-1">
@@ -277,6 +288,13 @@ export function AdminDashboard() {
               </button>
             ))}
           </nav>
+          <button
+            onClick={handleLogout}
+            className="mt-5 flex w-full items-center gap-3 rounded-2xl border border-slate-200 px-4 py-3 text-left text-sm font-semibold text-slate-600 transition hover:bg-slate-100 dark:border-white/10 dark:text-slate-300 dark:hover:bg-white/10"
+          >
+            <LogOut className="h-4 w-4" />
+            Logout
+          </button>
         </aside>
 
         <main className="p-4 sm:p-6 lg:p-8">
