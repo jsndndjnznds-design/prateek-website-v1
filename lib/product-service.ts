@@ -177,7 +177,7 @@ export async function uploadProductImages(supabase: SupabaseClient, files: File[
 
   for (const file of files) {
     const filePath = `products/${crypto.randomUUID()}-${getSafeFileStem(file.name)}.${getImageExtension(file)}`;
-    const { error } = await supabase.storage.from(productImagesBucket).upload(filePath, await file.arrayBuffer(), {
+    const { error } = await supabase.storage.from(products).upload(filePath, await file.arrayBuffer(), {
       contentType: file.type,
       upsert: false,
     });
@@ -190,7 +190,7 @@ export async function uploadProductImages(supabase: SupabaseClient, files: File[
       throw new Error(error.message);
     }
 
-    const { data } = supabase.storage.from(productImagesBucket).getPublicUrl(filePath);
+    const { data } = supabase.storage.from(products).getPublicUrl(filePath);
     uploadedUrls.push(data.publicUrl);
   }
 
@@ -213,7 +213,7 @@ export async function deleteProductImages(supabase: SupabaseClient, imageUrls: s
 
   if (paths.length === 0) return;
 
-  const { error } = await supabase.storage.from(productImagesBucket).remove(paths);
+  const { error } = await supabase.storage.from(products).remove(paths);
 
   if (error) {
     throw new Error(error.message);
