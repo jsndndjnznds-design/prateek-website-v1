@@ -1,19 +1,11 @@
 "use client";
 
 import {
-  BarChart3,
-  Boxes,
-  LayoutDashboard,
-  LogOut,
-  Package,
   Search,
-  ShoppingCart,
   TrendingUp,
-  Users,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/components/auth/AuthProvider";
+import { AdminShell } from "@/components/admin/AdminShell";
 import { product } from "@/data/product";
 import { supabase } from "@/lib/supabase";
 import { cn, formatCompactCurrency, formatCurrency } from "@/lib/utils";
@@ -31,14 +23,6 @@ type CustomerSummary = {
   orderCount: number;
   totalSpent: number;
 };
-
-const sidebarItems = [
-  { label: "Dashboard", icon: LayoutDashboard },
-  { label: "Orders", icon: ShoppingCart },
-  { label: "Customers", icon: Users },
-  { label: "Products", icon: Boxes },
-  { label: "Analytics", icon: BarChart3 },
-];
 
 const statusClasses: Record<string, string> = {
   Confirmed: "bg-emerald-400/15 text-emerald-700 dark:text-emerald-300",
@@ -191,8 +175,6 @@ function SalesBars({ data }: { data: MonthlyOrderPoint[] }) {
 }
 
 export function AdminDashboard({ adminEmail }: { adminEmail: string }) {
-  const router = useRouter();
-  const { logout } = useAuth();
   const [active, setActive] = useState("Dashboard");
   const [query, setQuery] = useState("");
   const [orders, setOrders] = useState<SupabaseOrder[]>([]);
@@ -252,51 +234,8 @@ export function AdminDashboard({ adminEmail }: { adminEmail: string }) {
     { label: "Latest Order", value: orders[0]?.order_number ?? "None", detail: orders[0] ? formatOrderDate(orders[0].created_at) : "No orders yet" },
   ];
 
-  async function handleLogout() {
-    await logout();
-    router.replace("/login");
-    router.refresh();
-  }
-
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-950 dark:bg-slate-950 dark:text-white">
-      <div className="grid lg:grid-cols-[280px_1fr]">
-        <aside className="border-b border-slate-200 bg-white p-4 dark:border-white/10 dark:bg-slate-900 lg:min-h-screen lg:border-b-0 lg:border-r">
-          <div className="flex items-center gap-3 rounded-3xl bg-slate-950 p-4 text-white dark:bg-white dark:text-slate-950">
-            <span className="grid h-11 w-11 place-items-center rounded-2xl bg-cyan-400 text-slate-950">
-              <Package className="h-5 w-5" />
-            </span>
-            <div>
-              <p className="font-semibold">HoloVista Admin</p>
-              <p className="text-xs opacity-70">{adminEmail}</p>
-            </div>
-          </div>
-          <nav className="mt-5 grid gap-1">
-            {sidebarItems.map((item) => (
-              <button
-                key={item.label}
-                onClick={() => setActive(item.label)}
-                className={cn(
-                  "flex items-center gap-3 rounded-2xl px-4 py-3 text-left text-sm font-semibold transition",
-                  active === item.label
-                    ? "bg-cyan-400/15 text-cyan-700 dark:text-cyan-300"
-                    : "text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/10",
-                )}
-              >
-                <item.icon className="h-4 w-4" />
-                {item.label}
-              </button>
-            ))}
-          </nav>
-          <button
-            onClick={handleLogout}
-            className="mt-5 flex w-full items-center gap-3 rounded-2xl border border-slate-200 px-4 py-3 text-left text-sm font-semibold text-slate-600 transition hover:bg-slate-100 dark:border-white/10 dark:text-slate-300 dark:hover:bg-white/10"
-          >
-            <LogOut className="h-4 w-4" />
-            Logout
-          </button>
-        </aside>
-
+    <AdminShell adminEmail={adminEmail} activeLabel={active} onSectionChange={setActive}>
         <main className="p-4 sm:p-6 lg:p-8">
           <div className="mb-8 flex flex-col justify-between gap-4 lg:flex-row lg:items-center">
             <div>
@@ -431,7 +370,6 @@ export function AdminDashboard({ adminEmail }: { adminEmail: string }) {
             </div>
           </div>
         </main>
-      </div>
-    </div>
+    </AdminShell>
   );
 }

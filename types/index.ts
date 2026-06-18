@@ -27,6 +27,19 @@ export type Product = {
   shipping: string[];
 };
 
+export type ManagedProduct = {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  price: number;
+  discount_price: number | null;
+  stock: number;
+  images: string[];
+  created_at: string;
+  updated_at: string;
+};
+
 export type CartItem = {
   productId: string;
   slug: string;
