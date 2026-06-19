@@ -3,7 +3,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ShoppingBag } from "lucide-react";
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
 
 type RecentOrder = {
   name: string;
@@ -40,18 +39,13 @@ export function RecentPurchaseToast() {
     let mounted = true;
 
     async function loadRecentOrders() {
-      if (!supabase) return;
+      const response = await fetch("/api/orders/recent", { cache: "no-store" });
+      const data = (await response.json().catch(() => null)) as { orders?: RecentOrderRow[] } | null;
 
-      const { data, error } = await supabase
-        .from("orders")
-        .select("customer_name, address, created_at")
-        .order("created_at", { ascending: false })
-        .limit(5);
-
-      if (!mounted || error) return;
+      if (!mounted || !response.ok) return;
 
       setRecentOrders(
-        ((data ?? []) as RecentOrderRow[]).map((order) => ({
+        (data?.orders ?? []).map((order) => ({
           name: order.customer_name,
           location: getLocation(order.address),
           minutesAgo: getMinutesAgo(order.created_at),

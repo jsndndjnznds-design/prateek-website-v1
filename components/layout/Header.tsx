@@ -5,22 +5,21 @@ import { usePathname } from "next/navigation";
 import { Menu, Search, ShoppingBag, Sparkles, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useAuth } from "@/components/auth/AuthProvider";
-import { product } from "@/data/product";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/components/cart/CartProvider";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/product/hologram-fan-display", label: "Product" },
+  { href: "/#products", label: "Products" },
   { href: "/cart", label: "Cart" },
   { href: "/admin", label: "Admin" },
 ];
 
 const searchableItems = [
-  { label: product.name, detail: "Product details and buying options", href: "/product/hologram-fan-display" },
-  { label: "Customer reviews", detail: "Verified buyer feedback", href: "/product/hologram-fan-display#reviews" },
-  { label: "Shipping and installation", detail: "Pan-India delivery and setup support", href: "/product/hologram-fan-display#shipping" },
+  { label: "Product catalog", detail: "Current products and buying options", href: "/#products" },
+  { label: "Customer reviews", detail: "Verified buyer feedback", href: "/#reviews" },
+  { label: "Shipping and installation", detail: "Delivery and setup support", href: "/#gallery" },
   { label: "Cart", detail: "Review items and checkout", href: "/cart" },
   { label: "Admin dashboard", detail: "Orders, revenue, and analytics", href: "/admin" },
 ];

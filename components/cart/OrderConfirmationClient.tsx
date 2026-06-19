@@ -5,10 +5,13 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { AlertCircle, Check, PackageCheck, Truck } from "lucide-react";
 import { useEffect, useState } from "react";
-import { product } from "@/data/product";
-import { supabase } from "@/lib/supabase";
 import { formatCurrency } from "@/lib/utils";
 import { SupabaseOrder } from "@/types";
+
+type OrderResponse = {
+  order?: SupabaseOrder;
+  error?: string;
+};
 
 function formatDeliveryDate(createdAt: string) {
   const date = new Date(createdAt);
@@ -71,24 +74,15 @@ export function OrderConfirmationClient({ orderNumber }: { orderNumber: string }
         return;
       }
 
-      if (!supabase) {
-        setError("Supabase is not configured. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.");
-        setLoading(false);
-        return;
-      }
-
-      const { data, error: orderError } = await supabase
-        .from("orders")
-        .select("order_number, customer_name, email, phone, address, quantity, amount, payment_method, created_at")
-        .eq("order_number", orderNumber)
-        .maybeSingle<SupabaseOrder>();
+      const response = await fetch(`/api/orders/${encodeURIComponent(orderNumber)}`, { cache: "no-store" });
+      const data = (await response.json().catch(() => null)) as OrderResponse | null;
 
       if (!active) return;
 
-      if (orderError) {
-        setError(orderError.message);
+      if (!response.ok || !data?.order) {
+        setError(data?.error ?? "Unable to load order.");
       } else {
-        setOrder(data);
+        setOrder(data.order);
       }
 
       setLoading(false);
@@ -178,23 +172,44 @@ export function OrderConfirmationClient({ orderNumber }: { orderNumber: string }
             </div>
           </div>
 
-          <div className="mt-6 rounded-3xl border border-slate-200 bg-white p-4 text-left dark:border-white/10 dark:bg-white/5">
-            <div className="flex items-center gap-4">
-              <Image
-                src={product.images[0].src}
-                alt={product.name}
-                width={86}
-                height={78}
-                className="h-20 w-20 rounded-2xl object-cover"
-              />
-              <div className="flex-1">
-                <p className="font-semibold text-slate-950 dark:text-white">{product.name}</p>
-                <p className="text-sm text-slate-500 dark:text-slate-400">
-                  <span className="block">Quantity {order.quantity}</span>
-                  <span className="block">Paid by {order.payment_method}</span>
-                </p>
+          <div className="mt-6 overflow-hidden rounded-3xl border border-slate-200 bg-white text-left dark:border-white/10 dark:bg-white/5">
+            {(order.items.length > 0 ? order.items : []).map((item) => (
+              <div
+                key={`${item.product_id}-${item.name}`}
+                className="flex items-center gap-4 border-b border-slate-200 p-4 last:border-b-0 dark:border-white/10"
+              >
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  width={86}
+                  height={78}
+                  className="h-20 w-20 rounded-2xl object-cover"
+                />
+                <div className="flex-1">
+                  <p className="font-semibold text-slate-950 dark:text-white">{item.name}</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                    <span className="block">Quantity {item.quantity}</span>
+                    <span className="block">Paid by {order.payment_method}</span>
+                  </p>
+                </div>
+                <p className="font-semibold text-slate-950 dark:text-white">{formatCurrency(item.line_total)}</p>
               </div>
-              <p className="font-semibold text-slate-950 dark:text-white">{formatCurrency(order.amount)}</p>
+            ))}
+            {order.items.length === 0 ? (
+              <div className="flex items-center justify-between gap-4 p-4">
+                <div>
+                  <p className="font-semibold text-slate-950 dark:text-white">Order items</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                    <span className="block">Quantity {order.quantity}</span>
+                    <span className="block">Paid by {order.payment_method}</span>
+                  </p>
+                </div>
+                <p className="font-semibold text-slate-950 dark:text-white">{formatCurrency(order.amount)}</p>
+              </div>
+            ) : null}
+            <div className="flex justify-between border-t border-slate-200 p-4 text-sm font-semibold text-slate-950 dark:border-white/10 dark:text-white">
+              <span>Total</span>
+              <span>{formatCurrency(order.amount)}</span>
             </div>
           </div>
 

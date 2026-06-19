@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { type HTMLInputTypeAttribute, useState } from "react";
 import { useCart } from "@/components/cart/CartProvider";
-import { supabase } from "@/lib/supabase";
 import {
   formatCurrency,
   getEstimatedDeliveryDate,
@@ -30,6 +29,13 @@ const paymentMethods = [
   { label: "Cash on Delivery", icon: Banknote },
 ];
 
+type CreateOrderResponse = {
+  order?: {
+    order_number: string;
+  };
+  error?: string;
+};
+
 type FieldProps = {
   label: string;
   placeholder: string;
@@ -38,18 +44,6 @@ type FieldProps = {
   type?: HTMLInputTypeAttribute;
   required?: boolean;
 };
-
-function createOrderMetadata() {
-  const createdAt = new Date().toISOString();
-  const randomValues = new Uint32Array(1);
-  window.crypto.getRandomValues(randomValues);
-  const randomPart = (randomValues[0] % 10000).toString().padStart(4, "0");
-
-  return {
-    createdAt,
-    orderNumber: `HVX-${createdAt.replace(/\D/g, "").slice(0, 14)}-${randomPart}`,
-  };
-}
 
 function Field({ label, placeholder, value, onChange, type = "text", required = false }: FieldProps) {
   return (
@@ -103,61 +97,45 @@ export function CheckoutClient() {
       return;
     }
 
-    if (!supabase) {
-      setOrderError("Checkout is not configured. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.");
-      return;
-    }
-
-    const quantity = items.reduce((sum, item) => sum + item.quantity, 0);
-    const { createdAt, orderNumber } = createOrderMetadata();
-    const address = [
-      addressLine.trim(),
-      apartment.trim(),
-      `${city.trim()}, ${state.trim()} ${pinCode.trim()}`,
-      company.trim() ? `Company: ${company.trim()}` : "",
-      installationNote.trim() ? `Installation note: ${installationNote.trim()}` : "",
-    ]
-      .filter(Boolean)
-      .join(", ");
-
     setIsSaving(true);
 
     try {
-      const { error } = await supabase.from("orders").insert({
-        customer_name: fullName.trim(),
-        email: email.trim(),
-        phone: phone.trim(),
-        address,
-        quantity,
-        amount: total,
-        payment_method: method,
-        order_number: orderNumber,
-        created_at: createdAt,
+      const response = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customer: {
+            fullName,
+            email,
+            phone,
+            company,
+            addressLine,
+            apartment,
+            city,
+            state,
+            pinCode,
+            installationNote,
+            paymentMethod: method,
+          },
+          items: items.map((item) => ({
+            productId: item.productId,
+            quantity: item.quantity,
+          })),
+        }),
       });
+      const data = (await response.json().catch(() => null)) as CreateOrderResponse | null;
 
-      if (error) {
-        throw error;
+      if (!response.ok || !data?.order) {
+        throw new Error(data?.error ?? "Unable to place order.");
       }
 
       clearCart();
-      router.push(`/order-confirmation?order=${encodeURIComponent(orderNumber)}`);
+      router.push(`/order-confirmation?order=${encodeURIComponent(data.order.order_number)}`);
     } catch (error) {
-  console.error("Supabase Error:", error);
-
-  let message = "Unknown error";
-
-  if (error instanceof Error) {
-    message = error.message;
-  } else {
-    message = JSON.stringify(error, null, 2);
-  }
-
-  console.error("Error Message:", message);
-
-  setOrderError(`Unable to place order. ${message}`);
-} finally {
-  setIsSaving(false);
-}
+      setOrderError(error instanceof Error ? error.message : "Unable to place order.");
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   if (items.length === 0) {
@@ -165,9 +143,9 @@ export function CheckoutClient() {
       <section className="min-h-[70vh] bg-slate-50 py-20 text-center dark:bg-slate-950">
         <div className="mx-auto max-w-xl px-4">
           <h1 className="text-4xl font-semibold text-slate-950 dark:text-white">Checkout is waiting on a product.</h1>
-          <p className="mt-4 text-slate-600 dark:text-slate-400">Add HoloVista Pro X1 to continue.</p>
+          <p className="mt-4 text-slate-600 dark:text-slate-400">Add a product from the catalog to continue.</p>
           <button
-            onClick={() => router.push("/product/hologram-fan-display")}
+            onClick={() => router.push("/#products")}
             className="mt-8 h-12 rounded-full bg-slate-950 px-6 text-sm font-semibold text-white dark:bg-white dark:text-slate-950"
           >
             Shop Product

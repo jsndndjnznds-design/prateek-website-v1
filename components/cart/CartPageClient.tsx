@@ -24,10 +24,10 @@ export function CartPageClient() {
             Your cart is ready for a hologram.
           </h1>
           <p className="mt-4 text-slate-600 dark:text-slate-400">
-            Add HoloVista Pro X1 to review shipping, taxes, and checkout options.
+            Add a product to review shipping, taxes, and checkout options.
           </p>
           <Link
-            href="/product/hologram-fan-display"
+            href="/#products"
             className="mt-8 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-slate-950 px-6 text-sm font-semibold text-white dark:bg-white dark:text-slate-950"
           >
             Continue Shopping
@@ -51,7 +51,7 @@ export function CartPageClient() {
             </h1>
           </div>
           <Link
-            href="/product/hologram-fan-display"
+            href="/#products"
             className="text-sm font-semibold text-slate-600 transition hover:text-slate-950 dark:text-slate-400 dark:hover:text-white"
           >
             Continue Shopping
@@ -80,7 +80,7 @@ export function CartPageClient() {
                     {item.name}
                   </Link>
                   <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                    Premium 72 cm LED hologram fan display
+                    Product from the current catalog
                   </p>
                   <div className="mt-3 flex flex-wrap items-center gap-3">
                     <QuantitySelector
@@ -101,7 +101,7 @@ export function CartPageClient() {
                     {formatCurrency(item.price * item.quantity)}
                   </p>
                   <p className="text-sm text-slate-400 line-through">
-                    {formatCurrency(item.compareAtPrice * item.quantity)}
+                    {item.compareAtPrice > item.price ? formatCurrency(item.compareAtPrice * item.quantity) : ""}
                   </p>
                 </div>
               </div>

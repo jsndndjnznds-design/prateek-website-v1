@@ -22,7 +22,7 @@ export function ComparisonSection() {
         <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-white/5">
           <div className="grid grid-cols-[1.2fr_1fr_1fr] border-b border-white/10 bg-white/8 text-sm font-semibold">
             <div className="p-4">Capability</div>
-            <div className="p-4 text-cyan-200">HoloVista Pro X1</div>
+            <div className="p-4 text-cyan-200">Current catalog product</div>
             <div className="p-4 text-slate-300">Traditional display</div>
           </div>
           {rows.map((row) => (

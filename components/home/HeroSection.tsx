@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Headphones, LockKeyhole, ShieldCheck, Truck } from "lucide-react";
-import { product } from "@/data/product";
 import { formatCurrency } from "@/lib/utils";
+import { Product } from "@/types";
 import { CountdownTimer } from "@/components/ui/CountdownTimer";
 
 const trustBadges = [
@@ -15,7 +15,11 @@ const trustBadges = [
   { label: "Secure checkout", icon: LockKeyhole },
 ];
 
-export function HeroSection() {
+export function HeroSection({ product }: { product: Product | null }) {
+  const productHref = product ? `/product/${product.slug}` : "#products";
+  const heroImage = product?.images[0]?.src ?? "/images/hologram-fan-hero.svg";
+  const heroAlt = product?.images[0]?.alt ?? "Featured product";
+
   return (
     <section className="relative overflow-hidden bg-[linear-gradient(180deg,#f8fafc_0%,#ecfeff_48%,#ffffff_100%)] dark:bg-[linear-gradient(180deg,#020617_0%,#0f172a_56%,#020617_100%)]">
       <div className="holo-grid pointer-events-none absolute inset-0 opacity-80" />
@@ -26,20 +30,21 @@ export function HeroSection() {
         >
           <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-white/70 px-3 py-1.5 text-sm font-semibold text-slate-700 shadow-sm backdrop-blur dark:bg-white/10 dark:text-slate-200">
             <span className="h-2 w-2 rounded-full bg-emerald-400" />
-            {product.stock} units ready to ship this week
+            {product ? `${product.stock} units ready to ship this week` : "Catalog updating"}
           </div>
           <h1 className="mt-7 max-w-3xl text-5xl font-semibold leading-[1.02] tracking-normal text-slate-950 dark:text-white sm:text-6xl lg:text-7xl">
-            {product.name}
+            {product?.name ?? "HoloVista"}
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-            Premium 3D holographic fan display for retail launches, menus, events, and showroom advertising that people stop to film.
+            {product?.shortDescription ??
+              "Browse the current product catalog for retail, event, hospitality, and showroom display systems."}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
-              href="/product/hologram-fan-display"
+              href={productHref}
               className="inline-flex h-[52px] items-center justify-center gap-2 rounded-full bg-slate-950 px-7 text-sm font-semibold text-white shadow-xl shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
             >
-              Shop {formatCurrency(product.price)}
+              {product ? `Shop ${formatCurrency(product.price)}` : "Browse products"}
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
@@ -75,8 +80,8 @@ export function HeroSection() {
             <div className="absolute inset-8 hero-orbit rounded-full border border-cyan-400/20" />
             <div className="absolute inset-16 hero-orbit rounded-full border border-fuchsia-400/20 [animation-direction:reverse]" />
             <Image
-              src="/images/hologram-fan-hero.svg"
-              alt={product.images[0].alt}
+              src={heroImage}
+              alt={heroAlt}
               width={1400}
               height={980}
               priority

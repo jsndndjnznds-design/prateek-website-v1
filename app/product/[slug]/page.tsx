@@ -4,15 +4,13 @@ import { ProductPurchasePanel } from "@/components/product/ProductPurchasePanel"
 import { ProductReviews } from "@/components/product/ProductReviews";
 import { ProductSpecs } from "@/components/product/ProductSpecs";
 import { StickyAddToCart } from "@/components/product/StickyAddToCart";
-import { product, getProductBySlug } from "@/data/product";
+import { getStorefrontProductByIdentifier } from "@/lib/storefront-service";
 
-export function generateStaticParams() {
-  return [{ slug: product.slug }];
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const currentProduct = getProductBySlug(slug);
+  const currentProduct = await getStorefrontProductByIdentifier(slug);
 
   return {
     title: currentProduct ? `${currentProduct.name} | HoloVista` : "Product | HoloVista",
@@ -22,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const currentProduct = getProductBySlug(slug);
+  const currentProduct = await getStorefrontProductByIdentifier(slug);
 
   if (!currentProduct) {
     notFound();

@@ -6,10 +6,18 @@ import {
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { AdminShell } from "@/components/admin/AdminShell";
-import { product } from "@/data/product";
-import { supabase } from "@/lib/supabase";
 import { cn, formatCompactCurrency, formatCurrency } from "@/lib/utils";
-import { SupabaseOrder } from "@/types";
+import { ManagedProduct, SupabaseOrder } from "@/types";
+
+type OrdersResponse = {
+  orders?: SupabaseOrder[];
+  error?: string;
+};
+
+type ProductsResponse = {
+  products?: ManagedProduct[];
+  error?: string;
+};
 
 type MonthlyOrderPoint = {
   label: string;
@@ -26,6 +34,9 @@ type CustomerSummary = {
 
 const statusClasses: Record<string, string> = {
   Confirmed: "bg-emerald-400/15 text-emerald-700 dark:text-emerald-300",
+  Shipped: "bg-cyan-400/15 text-cyan-700 dark:text-cyan-300",
+  Delivered: "bg-cyan-400/15 text-cyan-700 dark:text-cyan-300",
+  Cancelled: "bg-rose-500/10 text-rose-700 dark:text-rose-300",
 };
 
 function formatOrderDate(value: string) {
@@ -178,6 +189,7 @@ export function AdminDashboard({ adminEmail }: { adminEmail: string }) {
   const [active, setActive] = useState("Dashboard");
   const [query, setQuery] = useState("");
   const [orders, setOrders] = useState<SupabaseOrder[]>([]);
+  const [products, setProducts] = useState<ManagedProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -185,27 +197,31 @@ export function AdminDashboard({ adminEmail }: { adminEmail: string }) {
     let mounted = true;
 
     async function loadOrders() {
-      if (!supabase) {
-        setError("Supabase is not configured. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.");
-        setLoading(false);
-        return;
+      try {
+        const [ordersResponse, productsResponse] = await Promise.all([
+          fetch("/api/orders?limit=100", { cache: "no-store" }),
+          fetch("/api/products", { cache: "no-store" }),
+        ]);
+        const ordersData = (await ordersResponse.json().catch(() => null)) as OrdersResponse | null;
+        const productsData = (await productsResponse.json().catch(() => null)) as ProductsResponse | null;
+
+        if (!mounted) return;
+
+        if (!ordersResponse.ok) {
+          throw new Error(ordersData?.error ?? "Unable to load orders.");
+        }
+
+        if (!productsResponse.ok) {
+          throw new Error(productsData?.error ?? "Unable to load products.");
+        }
+
+        setOrders(ordersData?.orders ?? []);
+        setProducts(productsData?.products ?? []);
+      } catch (loadError) {
+        if (mounted) setError(loadError instanceof Error ? loadError.message : "Unable to load dashboard data.");
+      } finally {
+        if (mounted) setLoading(false);
       }
-
-      const { data, error: ordersError } = await supabase
-        .from("orders")
-        .select("order_number, customer_name, email, phone, address, quantity, amount, payment_method, created_at")
-        .order("created_at", { ascending: false })
-        .limit(100);
-
-      if (!mounted) return;
-
-      if (ordersError) {
-        setError(ordersError.message);
-      } else {
-        setOrders((data ?? []) as SupabaseOrder[]);
-      }
-
-      setLoading(false);
     }
 
     loadOrders();
@@ -219,6 +235,8 @@ export function AdminDashboard({ adminEmail }: { adminEmail: string }) {
   const customerSummaries = useMemo(() => buildCustomerSummaries(orders), [orders]);
   const totalRevenue = orders.reduce((total, order) => total + order.amount, 0);
   const totalQuantity = orders.reduce((total, order) => total + order.quantity, 0);
+  const totalStock = products.reduce((sum, currentProduct) => sum + currentProduct.stock, 0);
+  const featuredProduct = products[0];
 
   const normalizedQuery = query.toLowerCase();
   const filteredOrders = orders.filter((order) =>
@@ -312,8 +330,8 @@ export function AdminDashboard({ adminEmail }: { adminEmail: string }) {
                         <td className="px-5 py-4 font-semibold">{formatCurrency(order.amount)}</td>
                         <td className="px-5 py-4 text-slate-500 dark:text-slate-400">{order.payment_method}</td>
                         <td className="px-5 py-4">
-                          <span className={cn("rounded-full px-3 py-1 text-xs font-bold", statusClasses.Confirmed)}>
-                            Confirmed
+                          <span className={cn("rounded-full px-3 py-1 text-xs font-bold", statusClasses[order.status] ?? statusClasses.Confirmed)}>
+                            {order.status}
                           </span>
                         </td>
                         <td className="px-5 py-4 text-slate-500 dark:text-slate-400">{formatOrderDate(order.created_at)}</td>
@@ -333,16 +351,18 @@ export function AdminDashboard({ adminEmail }: { adminEmail: string }) {
 
             <div className="grid gap-6">
               <div className="rounded-3xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/5">
-                <h2 className="font-semibold">Product</h2>
-                <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{product.name}</p>
+                <h2 className="font-semibold">Catalog</h2>
+                <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+                  {featuredProduct ? featuredProduct.name : "No products in Supabase yet"}
+                </p>
                 <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
                   <div className="rounded-2xl bg-slate-50 p-4 dark:bg-white/5">
-                    <span className="block text-slate-500 dark:text-slate-400">Price</span>
-                    <span className="mt-1 block font-semibold">{formatCurrency(product.price)}</span>
+                    <span className="block text-slate-500 dark:text-slate-400">Products</span>
+                    <span className="mt-1 block font-semibold">{products.length}</span>
                   </div>
                   <div className="rounded-2xl bg-slate-50 p-4 dark:bg-white/5">
                     <span className="block text-slate-500 dark:text-slate-400">Stock</span>
-                    <span className="mt-1 block font-semibold">{product.stock} units</span>
+                    <span className="mt-1 block font-semibold">{totalStock} units</span>
                   </div>
                 </div>
               </div>

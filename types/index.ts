@@ -50,7 +50,19 @@ export type CartItem = {
   quantity: number;
 };
 
+export type OrderItem = {
+  product_id: string;
+  slug: string;
+  name: string;
+  image: string;
+  unit_price: number;
+  compare_at_price: number;
+  quantity: number;
+  line_total: number;
+};
+
 export type SupabaseOrder = {
+  id: string;
   order_number: string;
   customer_name: string;
   email: string;
@@ -59,5 +71,7 @@ export type SupabaseOrder = {
   quantity: number;
   amount: number;
   payment_method: string;
+  status: string;
+  items: OrderItem[];
   created_at: string;
 };

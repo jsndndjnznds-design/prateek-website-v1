@@ -332,7 +332,7 @@ export function ProductForm({ mode, productId }: ProductFormProps) {
                   onChange={(event) => updateValue("name", event.target.value)}
                   required
                   className="mt-2 h-12 w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 text-sm outline-none transition placeholder:text-slate-400 focus:border-cyan-400 focus:bg-white focus:ring-4 focus:ring-cyan-400/10 dark:border-white/10 dark:bg-white/5 dark:text-white dark:focus:bg-white/10"
-                  placeholder="HoloVista Pro X1"
+                  placeholder="Premium display kit"
                 />
                 <FieldError message={fieldErrors.name} />
               </label>

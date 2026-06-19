@@ -19,6 +19,7 @@ export function StickyAddToCart({ product }: { product: Product }) {
   }, []);
 
   if (!visible) return null;
+  const inStock = product.stock > 0;
 
   return (
     <div className="fixed bottom-4 left-4 right-4 z-40 mx-auto max-w-3xl rounded-3xl border border-slate-200 bg-white/90 p-3 shadow-2xl shadow-slate-950/15 backdrop-blur dark:border-white/10 dark:bg-slate-900/90">
@@ -36,17 +37,20 @@ export function StickyAddToCart({ product }: { product: Product }) {
         </div>
         <button
           onClick={() =>
-            addItem({
-              productId: product.id,
-              slug: product.slug,
-              name: product.name,
-              image: product.images[0].src,
-              price: product.price,
-              compareAtPrice: product.compareAtPrice,
-              quantity: 1,
-            })
+            inStock
+              ? addItem({
+                  productId: product.id,
+                  slug: product.slug,
+                  name: product.name,
+                  image: product.images[0].src,
+                  price: product.price,
+                  compareAtPrice: product.compareAtPrice,
+                  quantity: 1,
+                })
+              : undefined
           }
-          className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-slate-950 px-4 text-sm font-semibold text-white dark:bg-white dark:text-slate-950"
+          disabled={!inStock}
+          className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-slate-950 px-4 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60 dark:bg-white dark:text-slate-950"
         >
           <ShoppingCart className="h-4 w-4" />
           <span className="hidden sm:inline">Add to Cart</span>

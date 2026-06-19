@@ -15,7 +15,9 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(1);
   const [wishlisted, setWishlisted] = useState(false);
   const [shareLabel, setShareLabel] = useState("Share");
-  const discount = Math.round(((product.compareAtPrice - product.price) / product.compareAtPrice) * 100);
+  const hasDiscount = product.compareAtPrice > product.price;
+  const discount = hasDiscount ? Math.round(((product.compareAtPrice - product.price) / product.compareAtPrice) * 100) : 0;
+  const inStock = product.stock > 0;
 
   const cartItem = {
     productId: product.id,
@@ -27,9 +29,13 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
     quantity,
   };
 
-  const handleAdd = () => addItem(cartItem);
+  const handleAdd = () => {
+    if (inStock) addItem(cartItem);
+  };
 
   const handleBuyNow = () => {
+    if (!inStock) return;
+
     addItem(cartItem);
     router.push("/checkout");
   };
@@ -67,8 +73,15 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
           <span className="rounded-full bg-cyan-400/15 px-3 py-1 text-sm font-semibold text-cyan-700 dark:text-cyan-300">
             {product.eyebrow}
           </span>
-          <span className="rounded-full bg-emerald-400/15 px-3 py-1 text-sm font-semibold text-emerald-700 dark:text-emerald-300">
-            In stock
+          <span
+            className={cn(
+              "rounded-full px-3 py-1 text-sm font-semibold",
+              inStock
+                ? "bg-emerald-400/15 text-emerald-700 dark:text-emerald-300"
+                : "bg-rose-500/10 text-rose-700 dark:text-rose-300",
+            )}
+          >
+            {inStock ? "In stock" : "Out of stock"}
           </span>
         </div>
         <h1 className="mt-5 text-4xl font-semibold leading-tight tracking-normal text-slate-950 dark:text-white sm:text-5xl">
@@ -82,12 +95,16 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
           <span className="text-4xl font-semibold text-slate-950 dark:text-white">
             {formatCurrency(product.price)}
           </span>
-          <span className="pb-1 text-lg font-medium text-slate-400 line-through">
-            {formatCurrency(product.compareAtPrice)}
-          </span>
-          <span className="mb-1 rounded-full bg-rose-500/10 px-3 py-1 text-sm font-bold text-rose-600 dark:text-rose-300">
-            Save {discount}%
-          </span>
+          {hasDiscount ? (
+            <>
+              <span className="pb-1 text-lg font-medium text-slate-400 line-through">
+                {formatCurrency(product.compareAtPrice)}
+              </span>
+              <span className="mb-1 rounded-full bg-rose-500/10 px-3 py-1 text-sm font-bold text-rose-600 dark:text-rose-300">
+                Save {discount}%
+              </span>
+            </>
+          ) : null}
         </div>
         <div className="mt-5">
           <div className="mb-2 flex items-center justify-between text-sm">
@@ -103,9 +120,10 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
       <CountdownTimer />
 
       <div className="flex flex-wrap items-center gap-3">
-        <QuantitySelector value={quantity} onChange={setQuantity} />
+        {inStock ? <QuantitySelector value={quantity} onChange={setQuantity} max={Math.min(product.stock, 9)} /> : null}
         <button
           onClick={handleAdd}
+          disabled={!inStock}
           className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-5 text-sm font-semibold text-slate-900 shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-50 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:bg-white/15 sm:flex-none"
         >
           <ShoppingCart className="h-4 w-4" />
@@ -113,7 +131,11 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
         </button>
         <button
           onClick={handleBuyNow}
-          className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-slate-950 px-6 text-sm font-semibold text-white shadow-xl shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 sm:flex-none"
+          disabled={!inStock}
+          className={cn(
+            "inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-slate-950 px-6 text-sm font-semibold text-white shadow-xl shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 sm:flex-none",
+            !inStock && "cursor-not-allowed opacity-60 hover:translate-y-0",
+          )}
         >
           <Zap className="h-4 w-4" />
           Buy Now

@@ -3,11 +3,18 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Maximize2 } from "lucide-react";
-import { product } from "@/data/product";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
+import { Product } from "@/types";
 
-export function GallerySection() {
-  const [selected, setSelected] = useState(product.images[0]);
+const fallbackImage = {
+  src: "/images/hologram-fan-hero.svg",
+  alt: "Product gallery image",
+  title: "Product view",
+};
+
+export function GallerySection({ product }: { product: Product | null }) {
+  const images = product?.images.length ? product.images : [fallbackImage];
+  const [selected, setSelected] = useState(images[0]);
 
   return (
     <AnimatedSection id="gallery" className="bg-white py-20 dark:bg-slate-950">
@@ -18,10 +25,10 @@ export function GallerySection() {
               Gallery
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-normal text-slate-950 dark:text-white sm:text-4xl">
-              Studio, retail, and event views in one interactive showcase.
+              Product images in one interactive showcase.
             </h2>
             <p className="mt-4 text-base leading-7 text-slate-600 dark:text-slate-400">
-              See how the product hardware, kit, and install scenarios translate across customer-facing environments.
+              See the catalog media uploaded for the current featured product.
             </p>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-slate-50 p-3 dark:border-white/10 dark:bg-white/5">
@@ -41,7 +48,7 @@ export function GallerySection() {
           </div>
         </div>
         <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          {product.images.map((image) => (
+          {images.map((image) => (
             <button
               key={image.src}
               onClick={() => setSelected(image)}

@@ -16,11 +16,11 @@ import { useAuth } from "@/components/auth/AuthProvider";
 import { cn } from "@/lib/utils";
 
 const sidebarItems = [
-  { label: "Dashboard", icon: LayoutDashboard },
-  { label: "Orders", icon: ShoppingCart },
-  { label: "Customers", icon: Users },
+  { label: "Dashboard", icon: LayoutDashboard, href: "/admin" },
+  { label: "Orders", icon: ShoppingCart, href: "/admin/orders" },
+  { label: "Customers", icon: Users, href: "/admin/customers" },
   { label: "Products", icon: Boxes, href: "/admin/products" },
-  { label: "Analytics", icon: BarChart3 },
+  { label: "Analytics", icon: BarChart3, href: "/admin/analytics" },
 ];
 
 type AdminShellProps = {
