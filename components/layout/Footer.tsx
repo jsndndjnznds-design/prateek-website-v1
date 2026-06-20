@@ -21,7 +21,7 @@ export function Footer() {
           <div className="mt-6 grid gap-3 text-sm text-slate-600 dark:text-slate-400">
             <span className="inline-flex items-center gap-2">
               <MapPin className="h-4 w-4 text-cyan-500" />
-              Mumbai warehouse, pan-India delivery
+              Assam warehouse, pan-India delivery
             </span>
             <span className="inline-flex items-center gap-2">
               <Phone className="h-4 w-4 text-cyan-500" />
