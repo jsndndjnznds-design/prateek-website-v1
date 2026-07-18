@@ -32,11 +32,11 @@ export function ProductGallery({ product }: { product: Product }) {
           priority
           style={{ transformOrigin: origin }}
           className={cn(
-            "aspect-square w-full object-contain transition duration-500 lg:aspect-[1.08/1] lg:object-cover",
+            "aspect-[1.08/1] w-full object-cover transition duration-500",
             zoomed && "scale-125",
           )}
         />
-        <div className="pointer-events-none absolute left-4 top-4 hidden items-center gap-2 rounded-full bg-white/85 px-3 py-2 text-xs font-semibold text-slate-700 shadow-lg backdrop-blur sm:inline-flex dark:bg-slate-950/75 dark:text-slate-200">
+        <div className="pointer-events-none absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-white/85 px-3 py-2 text-xs font-semibold text-slate-700 shadow-lg backdrop-blur dark:bg-slate-950/75 dark:text-slate-200">
           <Search className="h-3.5 w-3.5 text-cyan-500" />
           Hover to zoom
         </div>
@@ -58,7 +58,7 @@ export function ProductGallery({ product }: { product: Product }) {
               alt={image.alt}
               width={260}
               height={210}
-              className="aspect-[1.25/1] w-full rounded-xl object-contain sm:object-cover"
+              className="aspect-[1.25/1] w-full rounded-xl object-cover"
             />
           </button>
         ))}

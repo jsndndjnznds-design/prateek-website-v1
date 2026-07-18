@@ -3,7 +3,7 @@ import { AdminShell } from "@/components/admin/AdminShell";
 import { requireAdmin } from "@/lib/auth-server";
 
 export const metadata = {
-  title: "Products | GlamShot Admin",
+  title: "Products | HoloVista Admin",
 };
 
 export default async function AdminProductsPage() {

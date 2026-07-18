@@ -1,7 +1,7 @@
 import { CheckoutClient } from "@/components/cart/CheckoutClient";
 
 export const metadata = {
-  title: "Checkout | GlamShot",
+  title: "Checkout | HoloVista",
 };
 
 export default function CheckoutPage() {

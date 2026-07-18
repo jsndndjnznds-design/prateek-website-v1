@@ -10,7 +10,7 @@ import {
 import { formatCompactCurrency, formatCurrency } from "@/lib/utils";
 
 export const metadata = {
-  title: "Analytics | GlamShot Admin",
+  title: "Analytics | HoloVista Admin",
 };
 
 export const dynamic = "force-dynamic";

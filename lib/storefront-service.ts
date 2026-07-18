@@ -6,7 +6,7 @@ import { ManagedProduct, Product, ProductImage, ProductSpec } from "@/types";
 
 const productSelect = "id, name, description, category, price, discount_price, stock, images, created_at, updated_at";
 
-const fallbackImage = "/images/product-hero.svg";
+const fallbackImage = "/images/hologram-fan-hero.svg";
 
 type ProductRow = {
   id: string;
@@ -81,11 +81,11 @@ export function normalizeStorefrontProduct(row: ProductRow): Product {
     images: getProductImages(row),
     features: [],
     specifications: getSpecifications(row, price, compareAtPrice),
-    included: [row.name, "Product details from the catalog", "Order and support handoff"],
+    included: [row.name, "Product media from the catalog", "Order and support handoff"],
     shipping: [
       "Shipping details are confirmed after checkout",
       "Order confirmation is saved with customer and item details",
-      "Delivery notes can be added during checkout",
+      "Setup notes can be added during checkout",
     ],
   };
 }

@@ -10,7 +10,7 @@ export function ProductSpecs({ product }: { product: Product }) {
             Details
           </p>
           <h2 className="mt-3 text-3xl font-semibold tracking-normal text-slate-950 dark:text-white sm:text-4xl">
-            Everything you need before you buy.
+            Everything needed for a premium installation.
           </h2>
           <p className="mt-4 text-base leading-7 text-slate-600 dark:text-slate-400">{product.description}</p>
           <div className="mt-6 grid gap-3">

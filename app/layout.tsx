@@ -15,8 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GlamShot | Online Store",
-  description: "A polished ecommerce storefront for browsing products and placing orders.",
+  title: "HoloVista | Premium 3D Display Store",
+  description:
+    "A premium one-product ecommerce storefront for a modern LED hologram fan display.",
 };
 
 export default function RootLayout({

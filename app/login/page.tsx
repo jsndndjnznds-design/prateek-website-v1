@@ -1,7 +1,7 @@
 import { LoginForm } from "@/components/auth/LoginForm";
 
 export const metadata = {
-  title: "Admin Login | GlamShot",
+  title: "Admin Login | HoloVista",
 };
 
 export default async function LoginPage({
@@ -17,7 +17,7 @@ export default async function LoginPage({
       <div className="mx-auto grid min-h-[62vh] max-w-6xl items-center gap-8 px-4 sm:px-6 lg:grid-cols-[0.9fr_1fr] lg:px-8">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-600 dark:text-cyan-400">
-            GlamShot operations
+            HoloVista operations
           </p>
           <h2 className="mt-4 text-4xl font-semibold tracking-normal text-slate-950 dark:text-white sm:text-5xl">
             Sign in to manage orders and store performance.

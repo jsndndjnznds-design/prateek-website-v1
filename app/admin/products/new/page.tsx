@@ -3,7 +3,7 @@ import { ProductForm } from "@/components/admin/ProductForm";
 import { requireAdmin } from "@/lib/auth-server";
 
 export const metadata = {
-  title: "Add Product | GlamShot Admin",
+  title: "Add Product | HoloVista Admin",
 };
 
 export default async function NewProductPage() {

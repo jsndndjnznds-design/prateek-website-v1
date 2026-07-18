@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const currentProduct = await getStorefrontProductByIdentifier(slug);
 
   return {
-    title: currentProduct ? `${currentProduct.name} | GlamShot` : "Product | GlamShot",
+    title: currentProduct ? `${currentProduct.name} | HoloVista` : "Product | HoloVista",
     description: currentProduct?.shortDescription,
   };
 }
@@ -28,8 +28,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   return (
     <>
-      <section className="bg-slate-50 py-6 dark:bg-slate-950 sm:py-12">
-        <div className="mx-auto grid max-w-7xl gap-8 px-3 sm:gap-10 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:py-4">
+      <section className="bg-slate-50 py-12 dark:bg-slate-950 sm:py-16">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8">
           <ProductGallery product={currentProduct} />
           <ProductPurchasePanel product={currentProduct} />
         </div>
