@@ -15,7 +15,7 @@ export function CountdownTimer() {
     <div className="rounded-3xl border border-cyan-400/20 bg-cyan-400/10 p-4 text-slate-950 dark:text-white">
       <div className="flex items-center gap-2 text-sm font-semibold">
         <Timer className="h-4 w-4 text-cyan-500" />
-        Launch pricing ends soon
+        Today&apos;s offer ends soon
       </div>
       <div className="mt-3 grid grid-cols-3 gap-2">
         {parts.map((part) => (

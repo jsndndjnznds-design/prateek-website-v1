@@ -4,7 +4,7 @@ import { buildCustomerSummaries, listOrders } from "@/lib/order-service";
 import { formatCurrency } from "@/lib/utils";
 
 export const metadata = {
-  title: "Customers | HoloVista Admin",
+  title: "Customers | GlamShot Admin",
 };
 
 export const dynamic = "force-dynamic";

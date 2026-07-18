@@ -14,13 +14,15 @@ function ProductCard({ product }: { product: Product }) {
       href={`/product/${product.slug}`}
       className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-950/8 dark:border-white/10 dark:bg-white/5"
     >
-      <Image
-        src={image.src}
-        alt={image.alt}
-        width={780}
-        height={560}
-        className="aspect-[1.25/1] w-full object-cover"
-      />
+      <div className="flex aspect-[1.25/1] items-center justify-center overflow-hidden bg-slate-50 p-4 dark:bg-slate-900/70 sm:p-6">
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={780}
+          height={560}
+          className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.03]"
+        />
+      </div>
       <div className="p-5">
         <div className="flex items-start justify-between gap-3">
           <div>
@@ -69,7 +71,7 @@ export function ProductCatalogSection({ products }: { products: Product[] }) {
             </h2>
           </div>
           <p className="max-w-xl text-sm leading-6 text-slate-600 dark:text-slate-400">
-            {products.length} product{products.length === 1 ? "" : "s"} available from Supabase.
+            {products.length} product{products.length === 1 ? "" : "s"} available now.
           </p>
         </div>
 
@@ -79,7 +81,7 @@ export function ProductCatalogSection({ products }: { products: Product[] }) {
               <PackageSearch className="mx-auto h-7 w-7 text-cyan-500" />
               <h3 className="mt-4 text-lg font-semibold text-slate-950 dark:text-white">No products are live</h3>
               <p className="mt-2 max-w-sm text-sm text-slate-500 dark:text-slate-400">
-                Products added in admin will appear here after Supabase is configured.
+                Products added in admin will appear here when they are ready for shoppers.
               </p>
             </div>
           </div>

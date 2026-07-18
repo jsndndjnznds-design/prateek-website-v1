@@ -154,7 +154,7 @@ export function OrderConfirmationClient({ orderNumber }: { orderNumber: string }
             Order confirmed
           </h1>
           <p className="mt-3 text-slate-600 dark:text-slate-400">
-            Order {order.order_number} is confirmed and queued for warehouse processing.
+            Order {order.order_number} is confirmed and queued for processing.
           </p>
 
           <div className="mt-8 grid gap-4 text-left sm:grid-cols-2">

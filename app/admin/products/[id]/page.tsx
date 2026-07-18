@@ -3,7 +3,7 @@ import { ProductForm } from "@/components/admin/ProductForm";
 import { requireAdmin } from "@/lib/auth-server";
 
 export const metadata = {
-  title: "Edit Product | HoloVista Admin",
+  title: "Edit Product | GlamShot Admin",
 };
 
 export default async function EditProductPage({ params }: { params: Promise<{ id: string }> }) {

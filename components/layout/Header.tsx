@@ -18,8 +18,7 @@ const navItems = [
 
 const searchableItems = [
   { label: "Product catalog", detail: "Current products and buying options", href: "/#products" },
-  { label: "Customer reviews", detail: "Verified buyer feedback", href: "/#reviews" },
-  { label: "Shipping and installation", detail: "Delivery and setup support", href: "/#gallery" },
+  { label: "Shopping help", detail: "Answers about delivery, payment, and returns", href: "/#faq" },
   { label: "Cart", detail: "Review items and checkout", href: "/cart" },
   { label: "Admin dashboard", detail: "Orders, revenue, and analytics", href: "/admin" },
 ];
@@ -52,10 +51,10 @@ export function Header() {
           </span>
           <span className="leading-tight">
             <span className="block text-base font-semibold tracking-tight text-slate-950 dark:text-white">
-              HoloVista
+              GlamShot
             </span>
             <span className="block text-xs font-medium text-slate-500 dark:text-slate-400">
-              Pro display systems
+              Online store
             </span>
           </span>
         </Link>

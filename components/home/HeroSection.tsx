@@ -3,26 +3,26 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Headphones, LockKeyhole, ShieldCheck, Truck } from "lucide-react";
+import { ArrowRight, Headphones, LockKeyhole, PackageCheck, Truck } from "lucide-react";
 import { formatCurrency } from "@/lib/utils";
 import { Product } from "@/types";
 import { CountdownTimer } from "@/components/ui/CountdownTimer";
 
 const trustBadges = [
-  { label: "Insured shipping", icon: Truck },
-  { label: "12 month warranty", icon: ShieldCheck },
-  { label: "Setup support", icon: Headphones },
+  { label: "Fast shipping", icon: Truck },
+  { label: "Order updates", icon: PackageCheck },
+  { label: "Helpful support", icon: Headphones },
   { label: "Secure checkout", icon: LockKeyhole },
 ];
 
 export function HeroSection({ product }: { product: Product | null }) {
   const productHref = product ? `/product/${product.slug}` : "#products";
-  const heroImage = product?.images[0]?.src ?? "/images/hologram-fan-hero.svg";
+  const heroImage = product?.images[0]?.src ?? "/images/product-hero.svg";
   const heroAlt = product?.images[0]?.alt ?? "Featured product";
 
   return (
     <section className="relative overflow-hidden bg-[linear-gradient(180deg,#f8fafc_0%,#ecfeff_48%,#ffffff_100%)] dark:bg-[linear-gradient(180deg,#020617_0%,#0f172a_56%,#020617_100%)]">
-      <div className="holo-grid pointer-events-none absolute inset-0 opacity-80" />
+      <div className="store-grid pointer-events-none absolute inset-0 opacity-80" />
       <div className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:px-8">
         <motion.div
           initial={false}
@@ -30,14 +30,14 @@ export function HeroSection({ product }: { product: Product | null }) {
         >
           <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-white/70 px-3 py-1.5 text-sm font-semibold text-slate-700 shadow-sm backdrop-blur dark:bg-white/10 dark:text-slate-200">
             <span className="h-2 w-2 rounded-full bg-emerald-400" />
-            {product ? `${product.stock} units ready to ship this week` : "Catalog updating"}
+            {product ? `${product.stock} units available` : "Catalog updating"}
           </div>
           <h1 className="mt-7 max-w-3xl text-5xl font-semibold leading-[1.02] tracking-normal text-slate-950 dark:text-white sm:text-6xl lg:text-7xl">
-            {product?.name ?? "HoloVista"}
+            {product?.name ?? "GlamShot"}
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">
             {product?.shortDescription ??
-              "Browse the current product catalog for retail, event, hospitality, and showroom display systems."}
+              "Browse current products, review your cart, and place an order in a few simple steps."}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
@@ -48,15 +48,15 @@ export function HeroSection({ product }: { product: Product | null }) {
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
-              href="#gallery"
+              href="#products"
               className="inline-flex h-[52px] items-center justify-center rounded-full border border-slate-300 bg-white/70 px-7 text-sm font-semibold text-slate-800 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
             >
-              View installations
+              View products
             </Link>
           </div>
           <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
             <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
-              Designed for retailers, cafes, and event teams
+              Simple shopping for everyday products
             </span>
           </div>
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">

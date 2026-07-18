@@ -12,7 +12,7 @@ export function ProductReviews() {
               Customer reviews
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-normal text-slate-950 dark:text-white sm:text-4xl">
-              Verified buyer reviews will appear after real customer feedback is collected.
+              Verified buyer reviews will appear after customer feedback is collected.
             </h2>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm dark:border-white/10 dark:bg-white/5">
@@ -21,7 +21,7 @@ export function ProductReviews() {
             </div>
             <h3 className="mt-5 text-lg font-semibold text-slate-950 dark:text-white">No verified reviews yet</h3>
             <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-slate-600 dark:text-slate-400">
-              Only reviews submitted through a real post-purchase flow will be shown here.
+              Only reviews submitted through a post-purchase flow will be shown here.
             </p>
           </div>
         </div>

@@ -65,7 +65,7 @@ export function AdminShell({ adminEmail, activeLabel, children, onSectionChange 
               <Package className="h-5 w-5" />
             </span>
             <div className="min-w-0">
-              <p className="font-semibold">HoloVista Admin</p>
+              <p className="font-semibold">GlamShot Admin</p>
               <p className="truncate text-xs opacity-70">{adminEmail}</p>
             </div>
           </div>

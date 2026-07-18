@@ -21,7 +21,7 @@ export function CartPageClient() {
             <ShoppingBag className="h-8 w-8 text-cyan-500" />
           </div>
           <h1 className="mt-6 text-4xl font-semibold tracking-normal text-slate-950 dark:text-white">
-            Your cart is ready for a hologram.
+            Your cart is ready.
           </h1>
           <p className="mt-4 text-slate-600 dark:text-slate-400">
             Add a product to review shipping, taxes, and checkout options.

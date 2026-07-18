@@ -119,12 +119,12 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
 
       <CountdownTimer />
 
-      <div className="flex flex-wrap items-center gap-3">
+      <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
         {inStock ? <QuantitySelector value={quantity} onChange={setQuantity} max={Math.min(product.stock, 9)} /> : null}
         <button
           onClick={handleAdd}
           disabled={!inStock}
-          className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-5 text-sm font-semibold text-slate-900 shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-50 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:bg-white/15 sm:flex-none"
+          className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-slate-300 bg-white px-5 text-sm font-semibold text-slate-900 shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-50 dark:border-white/10 dark:bg-white/10 dark:text-white dark:hover:bg-white/15 sm:w-auto"
         >
           <ShoppingCart className="h-4 w-4" />
           Add to Cart
@@ -133,7 +133,7 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
           onClick={handleBuyNow}
           disabled={!inStock}
           className={cn(
-            "inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-slate-950 px-6 text-sm font-semibold text-white shadow-xl shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 sm:flex-none",
+            "inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-6 text-sm font-semibold text-white shadow-xl shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200 sm:w-auto",
             !inStock && "cursor-not-allowed opacity-60 hover:translate-y-0",
           )}
         >
@@ -166,9 +166,9 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
 
       <div id="shipping" className="grid gap-3 sm:grid-cols-3">
         {[
-          { icon: Truck, label: "Free prepaid shipping" },
-          { icon: ShieldCheck, label: "12 month warranty" },
-          { icon: Check, label: "Setup assistance" },
+          { icon: Truck, label: "Shipping at checkout" },
+          { icon: ShieldCheck, label: "Secure ordering" },
+          { icon: Check, label: "Product support" },
         ].map((item) => (
           <div
             key={item.label}

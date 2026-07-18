@@ -1,48 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GlamShot
 
-## Getting Started
+GlamShot is a full-stack ecommerce storefront built with Next.js, TypeScript, Tailwind CSS, and Supabase. Customers can browse the live catalog, view product details, manage a cart, complete checkout, and see an order confirmation. Store admins can manage products and review orders, customers, and analytics.
 
-First, run the development server:
+## Features
+
+- Responsive storefront with light and dark themes
+- Product catalog and product detail pages
+- Cart, checkout, order confirmation, and order email handoff
+- Supabase-backed products and orders
+- Supabase Auth email/password login for admin access
+- Admin dashboard with product management, orders, customers, and analytics
+- TypeScript and ESLint validation
+
+## Requirements
+
+- Node.js 20 or newer
+- A Supabase project with the migrations in `supabase/migrations` applied
+
+## Local setup
+
+Install dependencies and start the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Admin Authentication
-
-The admin dashboard uses Supabase Auth email/password login. Configure the existing Supabase public env vars, then add one or more admin emails:
+Create `.env.local` with the existing Supabase project values and admin allowlist:
 
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 ADMIN_EMAILS=admin@example.com,ops@example.com
 ```
 
-`ADMIN_EMAIL` is also supported for a single admin account.
+`ADMIN_EMAIL` may be used instead of `ADMIN_EMAILS` for a single admin account. Keep service-role credentials server-only and never expose them through `NEXT_PUBLIC_*` variables.
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+| Path | Purpose |
+| --- | --- |
+| `app/` | App Router pages and API route handlers |
+| `components/` | Storefront, cart, product, auth, layout, and admin UI |
+| `lib/` | Supabase clients, auth helpers, services, and pricing utilities |
+| `types/` | Shared TypeScript types |
+| `supabase/migrations/` | Products and orders schema migrations |
+| `public/images/` | Fallback product artwork and static assets |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Useful commands
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run dev      # development server
+npm run lint     # ESLint
+npm run build    # production build
+npm run start    # serve the production build
+```
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Build the application with `npm run build`, then run it with `npm run start` or deploy it to a Next.js-compatible host. Configure the same environment variables in the deployment environment and apply the Supabase migrations before serving customer traffic.

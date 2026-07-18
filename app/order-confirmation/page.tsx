@@ -1,7 +1,7 @@
 import { OrderConfirmationClient } from "@/components/cart/OrderConfirmationClient";
 
 export const metadata = {
-  title: "Order Confirmation | HoloVista",
+  title: "Order Confirmation | GlamShot",
 };
 
 export default async function OrderConfirmationPage({

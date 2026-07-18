@@ -9,7 +9,7 @@ const orderSelect =
 
 const productSelect = "id, name, price, discount_price, stock, images";
 
-const fallbackImage = "/images/hologram-fan-hero.svg";
+const fallbackImage = "/images/product-hero.svg";
 
 type ProductOrderRow = {
   id: string;
@@ -137,7 +137,7 @@ function getAddress(customer: CheckoutCustomer) {
     customer.apartment?.trim() ?? "",
     `${customer.city.trim()}, ${customer.state.trim()} ${customer.pinCode.trim()}`,
     customer.company?.trim() ? `Company: ${customer.company.trim()}` : "",
-    customer.installationNote?.trim() ? `Installation note: ${customer.installationNote.trim()}` : "",
+    customer.installationNote?.trim() ? `Delivery note: ${customer.installationNote.trim()}` : "",
   ]
     .filter(Boolean)
     .join(", ");

@@ -3,37 +3,37 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
 const faqs = [
   {
-    question: "Can my team upload content without technical help?",
+    question: "How do I shop at GlamShot?",
     answer:
-      "Yes. HoloVista supports Wi-Fi upload from the companion app and browser dashboard. Most teams can replace product videos, menu loops, and campaign graphics in minutes.",
+      "Choose a product, add it to your cart, complete the checkout form, and place your order. You’ll see an order number on the confirmation page.",
   },
   {
-    question: "Is the hologram fan suitable for a retail counter?",
+    question: "Can I review my total before ordering?",
     answer:
-      "Yes. The kit includes an acrylic cover, adjustable brightness, and stand or wall mounting options for counters, mall kiosks, showrooms, cafes, and event booths.",
+      "Yes. Your cart and checkout pages show the items, shipping, tax, and final total before you place the order.",
   },
   {
-    question: "What file formats does it support?",
+    question: "What payment methods are available?",
     answer:
-      "It supports common campaign formats including MP4, AVI, RMVB, GIF, JPG, and PNG, with 8 GB onboard storage for looping displays.",
+      "Checkout shows the payment options currently available for your order. Your selected method is saved with the order details.",
   },
   {
-    question: "How fast is delivery?",
+    question: "Where can I find my order details?",
     answer:
-      "Prepaid orders ship from the Mumbai warehouse within 24-48 hours. Typical delivery across India is 3-7 business days depending on city and serviceability.",
+      "Your confirmation page shows the order number, delivery details, items, payment method, and total after checkout.",
   },
 ];
 
 export function FAQSection() {
   return (
-    <AnimatedSection className="bg-white py-20 dark:bg-slate-950">
+    <AnimatedSection id="faq" className="bg-white py-20 dark:bg-slate-950">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-600 dark:text-cyan-400">
             FAQ
           </p>
           <h2 className="mt-3 text-3xl font-semibold tracking-normal text-slate-950 dark:text-white sm:text-4xl">
-            Clear answers before you bring it into the store.
+            Helpful answers before you shop.
           </h2>
         </div>
         <Accordion items={faqs} />

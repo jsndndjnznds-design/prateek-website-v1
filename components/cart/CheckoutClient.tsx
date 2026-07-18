@@ -193,12 +193,12 @@ export function CheckoutClient() {
                   required
                 />
                 <Field label="Apartment, suite" placeholder="Studio 4B" value={apartment} onChange={setApartment} />
-                <Field label="City" placeholder="Mumbai" value={city} onChange={setCity} required />
+                <Field label="City" placeholder="Your city" value={city} onChange={setCity} required />
                 <Field label="State" placeholder="Maharashtra" value={state} onChange={setState} required />
                 <Field label="PIN code" placeholder="400050" value={pinCode} onChange={setPinCode} required />
                 <Field
-                  label="Installation note"
-                  placeholder="Countertop demo before wall mount"
+                  label="Delivery note"
+                  placeholder="Preferred delivery time or handling note"
                   value={installationNote}
                   onChange={setInstallationNote}
                 />
