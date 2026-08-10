@@ -1,29 +1,51 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { getToken } from "@vercel/connect";
 
 export async function POST() {
   try {
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
-    const result = await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: ["sarkarpratik1950@gmail.com"],
-      subject: "Test email",
-      html: "<h1>Hello from Resend</h1>",
+    const token = await getToken("api.resend.com/prateek-website-v1", {
+      subject: { type: "app" },
     });
 
-    console.log(result);
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "onboarding@resend.dev",
+        to: ["sarkarpratik1905ail.com"],
+        subject: "Test email",
+        html: "<h1>Hello from Resend</h1>",
+      }),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: result,
+        },
+        { status: response.status }
+      );
+    }
 
     return NextResponse.json({
       success: true,
       result,
     });
   } catch (error) {
-    console.error(error);
+    console.error("Resend error:", error);
 
-    return NextResponse.json({
-      success: false,
-      error,
-    });
+    return NextResponse.json(
+      {
+        success: false,
+        error: error instanceof Error ? error.message : String(error),
+      },
+      { status: 500 }
+    );
   }
 }
