@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { getToken } from "@vercel/connect";
 
-export async function POST() {
+export async function POST(request: Request) {
   try {
+    const order = await request.json();
+
     const token = await getToken("api.resend.com/prateek-website-v1", {
       subject: { type: "app" },
     });
@@ -15,9 +17,17 @@ export async function POST() {
       },
       body: JSON.stringify({
         from: "onboarding@resend.dev",
-        to: ["sarkarpratik1905ail.com"],
-        subject: "Test email",
-        html: "<h1>Hello from Resend</h1>",
+        to: [order.email],
+        subject: `Order ${order.orderNumber} confirmed`,
+        html: `
+          <h1>Order Confirmed</h1>
+          <p>Hi ${order.customerName},</p>
+          <p>Thank you for your order.</p>
+          <p><strong>Order Number:</strong> ${order.orderNumber}</p>
+          <p><strong>Amount:</strong> ₹${order.amount}</p>
+          <p><strong>Payment Method:</strong> ${order.paymentMethod}</p>
+          <p><strong>Shipping Address:</strong> ${order.address}</p>
+        `,
       }),
     });
 
