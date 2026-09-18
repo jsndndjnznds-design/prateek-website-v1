@@ -21,10 +21,7 @@ export type Product = {
   shortDescription: string;
   description: string;
   images: ProductImage[];
-  features: string[];
   specifications: ProductSpec[];
-  included: string[];
-  shipping: string[];
 };
 
 export type ManagedProduct = {
@@ -75,3 +72,8 @@ export type SupabaseOrder = {
   items: OrderItem[];
   created_at: string;
 };
+
+export type PublicOrderConfirmation = Pick<
+  SupabaseOrder,
+  "order_number" | "quantity" | "amount" | "payment_method" | "status" | "items" | "created_at"
+>;

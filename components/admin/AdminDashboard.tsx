@@ -33,6 +33,7 @@ type CustomerSummary = {
 };
 
 const statusClasses: Record<string, string> = {
+  Submitted: "bg-amber-400/15 text-amber-700 dark:text-amber-300",
   Confirmed: "bg-emerald-400/15 text-emerald-700 dark:text-emerald-300",
   Shipped: "bg-cyan-400/15 text-cyan-700 dark:text-cyan-300",
   Delivered: "bg-cyan-400/15 text-cyan-700 dark:text-cyan-300",

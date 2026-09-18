@@ -3,31 +3,18 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
-  Banknote,
-  CreditCard,
-  Landmark,
   MapPin,
-  Smartphone,
-  Truck,
-  WalletCards,
 } from "lucide-react";
 import { type HTMLInputTypeAttribute, useState } from "react";
 import { useCart } from "@/components/cart/CartProvider";
 import {
   formatCurrency,
-  getEstimatedDeliveryDate,
   getShippingEstimate,
   getTax,
 } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
-const paymentMethods = [
-  { label: "UPI", icon: Smartphone },
-  { label: "Credit Card", icon: CreditCard },
-  { label: "Debit Card", icon: WalletCards },
-  { label: "Net Banking", icon: Landmark },
-  { label: "Cash on Delivery", icon: Banknote },
-];
+const paymentMethod = "Payment details to be arranged";
 
 type CreateOrderResponse = {
   order?: {
@@ -48,7 +35,9 @@ type FieldProps = {
 function Field({ label, placeholder, value, onChange, type = "text", required = false }: FieldProps) {
   return (
     <label className="block">
-      <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">{label}</span>
+      <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+        {label}{required ? <span aria-hidden="true" className="ml-1 text-cyan-600 dark:text-cyan-300">*</span> : null}
+      </span>
       <input
         type={type}
         placeholder={placeholder}
@@ -64,7 +53,6 @@ function Field({ label, placeholder, value, onChange, type = "text", required = 
 export function CheckoutClient() {
   const router = useRouter();
   const { items, subtotal, clearCart } = useCart();
-  const [method, setMethod] = useState("UPI");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -115,7 +103,7 @@ export function CheckoutClient() {
             state,
             pinCode,
             installationNote,
-            paymentMethod: method,
+            paymentMethod,
           },
           items: items.map((item) => ({
             productId: item.productId,
@@ -145,10 +133,10 @@ export function CheckoutClient() {
           <h1 className="text-4xl font-semibold text-slate-950 dark:text-white">Checkout is waiting on a product.</h1>
           <p className="mt-4 text-slate-600 dark:text-slate-400">Add a product from the catalog to continue.</p>
           <button
-            onClick={() => router.push("/#products")}
+            onClick={() => router.push("/products")}
             className="mt-8 h-12 rounded-full bg-slate-950 px-6 text-sm font-semibold text-white dark:bg-white dark:text-slate-950"
           >
-            Shop Product
+            Shop products
           </button>
         </div>
       </section>
@@ -160,11 +148,12 @@ export function CheckoutClient() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-600 dark:text-cyan-400">
-            Secure checkout
+            Checkout
           </p>
           <h1 className="mt-3 text-4xl font-semibold tracking-normal text-slate-950 dark:text-white">
             Complete your order
           </h1>
+          <p className="mt-3 text-sm text-slate-600 dark:text-slate-400"><span aria-hidden="true" className="text-cyan-600 dark:text-cyan-300">*</span> Required fields</p>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[1fr_420px]">
@@ -206,26 +195,10 @@ export function CheckoutClient() {
             </section>
 
             <section className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-white/5">
-              <h2 className="text-lg font-semibold text-slate-950 dark:text-white">Payment Method</h2>
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                {paymentMethods.map((payment) => (
-                  <button
-                    key={payment.label}
-                    onClick={() => setMethod(payment.label)}
-                    className={cn(
-                      "flex items-center gap-3 rounded-2xl border p-4 text-left transition hover:-translate-y-0.5",
-                      method === payment.label
-                        ? "border-cyan-400 bg-cyan-400/10 ring-4 ring-cyan-400/10"
-                        : "border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-white/5",
-                    )}
-                  >
-                    <span className="grid h-10 w-10 place-items-center rounded-2xl bg-white text-cyan-600 dark:bg-slate-950 dark:text-cyan-300">
-                      <payment.icon className="h-5 w-5" />
-                    </span>
-                    <span className="font-semibold text-slate-800 dark:text-slate-100">{payment.label}</span>
-                  </button>
-                ))}
-              </div>
+              <h2 className="text-lg font-semibold text-slate-950 dark:text-white">Payment</h2>
+              <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                Payment is not collected through this website. Submitting this form records an order request; payment details are not processed here.
+              </p>
             </section>
           </div>
 
@@ -260,16 +233,15 @@ export function CheckoutClient() {
               </div>
               <div className="flex justify-between text-slate-600 dark:text-slate-400">
                 <span>Shipping</span>
-                <span>{shipping === 0 ? "Free" : formatCurrency(shipping)}</span>
+                <span>{formatCurrency(shipping)}</span>
               </div>
               <div className="flex justify-between border-t border-slate-200 pt-4 text-base font-semibold text-slate-950 dark:border-white/10 dark:text-white">
                 <span>Total</span>
                 <span>{formatCurrency(total)}</span>
               </div>
             </div>
-            <div className="mt-5 rounded-2xl bg-slate-50 p-4 text-sm text-slate-600 dark:bg-white/5 dark:text-slate-400">
-              <Truck className="mb-2 h-4 w-4 text-cyan-500" />
-              Estimated delivery: {getEstimatedDeliveryDate()}
+            <div className="mt-5 rounded-2xl bg-slate-50 p-4 text-sm leading-6 text-slate-600 dark:bg-white/5 dark:text-slate-400">
+              This site records your order request. It does not process a payment or provide a delivery estimate.
             </div>
             <button
               onClick={placeOrder}
@@ -279,7 +251,7 @@ export function CheckoutClient() {
                 isSaving && "cursor-not-allowed opacity-70 hover:translate-y-0",
               )}
             >
-              {isSaving ? "Saving order..." : "Place Order"}
+              {isSaving ? "Submitting order..." : "Submit order request"}
             </button>
             {orderError ? (
               <p

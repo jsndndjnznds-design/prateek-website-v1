@@ -46,19 +46,11 @@ function getProductImages(row: ProductRow): ProductImage[] {
   }));
 }
 
-function getSpecifications(row: ProductRow, price: number, compareAtPrice: number): ProductSpec[] {
+function getSpecifications(row: ProductRow): ProductSpec[] {
   const specs: ProductSpec[] = [
     { label: "Category", value: row.category },
-    { label: "Stock", value: `${row.stock} units` },
-    { label: "Product ID", value: row.id },
+    { label: "Availability", value: row.stock > 0 ? "In stock" : "Out of stock" },
   ];
-
-  if (compareAtPrice > price) {
-    specs.push({ label: "List price", value: String(compareAtPrice) });
-    specs.push({ label: "Sale price", value: String(price) });
-  } else {
-    specs.push({ label: "Price", value: String(price) });
-  }
 
   return specs;
 }
@@ -79,14 +71,7 @@ export function normalizeStorefrontProduct(row: ProductRow): Product {
     shortDescription: getShortDescription(row.description),
     description: row.description,
     images: getProductImages(row),
-    features: [],
-    specifications: getSpecifications(row, price, compareAtPrice),
-    included: [row.name, "Product media from the catalog", "Order and support handoff"],
-    shipping: [
-      "Shipping details are confirmed after checkout",
-      "Order confirmation is saved with customer and item details",
-      "Setup notes can be added during checkout",
-    ],
+    specifications: getSpecifications(row),
   };
 }
 

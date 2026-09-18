@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ShoppingBag, Trash2, Truck } from "lucide-react";
+import { ArrowRight, ShoppingBag, Trash2 } from "lucide-react";
 import { useCart } from "@/components/cart/CartProvider";
 import { QuantitySelector } from "@/components/ui/QuantitySelector";
 import { formatCurrency, getShippingEstimate, getTax } from "@/lib/utils";
@@ -21,13 +21,13 @@ export function CartPageClient() {
             <ShoppingBag className="h-8 w-8 text-cyan-500" />
           </div>
           <h1 className="mt-6 text-4xl font-semibold tracking-normal text-slate-950 dark:text-white">
-            Your cart is ready for a hologram.
+            Your cart is empty.
           </h1>
           <p className="mt-4 text-slate-600 dark:text-slate-400">
-            Add a product to review shipping, taxes, and checkout options.
+            Add a product from the catalog to start an order.
           </p>
           <Link
-            href="/#products"
+            href="/products"
             className="mt-8 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-slate-950 px-6 text-sm font-semibold text-white dark:bg-white dark:text-slate-950"
           >
             Continue Shopping
@@ -51,7 +51,7 @@ export function CartPageClient() {
             </h1>
           </div>
           <Link
-            href="/#products"
+            href="/products"
             className="text-sm font-semibold text-slate-600 transition hover:text-slate-950 dark:text-slate-400 dark:hover:text-white"
           >
             Continue Shopping
@@ -117,7 +117,7 @@ export function CartPageClient() {
               </div>
               <div className="flex justify-between text-slate-600 dark:text-slate-400">
                 <span>Shipping estimate</span>
-                <span>{shipping === 0 ? "Free" : formatCurrency(shipping)}</span>
+                <span>{formatCurrency(shipping)}</span>
               </div>
               <div className="flex justify-between text-slate-600 dark:text-slate-400">
                 <span>GST estimate</span>
@@ -130,9 +130,8 @@ export function CartPageClient() {
                 </div>
               </div>
             </div>
-            <div className="mt-5 rounded-2xl bg-emerald-500/10 p-4 text-sm text-emerald-700 dark:text-emerald-300">
-              <Truck className="mb-2 h-4 w-4" />
-              Prepaid orders qualify for free insured shipping.
+            <div className="mt-5 rounded-2xl bg-slate-50 p-4 text-sm leading-6 text-slate-600 dark:bg-white/5 dark:text-slate-400">
+              Shipping and tax are shown as estimates. Review the total before submitting your order request.
             </div>
             <Link
               href="/checkout"

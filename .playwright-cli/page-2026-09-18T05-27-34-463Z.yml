@@ -1,0 +1,46 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "HoloVista Holographic display systems" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e9]:
+          - generic [ref=e10]: HoloVista
+          - generic [ref=e11]: Holographic display systems
+      - navigation [ref=e12]:
+        - link "Home" [ref=e13] [cursor=pointer]:
+          - /url: /
+        - link "Products" [ref=e14] [cursor=pointer]:
+          - /url: /products
+        - link "Cart" [ref=e15] [cursor=pointer]:
+          - /url: /cart
+      - textbox "Search store" [ref=e18]
+      - generic [ref=e19]:
+        - button "Toggle dark mode" [ref=e20]
+        - link "Cart" [ref=e23] [cursor=pointer]:
+          - /url: /cart
+  - main [ref=e27]
+  - contentinfo [ref=e36]:
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - paragraph [ref=e39]: HoloVista
+        - paragraph [ref=e40]: Browse the current HoloVista catalog. Product listings show the details, price, and availability provided for each item.
+      - generic [ref=e41]:
+        - paragraph [ref=e42]: Store
+        - generic [ref=e43]:
+          - link "Home" [ref=e44] [cursor=pointer]:
+            - /url: /
+          - link "Products" [ref=e45] [cursor=pointer]:
+            - /url: /products
+          - link "Cart" [ref=e46] [cursor=pointer]:
+            - /url: /cart
+          - link "Contact" [ref=e47] [cursor=pointer]:
+            - /url: /contact
+          - link "Privacy Policy" [ref=e48] [cursor=pointer]:
+            - /url: /privacy-policy
+          - link "Terms & Conditions" [ref=e49] [cursor=pointer]:
+            - /url: /terms-and-conditions
+          - link "Shipping Policy" [ref=e50] [cursor=pointer]:
+            - /url: /shipping-policy
+          - link "Return / Refund Policy" [ref=e51] [cursor=pointer]:
+            - /url: /return-refund-policy
+  - alert [ref=e52]

@@ -1,6 +1,7 @@
-import { CircleAlert, PackageSearch } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, CircleAlert, PackageSearch } from "lucide-react";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { ProductCard } from "@/components/product/ProductCard";
+import { FeaturedProductCarousel } from "@/components/product/FeaturedProductCarousel";
 import { Product } from "@/types";
 
 export function ProductCatalogSection({ products, errorMessage }: { products: Product[]; errorMessage?: string }) {
@@ -13,12 +14,18 @@ export function ProductCatalogSection({ products, errorMessage }: { products: Pr
               Our products
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-normal text-slate-950 dark:text-white sm:text-4xl">
-              Shop the catalog
+              Explore the catalog
             </h2>
           </div>
-          <p className="max-w-xl text-sm leading-6 text-slate-600 dark:text-slate-400">
-            Current price and availability are shown on every product.
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="max-w-xl text-sm leading-6 text-slate-600 dark:text-slate-400">
+              Product details, current pricing, and availability are shown on every listing.
+            </p>
+            <Link href="/products" className="hidden shrink-0 items-center gap-1.5 text-sm font-semibold text-cyan-700 hover:text-cyan-800 sm:inline-flex dark:text-cyan-300 dark:hover:text-cyan-200">
+              View all
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
 
         {errorMessage ? (
@@ -40,11 +47,13 @@ export function ProductCatalogSection({ products, errorMessage }: { products: Pr
             </div>
           </div>
         ) : (
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
+          <>
+            <FeaturedProductCarousel products={products} />
+            <Link href="/products" className="mt-8 inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 dark:border-white/10 dark:text-slate-200 dark:hover:bg-white/10 sm:hidden">
+              View the complete catalog
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </>
         )}
       </div>
     </AnimatedSection>

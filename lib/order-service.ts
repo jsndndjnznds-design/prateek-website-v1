@@ -119,7 +119,7 @@ export function normalizeOrder(row: OrderRow): SupabaseOrder {
     quantity: Number(row.quantity ?? 0),
     amount: Number(row.amount),
     payment_method: row.payment_method,
-    status: row.status || "Confirmed",
+    status: row.status || "Submitted",
     items: normalizeOrderItems(row.items),
     created_at: row.created_at,
   };
@@ -265,7 +265,7 @@ export async function createOrderFromCart(customer: CheckoutCustomer, cartItems:
       quantity,
       amount,
       payment_method: customer.paymentMethod.trim(),
-      status: "Confirmed",
+      status: "Submitted",
       items,
       created_at: createdAt,
     })

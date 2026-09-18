@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Check, Heart, Share2, ShieldCheck, ShoppingCart, Truck, Zap } from "lucide-react";
+import { Heart, Share2, ShoppingCart, Zap } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "@/components/cart/CartProvider";
 import { QuantitySelector } from "@/components/ui/QuantitySelector";
@@ -129,7 +129,7 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
           )}
         >
           <Zap className="h-4 w-4" />
-          Buy Now
+          Continue to checkout
         </button>
       </div>
 
@@ -155,21 +155,6 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
         </button>
       </div>
 
-      <div id="shipping" className="grid gap-3 sm:grid-cols-3">
-        {[
-          { icon: Truck, label: "Free prepaid shipping" },
-          { icon: ShieldCheck, label: "12 month warranty" },
-          { icon: Check, label: "Setup assistance" },
-        ].map((item) => (
-          <div
-            key={item.label}
-            className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm font-semibold text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
-          >
-            <item.icon className="mb-2 h-4 w-4 text-cyan-500" />
-            {item.label}
-          </div>
-        ))}
-      </div>
     </div>
   );
 }

@@ -11,16 +11,14 @@ export default async function HomePage() {
   let catalogError = false;
 
   try {
-    products = await getProducts();
+    products = await getProducts(8);
   } catch {
     catalogError = true;
   }
 
-  const featuredProduct = products[0] ?? null;
-
   return (
     <>
-      <HeroSection product={featuredProduct} />
+      <HeroSection />
       <ProductCatalogSection products={products} errorMessage={catalogError ? "Unable to load products." : undefined} />
       <StorefrontInfoSection />
     </>

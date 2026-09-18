@@ -1,10 +1,16 @@
 export const storefrontContent = {
+  store: {
+    name: "HoloVista",
+    descriptor: "Holographic display systems",
+    footerDescription: "Browse the current HoloVista catalog. Product listings show the details, price, and availability provided for each item.",
+  },
   hero: {
-    eyebrow: "HoloVista catalog",
-    title: "Holographic displays built for spaces that need to stand out.",
+    eyebrow: "HoloVista store",
+    title: "Shop holographic display products.",
     description:
-      "Explore professional display systems for retail, events, hospitality, and showrooms. Every product page shows its current price and availability.",
+      "Browse the current catalog of holographic display systems. Each listing includes its product information, price, and availability.",
     primaryAction: "Browse products",
+    secondaryAction: "View featured catalog",
   },
   support: {
     eyebrow: "Shopping with HoloVista",
@@ -24,5 +30,16 @@ export const storefrontContent = {
         description: "Checkout confirms the current catalog items, quantities, and total before an order is saved.",
       },
     ],
+  },
+  contact: {
+    title: "Contact HoloVista",
+    description: "Add the store's verified customer contact information here before publishing the storefront.",
+    email: "",
+    phone: "",
+    location: "",
+  },
+  legal: {
+    publicationNotice:
+      "This is an editable policy placeholder. The store owner must add the real business, contact, shipping, and legal information before publishing this page.",
   },
 } as const;

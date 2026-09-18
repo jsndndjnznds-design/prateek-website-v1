@@ -8,16 +8,17 @@ import { useAuth } from "@/components/auth/AuthProvider";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/components/cart/CartProvider";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { storefrontContent } from "@/data/storefront-content";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/#products", label: "Products" },
+  { href: "/products", label: "Products" },
   { href: "/cart", label: "Cart" },
   { href: "/admin", label: "Admin" },
 ];
 
 const utilitySearchItems = [
-  { label: "Product catalog", detail: "Browse current products", href: "/#products" },
+  { label: "Product catalog", detail: "Browse current products", href: "/products" },
   { label: "Cart", detail: "Review items and checkout", href: "/cart" },
   { label: "Admin dashboard", detail: "Orders, revenue, and analytics", href: "/admin" },
 ];
@@ -89,10 +90,10 @@ export function Header() {
           </span>
           <span className="leading-tight">
             <span className="block text-base font-semibold tracking-tight text-slate-950 dark:text-white">
-              HoloVista
+              {storefrontContent.store.name}
             </span>
             <span className="block text-xs font-medium text-slate-500 dark:text-slate-400">
-              Pro display systems
+              {storefrontContent.store.descriptor}
             </span>
           </span>
         </Link>

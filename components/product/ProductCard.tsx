@@ -8,7 +8,7 @@ import { useCart } from "@/components/cart/CartProvider";
 import { cn, formatCurrency } from "@/lib/utils";
 import { Product } from "@/types";
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({ product, eager = false }: { product: Product; eager?: boolean }) {
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
   const image = product.images[0];
@@ -39,6 +39,7 @@ export function ProductCard({ product }: { product: Product }) {
           alt={image.alt}
           width={780}
           height={620}
+          loading={eager ? "eager" : "lazy"}
           className="aspect-[5/4] w-full object-cover transition duration-300 group-hover:scale-[1.02]"
         />
       </Link>

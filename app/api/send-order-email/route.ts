@@ -10,20 +10,20 @@ export async function POST(request: Request) {
     const { data, error } = await resend.emails.send({
       from: "Your Store <your-verified-email@yourdomain.com>",
       to: [order.email],
-      subject: `Order ${order.orderNumber} confirmed`,
+      subject: `Order request ${order.orderNumber} received`,
       html: `
-        <h1>Order Confirmed</h1>
+        <h1>Order Request Received</h1>
 
         <p>Hi ${order.customerName},</p>
 
-        <p>Thank you for your order.</p>
+        <p>Your order request has been recorded.</p>
 
         <p><strong>Order Number:</strong> ${order.orderNumber}</p>
         <p><strong>Amount:</strong> ₹${order.amount}</p>
-        <p><strong>Payment Method:</strong> ${order.paymentMethod}</p>
+        <p><strong>Payment:</strong> ${order.paymentMethod}</p>
         <p><strong>Shipping Address:</strong> ${order.address}</p>
 
-        <p>We'll keep you updated about your order.</p>
+        <p>This email does not confirm payment or delivery timing.</p>
       `,
     });
 

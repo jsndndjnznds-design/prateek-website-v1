@@ -3,26 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { AlertCircle, Check, PackageCheck, Truck } from "lucide-react";
+import { AlertCircle, Check, PackageCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 import { formatCurrency } from "@/lib/utils";
-import { SupabaseOrder } from "@/types";
+import { PublicOrderConfirmation } from "@/types";
 
 type OrderResponse = {
-  order?: SupabaseOrder;
+  order?: PublicOrderConfirmation;
   error?: string;
 };
-
-function formatDeliveryDate(createdAt: string) {
-  const date = new Date(createdAt);
-  date.setDate(date.getDate() + 5);
-
-  return date.toLocaleDateString("en-IN", {
-    weekday: "short",
-    day: "numeric",
-    month: "short",
-  });
-}
 
 function EmptyConfirmation({
   title,
@@ -61,7 +50,7 @@ function EmptyConfirmation({
 }
 
 export function OrderConfirmationClient({ orderNumber }: { orderNumber: string }) {
-  const [order, setOrder] = useState<SupabaseOrder | null>(null);
+  const [order, setOrder] = useState<PublicOrderConfirmation | null>(null);
   const [loading, setLoading] = useState(Boolean(orderNumber));
   const [error, setError] = useState("");
 
@@ -98,7 +87,7 @@ export function OrderConfirmationClient({ orderNumber }: { orderNumber: string }
   if (!orderNumber) {
     return (
       <EmptyConfirmation
-        title="No confirmed order selected"
+        title="No order request selected"
         message="This page only shows orders that were saved after checkout."
       />
     );
@@ -110,7 +99,7 @@ export function OrderConfirmationClient({ orderNumber }: { orderNumber: string }
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-xl shadow-slate-950/8 dark:border-white/10 dark:bg-slate-950/80">
             <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-cyan-200 border-t-cyan-500" />
-            <p className="mt-5 font-semibold text-slate-950 dark:text-white">Loading confirmed order...</p>
+            <p className="mt-5 font-semibold text-slate-950 dark:text-white">Loading order request...</p>
           </div>
         </div>
       </section>
@@ -151,25 +140,16 @@ export function OrderConfirmationClient({ orderNumber }: { orderNumber: string }
             </motion.span>
           </motion.div>
           <h1 className="mt-7 text-4xl font-semibold tracking-normal text-slate-950 dark:text-white">
-            Order confirmed
+            Order request received
           </h1>
           <p className="mt-3 text-slate-600 dark:text-slate-400">
-            Order {order.order_number} is confirmed and queued for warehouse processing.
+            Order {order.order_number} has been recorded.
           </p>
 
-          <div className="mt-8 grid gap-4 text-left sm:grid-cols-2">
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-white/5">
-              <PackageCheck className="h-5 w-5 text-cyan-500" />
-              <p className="mt-3 text-sm font-semibold text-slate-950 dark:text-white">Shipping information</p>
-              <p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-400">{order.address}</p>
-            </div>
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-white/5">
-              <Truck className="h-5 w-5 text-emerald-500" />
-              <p className="mt-3 text-sm font-semibold text-slate-950 dark:text-white">Estimated delivery</p>
-              <p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-400">
-                {formatDeliveryDate(order.created_at)} via tracked courier.
-              </p>
-            </div>
+          <div className="mt-8 rounded-3xl border border-slate-200 bg-slate-50 p-5 text-left dark:border-white/10 dark:bg-white/5">
+            <PackageCheck className="h-5 w-5 text-cyan-500" />
+            <p className="mt-3 text-sm font-semibold text-slate-950 dark:text-white">Next steps</p>
+            <p className="mt-1 text-sm leading-6 text-slate-600 dark:text-slate-400">Shipping and payment arrangements are not confirmed by this page. Your personal contact and address details are not shown here.</p>
           </div>
 
           <div className="mt-6 overflow-hidden rounded-3xl border border-slate-200 bg-white text-left dark:border-white/10 dark:bg-white/5">
@@ -189,7 +169,7 @@ export function OrderConfirmationClient({ orderNumber }: { orderNumber: string }
                   <p className="font-semibold text-slate-950 dark:text-white">{item.name}</p>
                   <p className="text-sm text-slate-500 dark:text-slate-400">
                     <span className="block">Quantity {item.quantity}</span>
-                    <span className="block">Paid by {order.payment_method}</span>
+                    <span className="block">Payment: {order.payment_method}</span>
                   </p>
                 </div>
                 <p className="font-semibold text-slate-950 dark:text-white">{formatCurrency(item.line_total)}</p>
@@ -201,7 +181,7 @@ export function OrderConfirmationClient({ orderNumber }: { orderNumber: string }
                   <p className="font-semibold text-slate-950 dark:text-white">Order items</p>
                   <p className="text-sm text-slate-500 dark:text-slate-400">
                     <span className="block">Quantity {order.quantity}</span>
-                    <span className="block">Paid by {order.payment_method}</span>
+                    <span className="block">Payment: {order.payment_method}</span>
                   </p>
                 </div>
                 <p className="font-semibold text-slate-950 dark:text-white">{formatCurrency(order.amount)}</p>
