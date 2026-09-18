@@ -1,17 +1,18 @@
 import { NextResponse } from "next/server";
-import { listStorefrontProducts } from "@/lib/storefront-service";
+import { getProducts } from "@/lib/storefront-service";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {
-    const products = await listStorefrontProducts();
+    const products = await getProducts();
 
     return NextResponse.json({
       products: products.map((product) => ({
         id: product.id,
         slug: product.slug,
         name: product.name,
+        category: product.eyebrow,
         shortDescription: product.shortDescription,
         price: product.price,
         stock: product.stock,

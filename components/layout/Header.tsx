@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, Search, ShoppingBag, Sparkles, X } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/components/cart/CartProvider";
@@ -16,13 +16,20 @@ const navItems = [
   { href: "/admin", label: "Admin" },
 ];
 
-const searchableItems = [
-  { label: "Product catalog", detail: "Current products and buying options", href: "/#products" },
-  { label: "Customer reviews", detail: "Verified buyer feedback", href: "/#reviews" },
-  { label: "Shipping and installation", detail: "Delivery and setup support", href: "/#gallery" },
+const utilitySearchItems = [
+  { label: "Product catalog", detail: "Browse current products", href: "/#products" },
   { label: "Cart", detail: "Review items and checkout", href: "/cart" },
   { label: "Admin dashboard", detail: "Orders, revenue, and analytics", href: "/admin" },
 ];
+
+type StorefrontSearchProduct = {
+  id: string;
+  slug: string;
+  name: string;
+  category: string;
+  shortDescription: string;
+  stock: number;
+};
 
 export function Header() {
   const pathname = usePathname();
@@ -30,18 +37,48 @@ export function Header() {
   const { isAdmin } = useAuth();
   const [query, setQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [products, setProducts] = useState<StorefrontSearchProduct[]>([]);
   const visibleNavItems = useMemo(() => navItems.filter((item) => item.href !== "/admin" || isAdmin), [isAdmin]);
   const visibleSearchableItems = useMemo(
-    () => searchableItems.filter((item) => item.href !== "/admin" || isAdmin),
+    () => utilitySearchItems.filter((item) => item.href !== "/admin" || isAdmin),
     [isAdmin],
   );
 
+  useEffect(() => {
+    let active = true;
+
+    async function loadSearchProducts() {
+      const response = await fetch("/api/storefront/products", { cache: "no-store" });
+      const data = (await response.json().catch(() => null)) as { products?: StorefrontSearchProduct[] } | null;
+
+      if (active && response.ok) {
+        setProducts(data?.products ?? []);
+      }
+    }
+
+    void loadSearchProducts();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
   const results = useMemo(() => {
-    if (!query.trim()) return visibleSearchableItems.slice(0, 3);
-    return visibleSearchableItems.filter((item) =>
-      `${item.label} ${item.detail}`.toLowerCase().includes(query.toLowerCase()),
+    const searchTerm = query.trim().toLowerCase();
+    const productResults = products
+      .filter((product) => !searchTerm || `${product.name} ${product.category} ${product.shortDescription}`.toLowerCase().includes(searchTerm))
+      .slice(0, searchTerm ? 6 : 3)
+      .map((product) => ({
+        label: product.name,
+        detail: `${product.category} · ${product.stock > 0 ? "In stock" : "Out of stock"}`,
+        href: `/product/${product.slug}`,
+      }));
+    const utilityResults = visibleSearchableItems.filter(
+      (item) => !searchTerm || `${item.label} ${item.detail}`.toLowerCase().includes(searchTerm),
     );
-  }, [query, visibleSearchableItems]);
+
+    return [...productResults, ...utilityResults].slice(0, 6);
+  }, [products, query, visibleSearchableItems]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/78 backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/76">
@@ -96,6 +133,9 @@ export function Header() {
                   <span className="block text-xs text-slate-500 dark:text-slate-400">{item.detail}</span>
                 </Link>
               ))}
+              {query.trim() && results.length === 0 ? (
+                <p className="px-4 py-3 text-sm text-slate-500 dark:text-slate-400">No matching products found.</p>
+              ) : null}
             </div>
           </div>
         </div>
@@ -170,6 +210,9 @@ export function Header() {
                     {item.label}
                   </Link>
                 ))}
+                {query.trim() && results.length === 0 ? (
+                  <p className="px-3 py-2 text-sm text-slate-500 dark:text-slate-400">No matching products found.</p>
+                ) : null}
               </div>
             </div>
           </div>

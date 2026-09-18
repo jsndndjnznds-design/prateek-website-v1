@@ -105,7 +105,11 @@ export function normalizeManagedProduct(row: ProductRow): ManagedProduct {
   };
 }
 
-export async function listStorefrontProducts(limit?: number) {
+/**
+ * Fetches the complete storefront catalog. Keep this query here so homepage,
+ * search, and API routes never need to query Supabase independently.
+ */
+export async function getProducts(limit?: number) {
   const supabase = getSupabaseAdminClient();
 
   if (!supabase) return [];
@@ -131,7 +135,8 @@ export async function listManagedStorefrontProducts(supabase: SupabaseClient) {
   return ((data ?? []) as ProductRow[]).map(normalizeManagedProduct);
 }
 
-export async function getStorefrontProductById(id: string) {
+/** Fetches one storefront product by its catalog identifier. */
+export async function getProduct(id: string) {
   const supabase = getSupabaseAdminClient();
 
   if (!supabase || !isUuid(id)) return null;
@@ -143,12 +148,8 @@ export async function getStorefrontProductById(id: string) {
   return data ? normalizeStorefrontProduct(data as ProductRow) : null;
 }
 
-export async function getStorefrontProductByIdentifier(identifier: string) {
-  const productById = await getStorefrontProductById(identifier);
-
-  if (productById) return productById;
-
-  const products = await listStorefrontProducts();
-
-  return products.find((product) => product.slug === identifier) ?? null;
-}
+// These aliases preserve the existing service API for any callers outside the
+// storefront while new code uses the explicit getProducts/getProduct names.
+export const listStorefrontProducts = getProducts;
+export const getStorefrontProductById = getProduct;
+export const getStorefrontProductByIdentifier = getProduct;

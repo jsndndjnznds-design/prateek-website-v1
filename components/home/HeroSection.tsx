@@ -2,96 +2,56 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight, Headphones, LockKeyhole, ShieldCheck, Truck } from "lucide-react";
-import { formatCurrency } from "@/lib/utils";
+import { ArrowDown } from "lucide-react";
+import { storefrontContent } from "@/data/storefront-content";
 import { Product } from "@/types";
-import { CountdownTimer } from "@/components/ui/CountdownTimer";
-
-const trustBadges = [
-  { label: "Insured shipping", icon: Truck },
-  { label: "12 month warranty", icon: ShieldCheck },
-  { label: "Setup support", icon: Headphones },
-  { label: "Secure checkout", icon: LockKeyhole },
-];
 
 export function HeroSection({ product }: { product: Product | null }) {
-  const productHref = product ? `/product/${product.slug}` : "#products";
   const heroImage = product?.images[0]?.src ?? "/images/hologram-fan-hero.svg";
-  const heroAlt = product?.images[0]?.alt ?? "Featured product";
+  const heroAlt = product?.images[0]?.alt ?? "HoloVista holographic display";
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(180deg,#f8fafc_0%,#ecfeff_48%,#ffffff_100%)] dark:bg-[linear-gradient(180deg,#020617_0%,#0f172a_56%,#020617_100%)]">
-      <div className="holo-grid pointer-events-none absolute inset-0 opacity-80" />
-      <div className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:px-8">
-        <motion.div
-          initial={false}
-          className="relative z-10"
-        >
-          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-white/70 px-3 py-1.5 text-sm font-semibold text-slate-700 shadow-sm backdrop-blur dark:bg-white/10 dark:text-slate-200">
-            <span className="h-2 w-2 rounded-full bg-emerald-400" />
-            {product ? `${product.stock} units ready to ship this week` : "Catalog updating"}
-          </div>
-          <h1 className="mt-7 max-w-3xl text-5xl font-semibold leading-[1.02] tracking-normal text-slate-950 dark:text-white sm:text-6xl lg:text-7xl">
-            {product?.name ?? "HoloVista"}
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">
-            {product?.shortDescription ??
-              "Browse the current product catalog for retail, event, hospitality, and showroom display systems."}
+    <section className="relative overflow-hidden border-b border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-slate-950">
+      <div className="holo-grid pointer-events-none absolute inset-0 opacity-40 dark:opacity-25" />
+      <div className="mx-auto grid min-h-[34rem] max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8 lg:py-20">
+        <div className="relative z-10">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-700 dark:text-cyan-300">
+            {storefrontContent.hero.eyebrow}
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl">
+            {storefrontContent.hero.title}
+          </h1>
+          <p className="mt-6 max-w-xl text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-lg">
+            {storefrontContent.hero.description}
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <Link
-              href={productHref}
-              className="inline-flex h-[52px] items-center justify-center gap-2 rounded-full bg-slate-950 px-7 text-sm font-semibold text-white shadow-xl shadow-slate-950/15 transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+              href="#products"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-slate-950 px-6 text-sm font-semibold text-white shadow-lg shadow-slate-950/10 transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
             >
-              {product ? `Shop ${formatCurrency(product.price)}` : "Browse products"}
-              <ArrowRight className="h-4 w-4" />
+              {storefrontContent.hero.primaryAction}
+              <ArrowDown className="h-4 w-4" />
             </Link>
-            <Link
-              href="#gallery"
-              className="inline-flex h-[52px] items-center justify-center rounded-full border border-slate-300 bg-white/70 px-7 text-sm font-semibold text-slate-800 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:bg-white dark:border-white/15 dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
-            >
-              View installations
-            </Link>
+            {product ? (
+              <Link href={`/product/${product.slug}`} className="text-sm font-semibold text-slate-700 underline decoration-slate-300 underline-offset-4 transition hover:text-cyan-700 dark:text-slate-200 dark:decoration-white/20 dark:hover:text-cyan-300">
+                View featured product
+              </Link>
+            ) : null}
           </div>
-          <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
-            <span className="text-sm font-medium text-slate-500 dark:text-slate-400">
-              Designed for retailers, cafes, and event teams
-            </span>
-          </div>
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {trustBadges.map((badge) => (
-              <div
-                key={badge.label}
-                className="rounded-2xl border border-slate-200 bg-white/72 p-3 text-sm font-medium text-slate-700 shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/8 dark:text-slate-200"
-              >
-                <badge.icon className="mb-2 h-4 w-4 text-cyan-500" />
-                {badge.label}
-              </div>
-            ))}
-          </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={false}
-          className="relative z-10"
-        >
-          <div className="relative mx-auto max-w-2xl">
-            <div className="absolute inset-8 hero-orbit rounded-full border border-cyan-400/20" />
-            <div className="absolute inset-16 hero-orbit rounded-full border border-fuchsia-400/20 [animation-direction:reverse]" />
+        <div className="relative z-10">
+          <div className="relative mx-auto max-w-2xl overflow-hidden rounded-3xl border border-slate-200 bg-white p-3 shadow-2xl shadow-slate-950/10 dark:border-white/10 dark:bg-white/5 dark:shadow-black/30">
             <Image
               src={heroImage}
               alt={heroAlt}
               width={1400}
               height={980}
               priority
-              className="float-slow relative z-10 w-full drop-shadow-2xl"
+              className="aspect-[5/4] w-full rounded-2xl object-cover"
             />
-            <div className="glass-panel absolute bottom-5 left-4 right-4 z-20 grid gap-3 rounded-[1.75rem] p-4 sm:left-auto sm:right-6 sm:w-72">
-              <CountdownTimer />
-            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

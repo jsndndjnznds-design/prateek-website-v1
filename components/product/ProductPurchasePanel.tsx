@@ -5,7 +5,6 @@ import { Check, Heart, Share2, ShieldCheck, ShoppingCart, Truck, Zap } from "luc
 import { useState } from "react";
 import { useCart } from "@/components/cart/CartProvider";
 import { QuantitySelector } from "@/components/ui/QuantitySelector";
-import { CountdownTimer } from "@/components/ui/CountdownTimer";
 import { Product } from "@/types";
 import { cn, formatCurrency } from "@/lib/utils";
 
@@ -106,18 +105,10 @@ export function ProductPurchasePanel({ product }: { product: Product }) {
             </>
           ) : null}
         </div>
-        <div className="mt-5">
-          <div className="mb-2 flex items-center justify-between text-sm">
-            <span className="font-semibold text-slate-700 dark:text-slate-300">Stock counter</span>
-            <span className="text-slate-500 dark:text-slate-400">{product.stock} left</span>
-          </div>
-          <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-white/10">
-            <div className="h-full w-[34%] rounded-full bg-[linear-gradient(90deg,#22d3ee,#34d399)]" />
-          </div>
-        </div>
+        <p className="mt-4 text-sm text-slate-600 dark:text-slate-400">
+          {inStock ? `${product.stock} available in the current catalog.` : "This product is currently unavailable."}
+        </p>
       </div>
-
-      <CountdownTimer />
 
       <div className="flex flex-wrap items-center gap-3">
         {inStock ? <QuantitySelector value={quantity} onChange={setQuantity} max={Math.min(product.stock, 9)} /> : null}

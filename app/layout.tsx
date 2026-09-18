@@ -16,8 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "HoloVista | Premium 3D Display Store",
-  description:
-    "A premium one-product ecommerce storefront for a modern LED hologram fan display.",
+  description: "Explore HoloVista's catalog of professional holographic display systems.",
 };
 
 export default function RootLayout({
