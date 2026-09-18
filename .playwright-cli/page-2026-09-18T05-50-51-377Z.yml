@@ -1,0 +1,125 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "HoloVista Holographic display systems" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e9]:
+          - generic [ref=e10]: HoloVista
+          - generic [ref=e11]: Holographic display systems
+      - navigation [ref=e12]:
+        - link "Home" [ref=e13] [cursor=pointer]:
+          - /url: /
+        - link "Products" [ref=e14] [cursor=pointer]:
+          - /url: /products
+        - link "Cart" [ref=e15] [cursor=pointer]:
+          - /url: /cart
+      - textbox "Search store" [ref=e18]
+      - generic [ref=e19]:
+        - button "Toggle dark mode" [ref=e20]
+        - link "Cart" [ref=e23] [cursor=pointer]:
+          - /url: /cart
+  - main [ref=e27]:
+    - generic [ref=e30]:
+      - paragraph [ref=e31]: HoloVista store
+      - heading "Shop holographic display products." [level=1] [ref=e32]
+      - paragraph [ref=e33]: Browse the current catalog of holographic display systems. Each listing includes its product information, price, and availability.
+      - generic [ref=e34]:
+        - link "Browse products" [ref=e35] [cursor=pointer]:
+          - /url: /products
+        - link "View featured catalog" [ref=e38] [cursor=pointer]:
+          - /url: "#products"
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - paragraph [ref=e43]: Our products
+          - heading "Explore the catalog" [level=2] [ref=e44]
+        - generic [ref=e45]:
+          - paragraph [ref=e46]: Product details, current pricing, and availability are shown on every listing.
+          - link "View all" [ref=e47] [cursor=pointer]:
+            - /url: /products
+      - generic [ref=e50]:
+        - generic [ref=e51]:
+          - button "Show previous products" [ref=e52]
+          - button "Show next products" [ref=e55]
+        - region "Featured products" [ref=e58]:
+          - article [ref=e60]:
+            - link [ref=e61] [cursor=pointer]:
+              - /url: /product/6f711c6e-f04a-4ca6-9462-5751a6402d95
+              - img "football set product image 1" [ref=e62]
+            - generic [ref=e63]:
+              - generic [ref=e64]:
+                - generic [ref=e65]:
+                  - paragraph [ref=e66]: football player
+                  - link [ref=e67] [cursor=pointer]:
+                    - /url: /product/6f711c6e-f04a-4ca6-9462-5751a6402d95
+                    - heading "football set" [level=3] [ref=e68]
+                - generic [ref=e69]: In stock
+              - paragraph [ref=e70]: good product
+              - generic [ref=e71]:
+                - paragraph [ref=e72]: ₹9,999
+                - paragraph [ref=e73]: ₹10,000
+              - generic [ref=e74]:
+                - button "Add to cart" [ref=e75]
+                - link "Details" [ref=e80] [cursor=pointer]:
+                  - /url: /product/6f711c6e-f04a-4ca6-9462-5751a6402d95
+          - article [ref=e84]:
+            - link [ref=e85] [cursor=pointer]:
+              - /url: /product/abdd0711-1796-4a7e-9119-68da344f6cc0
+              - img "hi product image 1" [ref=e86]
+            - generic [ref=e87]:
+              - generic [ref=e88]:
+                - generic [ref=e89]:
+                  - paragraph [ref=e90]: idk
+                  - link [ref=e91] [cursor=pointer]:
+                    - /url: /product/abdd0711-1796-4a7e-9119-68da344f6cc0
+                    - heading "hi" [level=3] [ref=e92]
+                - generic [ref=e93]: In stock
+              - paragraph [ref=e94]: idk
+              - generic [ref=e95]:
+                - paragraph [ref=e96]: ₹10,000
+                - paragraph [ref=e97]: ₹30,000
+              - generic [ref=e98]:
+                - button "Add to cart" [ref=e99]
+                - link "Details" [ref=e104] [cursor=pointer]:
+                  - /url: /product/abdd0711-1796-4a7e-9119-68da344f6cc0
+    - generic [ref=e108]:
+      - generic [ref=e109]:
+        - paragraph [ref=e110]: Shopping with HoloVista
+        - heading "Choose the setup that fits your space." [level=2] [ref=e111]
+        - paragraph [ref=e112]: Build an order from the live catalog, then review every item and quantity before checkout.
+      - generic [ref=e113]:
+        - article [ref=e114]:
+          - heading "Compare products" [level=3] [ref=e119]
+          - paragraph [ref=e120]: Open a product to review its images, description, price, and availability.
+        - article [ref=e121]:
+          - heading "Build your cart" [level=3] [ref=e125]
+          - paragraph [ref=e126]: Add one or several products, then adjust quantities from your cart.
+        - article [ref=e127]:
+          - heading "Review at checkout" [level=3] [ref=e130]
+          - paragraph [ref=e131]: Checkout confirms the current catalog items, quantities, and total before an order is saved.
+  - contentinfo [ref=e132]:
+    - generic [ref=e133]:
+      - generic [ref=e134]:
+        - paragraph [ref=e135]: HoloVista
+        - paragraph [ref=e136]: Browse the current HoloVista catalog. Product listings show the details, price, and availability provided for each item.
+      - generic [ref=e137]:
+        - paragraph [ref=e138]: Store
+        - generic [ref=e139]:
+          - link "Home" [ref=e140] [cursor=pointer]:
+            - /url: /
+          - link "Products" [ref=e141] [cursor=pointer]:
+            - /url: /products
+          - link "Cart" [ref=e142] [cursor=pointer]:
+            - /url: /cart
+          - link "Contact" [ref=e143] [cursor=pointer]:
+            - /url: /contact
+          - link "Privacy Policy" [ref=e144] [cursor=pointer]:
+            - /url: /privacy-policy
+          - link "Terms & Conditions" [ref=e145] [cursor=pointer]:
+            - /url: /terms-and-conditions
+          - link "Shipping Policy" [ref=e146] [cursor=pointer]:
+            - /url: /shipping-policy
+          - link "Return / Refund Policy" [ref=e147] [cursor=pointer]:
+            - /url: /return-refund-policy
+  - button "Open Next.js Dev Tools" [ref=e153] [cursor=pointer]
+  - alert [ref=e157]

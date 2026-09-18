@@ -19,7 +19,7 @@ export function FeaturedProductCarousel({ products }: { products: Product[] }) {
   }
 
   return (
-    <div className="mt-10">
+    <div className="mt-6 sm:mt-10">
       {products.length > 1 ? (
         <div className="mb-4 hidden justify-end gap-2 sm:flex">
           <button

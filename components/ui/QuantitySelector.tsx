@@ -18,7 +18,8 @@ export function QuantitySelector({
       <button
         aria-label="Decrease quantity"
         onClick={() => onChange(Math.max(min, value - 1))}
-        className="grid place-items-center text-slate-500 transition hover:bg-slate-100 hover:text-slate-950 dark:hover:bg-white/10 dark:hover:text-white"
+        disabled={value <= min}
+        className="grid place-items-center text-slate-500 transition hover:bg-slate-100 hover:text-slate-950 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-white/10 dark:hover:text-white"
       >
         <Minus className="h-4 w-4" />
       </button>
@@ -28,7 +29,8 @@ export function QuantitySelector({
       <button
         aria-label="Increase quantity"
         onClick={() => onChange(Math.min(max, value + 1))}
-        className="grid place-items-center text-slate-500 transition hover:bg-slate-100 hover:text-slate-950 dark:hover:bg-white/10 dark:hover:text-white"
+        disabled={value >= max}
+        className="grid place-items-center text-slate-500 transition hover:bg-slate-100 hover:text-slate-950 disabled:cursor-not-allowed disabled:opacity-35 dark:hover:bg-white/10 dark:hover:text-white"
       >
         <Plus className="h-4 w-4" />
       </button>

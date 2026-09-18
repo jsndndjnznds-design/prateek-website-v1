@@ -1,0 +1,139 @@
+- generic [active] [ref=f6e1]:
+  - banner [ref=f6e2]:
+    - generic [ref=f6e3]:
+      - link "HoloVista Holographic display systems" [ref=f6e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f6e9]:
+          - generic [ref=f6e10]: HoloVista
+          - generic [ref=f6e11]: Holographic display systems
+      - navigation [ref=f6e12]:
+        - link "Home" [ref=f6e13] [cursor=pointer]:
+          - /url: /
+        - link "Shop" [ref=f6e14] [cursor=pointer]:
+          - /url: /products
+      - textbox "Search store" [ref=f6e17]
+      - generic [ref=f6e18]:
+        - button "Toggle dark mode" [ref=f6e19]
+        - link "Wishlist" [ref=f6e22] [cursor=pointer]:
+          - /url: /wishlist
+          - generic [ref=f6e127]: "1"
+        - link "Cart" [ref=f6e25] [cursor=pointer]:
+          - /url: /cart
+          - generic [ref=f6e29]: "2"
+        - link "Account" [ref=f6e30] [cursor=pointer]:
+          - /url: /login
+  - main [ref=f6e34]:
+    - generic [ref=f6e130]:
+      - generic [ref=f6e131]:
+        - paragraph [ref=f6e132]: Checkout
+        - heading "Complete your order" [level=1] [ref=f6e133]
+        - paragraph [ref=f6e134]: "* Required fields"
+      - generic [ref=f6e135]:
+        - generic [ref=f6e136]:
+          - generic [ref=f6e137]:
+            - heading "Customer Information" [level=2] [ref=f6e138]
+            - generic [ref=f6e139]:
+              - generic [ref=f6e140]:
+                - generic [ref=f6e141]: Full name*
+                - textbox "Full name" [ref=f6e142]:
+                  - /placeholder: Priya Mehta
+              - generic [ref=f6e143]:
+                - generic [ref=f6e144]: Email*
+                - textbox "Email" [ref=f6e145]:
+                  - /placeholder: priya@example.com
+              - generic [ref=f6e146]:
+                - generic [ref=f6e147]: Phone*
+                - textbox "Phone" [ref=f6e148]:
+                  - /placeholder: +91 98765 43210
+              - generic [ref=f6e149]:
+                - text: Company
+                - textbox "Company" [ref=f6e150]:
+                  - /placeholder: Aurum Retail Studio
+          - generic [ref=f6e151]:
+            - heading "Shipping Address" [level=2] [ref=f6e152]
+            - generic [ref=f6e156]:
+              - generic [ref=f6e157]:
+                - generic [ref=f6e158]: Address line*
+                - textbox "Address line" [ref=f6e159]:
+                  - /placeholder: 12 Carter Road, Bandra West
+              - generic [ref=f6e160]:
+                - text: Apartment, suite
+                - textbox "Apartment, suite" [ref=f6e161]:
+                  - /placeholder: Studio 4B
+              - generic [ref=f6e162]:
+                - generic [ref=f6e163]: City*
+                - textbox "City" [ref=f6e164]:
+                  - /placeholder: Mumbai
+              - generic [ref=f6e165]:
+                - generic [ref=f6e166]: State*
+                - textbox "State" [ref=f6e167]:
+                  - /placeholder: Maharashtra
+              - generic [ref=f6e168]:
+                - generic [ref=f6e169]: PIN code*
+                - textbox "PIN code" [ref=f6e170]:
+                  - /placeholder: "400050"
+              - generic [ref=f6e171]:
+                - text: Installation note
+                - textbox "Installation note" [ref=f6e172]:
+                  - /placeholder: Countertop demo before wall mount
+          - generic [ref=f6e173]:
+            - heading "Payment" [level=2] [ref=f6e174]
+            - paragraph [ref=f6e175]: Payment is not collected through this website. Submitting this form records an order request; payment details are not processed here.
+        - complementary [ref=f6e176]:
+          - heading "Order Summary" [level=2] [ref=f6e177]
+          - generic [ref=f6e178]:
+            - generic [ref=f6e179]:
+              - img "football set" [ref=f6e180]
+              - generic [ref=f6e181]:
+                - paragraph [ref=f6e182]: football set
+                - paragraph [ref=f6e183]: Qty 1
+              - paragraph [ref=f6e184]: ₹9,999
+            - generic [ref=f6e185]:
+              - img "hi" [ref=f6e186]
+              - generic [ref=f6e187]:
+                - paragraph [ref=f6e188]: hi
+                - paragraph [ref=f6e189]: Qty 1
+              - paragraph [ref=f6e190]: ₹10,000
+          - generic [ref=f6e191]:
+            - generic [ref=f6e192]:
+              - generic [ref=f6e193]: Subtotal
+              - generic [ref=f6e194]: ₹19,999
+            - generic [ref=f6e195]:
+              - generic [ref=f6e196]: Tax
+              - generic [ref=f6e197]: ₹3,600
+            - generic [ref=f6e198]:
+              - generic [ref=f6e199]: Shipping
+              - generic [ref=f6e200]: ₹1,490
+            - generic [ref=f6e201]:
+              - generic [ref=f6e202]: Total
+              - generic [ref=f6e203]: ₹25,089
+          - generic [ref=f6e204]: This site records your order request. It does not process a payment or provide a delivery estimate.
+          - button "Submit order request" [ref=f6e205]
+  - contentinfo [ref=f6e100]:
+    - generic [ref=f6e101]:
+      - generic [ref=f6e102]:
+        - paragraph [ref=f6e103]: HoloVista
+        - paragraph [ref=f6e104]: Browse the current HoloVista catalog. Product listings show the details, price, and availability provided for each item.
+      - generic [ref=f6e105]:
+        - paragraph [ref=f6e106]: Store
+        - generic [ref=f6e107]:
+          - link "Home" [ref=f6e108] [cursor=pointer]:
+            - /url: /
+          - link "Products" [ref=f6e109] [cursor=pointer]:
+            - /url: /products
+          - link "Wishlist" [ref=f6e110] [cursor=pointer]:
+            - /url: /wishlist
+          - link "Cart" [ref=f6e111] [cursor=pointer]:
+            - /url: /cart
+          - link "Contact" [ref=f6e112] [cursor=pointer]:
+            - /url: /contact
+          - link "Privacy Policy" [ref=f6e113] [cursor=pointer]:
+            - /url: /privacy-policy
+          - link "Terms & Conditions" [ref=f6e114] [cursor=pointer]:
+            - /url: /terms-and-conditions
+          - link "Shipping Policy" [ref=f6e115] [cursor=pointer]:
+            - /url: /shipping-policy
+          - link "Return / Refund Policy" [ref=f6e116] [cursor=pointer]:
+            - /url: /return-refund-policy
+  - button "Open Next.js Dev Tools" [ref=f6e122] [cursor=pointer]
+  - alert [ref=f6e126]: Checkout | HoloVista

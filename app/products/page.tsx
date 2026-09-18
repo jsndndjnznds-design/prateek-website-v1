@@ -25,7 +25,7 @@ export default async function ProductsPage() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-600 dark:text-cyan-400">Products</p>
         <h1 className="mt-3 text-4xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-5xl">Shop the catalog</h1>
-        <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-400">Browse available products, compare current prices, and open any listing for its full description.</p>
+        <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-400">Browse available products, filter the catalog, and open any listing for full product information.</p>
         {error ? (
           <div role="alert" className="mt-8 grid min-h-72 place-items-center rounded-3xl border border-dashed border-amber-300 bg-amber-50/60 px-6 text-center dark:border-amber-400/30 dark:bg-amber-400/5">
             <div>

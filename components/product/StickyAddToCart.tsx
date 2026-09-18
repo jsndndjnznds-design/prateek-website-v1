@@ -46,6 +46,7 @@ export function StickyAddToCart({ product }: { product: Product }) {
                   price: product.price,
                   compareAtPrice: product.compareAtPrice,
                   quantity: 1,
+                  availableStock: product.stock,
                 })
               : undefined
           }

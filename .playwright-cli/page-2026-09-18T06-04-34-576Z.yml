@@ -1,0 +1,102 @@
+- generic [active] [ref=f8e1]:
+  - banner [ref=f8e2]:
+    - generic [ref=f8e3]:
+      - link "HoloVista Holographic display systems" [ref=f8e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f8e9]:
+          - generic [ref=f8e10]: HoloVista
+          - generic [ref=f8e11]: Holographic display systems
+      - generic [ref=f8e12]:
+        - button "Toggle dark mode" [ref=f8e13]
+        - link "Cart" [ref=f8e16] [cursor=pointer]:
+          - /url: /cart
+        - button "Open menu" [ref=f8e20]
+  - main [ref=f8e22]:
+    - generic [ref=f8e26]:
+      - paragraph [ref=f8e27]: HoloVista store
+      - heading "Holographic display products" [level=1] [ref=f8e28]
+    - generic [ref=f8e30]:
+      - generic [ref=f8e32]:
+        - paragraph [ref=f8e33]: Products
+        - heading "Explore the catalog" [level=2] [ref=f8e34]
+      - region "Featured products" [ref=f8e36]:
+        - article [ref=f8e38]:
+          - button "Add football set to wishlist" [ref=f8e39]
+          - link [ref=f8e42] [cursor=pointer]:
+            - /url: /product/6f711c6e-f04a-4ca6-9462-5751a6402d95
+            - img "football set product image 1" [ref=f8e43]
+          - generic [ref=f8e44]:
+            - paragraph [ref=f8e45]: football player
+            - link [ref=f8e46] [cursor=pointer]:
+              - /url: /product/6f711c6e-f04a-4ca6-9462-5751a6402d95
+              - heading "football set" [level=3] [ref=f8e47]
+            - generic [ref=f8e48]:
+              - paragraph [ref=f8e49]: ₹9,999
+              - paragraph [ref=f8e50]: ₹10,000
+            - generic [ref=f8e51]: Low stock
+            - generic [ref=f8e52]:
+              - button "Buy now" [ref=f8e53]
+              - button "Add to cart" [ref=f8e56]
+            - paragraph [ref=f8e61]
+        - article [ref=f8e63]:
+          - button "Add hi to wishlist" [ref=f8e64]
+          - link [ref=f8e67] [cursor=pointer]:
+            - /url: /product/abdd0711-1796-4a7e-9119-68da344f6cc0
+            - img "hi product image 1" [ref=f8e68]
+          - generic [ref=f8e69]:
+            - paragraph [ref=f8e70]: idk
+            - link [ref=f8e71] [cursor=pointer]:
+              - /url: /product/abdd0711-1796-4a7e-9119-68da344f6cc0
+              - heading "hi" [level=3] [ref=f8e72]
+            - generic [ref=f8e73]:
+              - paragraph [ref=f8e74]: ₹10,000
+              - paragraph [ref=f8e75]: ₹30,000
+            - generic [ref=f8e76]: In stock
+            - generic [ref=f8e77]:
+              - button "Buy now" [ref=f8e78]
+              - button "Add to cart" [ref=f8e81]
+            - paragraph [ref=f8e86]
+      - link "View the complete catalog" [ref=f8e87] [cursor=pointer]:
+        - /url: /products
+    - generic [ref=f8e91]:
+      - generic [ref=f8e92]:
+        - paragraph [ref=f8e93]: Shopping with HoloVista
+        - heading "A straightforward way to shop the catalog." [level=2] [ref=f8e94]
+        - paragraph [ref=f8e95]: Review the product information, save items for later, and submit an order request when ready.
+      - generic [ref=f8e96]:
+        - article [ref=f8e97]:
+          - heading "Review products" [level=3] [ref=f8e102]
+          - paragraph [ref=f8e103]: Open any product to review its images, description, price, and availability.
+        - article [ref=f8e104]:
+          - heading "Build your cart" [level=3] [ref=f8e108]
+          - paragraph [ref=f8e109]: Add one or several products, then adjust quantities from your cart.
+        - article [ref=f8e110]:
+          - heading "Review at checkout" [level=3] [ref=f8e113]
+          - paragraph [ref=f8e114]: Checkout confirms the current catalog items, quantities, and total before an order is saved.
+  - contentinfo [ref=f8e115]:
+    - generic [ref=f8e116]:
+      - generic [ref=f8e117]:
+        - paragraph [ref=f8e118]: HoloVista
+        - paragraph [ref=f8e119]: Browse the current HoloVista catalog. Product listings show the details, price, and availability provided for each item.
+      - generic [ref=f8e120]:
+        - paragraph [ref=f8e121]: Store
+        - generic [ref=f8e122]:
+          - link "Home" [ref=f8e123] [cursor=pointer]:
+            - /url: /
+          - link "Products" [ref=f8e124] [cursor=pointer]:
+            - /url: /products
+          - link "Wishlist" [ref=f8e125] [cursor=pointer]:
+            - /url: /wishlist
+          - link "Cart" [ref=f8e126] [cursor=pointer]:
+            - /url: /cart
+          - link "Contact" [ref=f8e127] [cursor=pointer]:
+            - /url: /contact
+          - link "Privacy Policy" [ref=f8e128] [cursor=pointer]:
+            - /url: /privacy-policy
+          - link "Terms & Conditions" [ref=f8e129] [cursor=pointer]:
+            - /url: /terms-and-conditions
+          - link "Shipping Policy" [ref=f8e130] [cursor=pointer]:
+            - /url: /shipping-policy
+          - link "Return / Refund Policy" [ref=f8e131] [cursor=pointer]:
+            - /url: /return-refund-policy
+  - button "Open Next.js Dev Tools" [ref=f8e137] [cursor=pointer]

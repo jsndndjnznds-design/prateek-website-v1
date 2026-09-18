@@ -2,23 +2,26 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Search, ShoppingBag, Sparkles, X } from "lucide-react";
+import { Heart, Menu, Search, ShoppingBag, Sparkles, UserRound, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/components/cart/CartProvider";
+import { useWishlist } from "@/components/wishlist/WishlistProvider";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { storefrontContent } from "@/data/storefront-content";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/products", label: "Products" },
+  { href: "/products", label: "Shop" },
+  { href: "/wishlist", label: "Wishlist" },
   { href: "/cart", label: "Cart" },
   { href: "/admin", label: "Admin" },
 ];
 
 const utilitySearchItems = [
   { label: "Product catalog", detail: "Browse current products", href: "/products" },
+  { label: "Wishlist", detail: "Products saved for later", href: "/wishlist" },
   { label: "Cart", detail: "Review items and checkout", href: "/cart" },
   { label: "Admin dashboard", detail: "Orders, revenue, and analytics", href: "/admin" },
 ];
@@ -35,11 +38,16 @@ type StorefrontSearchProduct = {
 export function Header() {
   const pathname = usePathname();
   const { count } = useCart();
+  const { count: wishlistCount } = useWishlist();
   const { isAdmin } = useAuth();
   const [query, setQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [products, setProducts] = useState<StorefrontSearchProduct[]>([]);
   const visibleNavItems = useMemo(() => navItems.filter((item) => item.href !== "/admin" || isAdmin), [isAdmin]);
+  const desktopNavItems = useMemo(
+    () => visibleNavItems.filter((item) => item.href !== "/wishlist" && item.href !== "/cart"),
+    [visibleNavItems],
+  );
   const visibleSearchableItems = useMemo(
     () => utilitySearchItems.filter((item) => item.href !== "/admin" || isAdmin),
     [isAdmin],
@@ -98,8 +106,8 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 rounded-full border border-slate-200 bg-white/70 p-1 shadow-sm dark:border-white/10 dark:bg-white/5 lg:flex">
-          {visibleNavItems.map((item) => (
+        <nav className="hidden items-center gap-1 rounded-full border border-slate-200 bg-white/70 p-1 shadow-sm dark:border-white/10 dark:bg-white/5 xl:flex">
+          {desktopNavItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -113,7 +121,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden min-w-[260px] max-w-sm flex-1 justify-end lg:flex">
+        <div className="hidden min-w-[260px] max-w-sm flex-1 justify-end xl:flex">
           <div className="group relative w-full max-w-xs">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
             <input
@@ -144,6 +152,18 @@ export function Header() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <Link
+            href="/wishlist"
+            aria-label="Wishlist"
+            className="relative hidden h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-slate-700 shadow-sm shadow-slate-200/60 backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white sm:inline-flex dark:border-white/10 dark:bg-white/10 dark:text-slate-100 dark:shadow-black/20"
+          >
+            <Heart className="h-4 w-4" />
+            {wishlistCount > 0 ? (
+              <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-rose-400 px-1 text-[11px] font-bold text-slate-950">
+                {wishlistCount}
+              </span>
+            ) : null}
+          </Link>
+          <Link
             href="/cart"
             aria-label="Cart"
             className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-slate-700 shadow-sm shadow-slate-200/60 backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white dark:border-white/10 dark:bg-white/10 dark:text-slate-100 dark:shadow-black/20"
@@ -155,10 +175,17 @@ export function Header() {
               </span>
             )}
           </Link>
+          <Link
+            href="/login"
+            aria-label="Account"
+            className="hidden h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-slate-700 shadow-sm shadow-slate-200/60 backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white sm:inline-flex dark:border-white/10 dark:bg-white/10 dark:text-slate-100 dark:shadow-black/20"
+          >
+            <UserRound className="h-4 w-4" />
+          </Link>
           <button
             aria-label="Open menu"
             onClick={() => setMenuOpen(true)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-slate-700 shadow-sm shadow-slate-200/60 lg:hidden dark:border-white/10 dark:bg-white/10 dark:text-slate-100"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-slate-700 shadow-sm shadow-slate-200/60 xl:hidden dark:border-white/10 dark:bg-white/10 dark:text-slate-100"
           >
             <Menu className="h-4 w-4" />
           </button>
@@ -166,7 +193,7 @@ export function Header() {
       </div>
 
       {menuOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-950/50 backdrop-blur-sm lg:hidden">
+        <div className="fixed inset-0 z-50 bg-slate-950/50 backdrop-blur-sm xl:hidden">
           <div className="ml-auto h-full w-full max-w-sm border-l border-white/10 bg-white p-5 shadow-2xl dark:bg-slate-950">
             <div className="flex items-center justify-between">
               <span className="text-sm font-semibold text-slate-950 dark:text-white">Menu</span>
@@ -189,6 +216,13 @@ export function Header() {
                   {item.label}
                 </Link>
               ))}
+              <Link
+                href="/login"
+                onClick={() => setMenuOpen(false)}
+                className="block rounded-2xl px-4 py-3 text-base font-semibold text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/10"
+              >
+                Account
+              </Link>
             </div>
             <div className="mt-6 rounded-3xl border border-slate-200 p-3 dark:border-white/10">
               <div className="relative">

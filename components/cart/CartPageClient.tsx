@@ -86,6 +86,7 @@ export function CartPageClient() {
                     <QuantitySelector
                       value={item.quantity}
                       onChange={(value) => updateQuantity(item.productId, value)}
+                      max={Math.min(item.availableStock ?? 9, 9)}
                     />
                     <button
                       onClick={() => removeItem(item.productId)}

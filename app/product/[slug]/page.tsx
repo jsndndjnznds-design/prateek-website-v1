@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { ProductPurchasePanel } from "@/components/product/ProductPurchasePanel";
-import { ProductReviews } from "@/components/product/ProductReviews";
 import { ProductSpecs } from "@/components/product/ProductSpecs";
 import { StickyAddToCart } from "@/components/product/StickyAddToCart";
 import { getProduct } from "@/lib/storefront-service";
@@ -35,7 +34,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
       <ProductSpecs product={currentProduct} />
-      <ProductReviews />
       <StickyAddToCart product={currentProduct} />
     </>
   );

@@ -53,11 +53,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
         const existing = current.find((cartItem) => cartItem.productId === item.productId);
         if (!existing) return [...current, item];
 
+        const maxQuantity = Math.max(1, Math.min(item.availableStock ?? 9, 9));
+
         return current.map((cartItem) =>
           cartItem.productId === item.productId
             ? {
                 ...cartItem,
-                quantity: Math.min(cartItem.quantity + item.quantity, 9),
+                availableStock: item.availableStock ?? cartItem.availableStock,
+                quantity: Math.min(cartItem.quantity + item.quantity, maxQuantity),
               }
             : cartItem,
         );
@@ -68,7 +71,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       setItems((current) =>
         current.map((item) =>
           item.productId === productId
-            ? { ...item, quantity: Math.max(1, Math.min(quantity, 9)) }
+            ? { ...item, quantity: Math.max(1, Math.min(quantity, item.availableStock ?? 9, 9)) }
             : item,
         ),
       );

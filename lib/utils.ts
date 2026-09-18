@@ -27,6 +27,12 @@ export function getCartCount(items: CartItem[]) {
   return items.reduce((total, item) => total + item.quantity, 0);
 }
 
+export function getStockStatus(stock: number) {
+  if (stock <= 0) return "Out of stock";
+  if (stock <= 5) return "Low stock";
+  return "In stock";
+}
+
 export function getShippingEstimate(subtotal: number) {
   if (subtotal === 0) return 0;
   return subtotal >= 50000 ? 0 : 1490;

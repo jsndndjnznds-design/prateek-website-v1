@@ -49,7 +49,7 @@ function getProductImages(row: ProductRow): ProductImage[] {
 function getSpecifications(row: ProductRow): ProductSpec[] {
   const specs: ProductSpec[] = [
     { label: "Category", value: row.category },
-    { label: "Availability", value: row.stock > 0 ? "In stock" : "Out of stock" },
+    { label: "Availability", value: row.stock <= 0 ? "Out of stock" : row.stock <= 5 ? "Low stock" : "In stock" },
   ];
 
   return specs;

@@ -6,20 +6,19 @@ export const storefrontContent = {
   },
   hero: {
     eyebrow: "HoloVista store",
-    title: "Shop holographic display products.",
-    description:
-      "Browse the current catalog of holographic display systems. Each listing includes its product information, price, and availability.",
-    primaryAction: "Browse products",
-    secondaryAction: "View featured catalog",
+    title: "Holographic display products",
+    description: "",
+    primaryAction: "Shop all",
+    secondaryAction: "",
   },
   support: {
     eyebrow: "Shopping with HoloVista",
-    title: "Choose the setup that fits your space.",
-    description: "Build an order from the live catalog, then review every item and quantity before checkout.",
+    title: "A straightforward way to shop the catalog.",
+    description: "Review the product information, save items for later, and submit an order request when ready.",
     steps: [
       {
-        title: "Compare products",
-        description: "Open a product to review its images, description, price, and availability.",
+        title: "Review products",
+        description: "Open any product to review its images, description, price, and availability.",
       },
       {
         title: "Build your cart",

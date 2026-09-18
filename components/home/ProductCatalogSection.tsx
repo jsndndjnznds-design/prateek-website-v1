@@ -6,26 +6,21 @@ import { Product } from "@/types";
 
 export function ProductCatalogSection({ products, errorMessage }: { products: Product[]; errorMessage?: string }) {
   return (
-    <AnimatedSection id="products" className="bg-white py-20 dark:bg-slate-950">
+    <AnimatedSection id="products" className="bg-white py-8 dark:bg-slate-950 sm:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+        <div className="flex items-end justify-between gap-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-600 dark:text-cyan-400">
-              Our products
+              Products
             </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-normal text-slate-950 dark:text-white sm:text-4xl">
+            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-4xl">
               Explore the catalog
             </h2>
           </div>
-          <div className="flex items-center gap-4">
-            <p className="max-w-xl text-sm leading-6 text-slate-600 dark:text-slate-400">
-              Product details, current pricing, and availability are shown on every listing.
-            </p>
-            <Link href="/products" className="hidden shrink-0 items-center gap-1.5 text-sm font-semibold text-cyan-700 hover:text-cyan-800 sm:inline-flex dark:text-cyan-300 dark:hover:text-cyan-200">
-              View all
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+          <Link href="/products" className="hidden shrink-0 items-center gap-1.5 text-sm font-semibold text-cyan-700 hover:text-cyan-800 sm:inline-flex dark:text-cyan-300 dark:hover:text-cyan-200">
+            View all
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
 
         {errorMessage ? (

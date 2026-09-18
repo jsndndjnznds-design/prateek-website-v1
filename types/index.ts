@@ -45,6 +45,7 @@ export type CartItem = {
   price: number;
   compareAtPrice: number;
   quantity: number;
+  availableStock?: number;
 };
 
 export type OrderItem = {

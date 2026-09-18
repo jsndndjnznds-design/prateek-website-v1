@@ -1,0 +1,57 @@
+- generic [active] [ref=f4e1]:
+  - banner [ref=f4e2]:
+    - generic [ref=f4e3]:
+      - link "HoloVista Holographic display systems" [ref=f4e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f4e9]:
+          - generic [ref=f4e10]: HoloVista
+          - generic [ref=f4e11]: Holographic display systems
+      - navigation [ref=f4e12]:
+        - link "Home" [ref=f4e13] [cursor=pointer]:
+          - /url: /
+        - link "Shop" [ref=f4e14] [cursor=pointer]:
+          - /url: /products
+      - textbox "Search store" [ref=f4e17]
+      - generic [ref=f4e18]:
+        - button "Toggle dark mode" [ref=f4e19]
+        - link "Wishlist" [ref=f4e22] [cursor=pointer]:
+          - /url: /wishlist
+        - link "Cart" [ref=f4e26] [cursor=pointer]:
+          - /url: /cart
+          - generic [ref=f4e30]: "1"
+        - link "Account" [ref=f4e31] [cursor=pointer]:
+          - /url: /login
+  - main [ref=f4e35]:
+    - generic [ref=f4e184]:
+      - heading "Your wishlist is empty" [level=1] [ref=f4e209]
+      - paragraph [ref=f4e187]: Save products you want to revisit, then move them to your cart when you are ready.
+      - link "Browse products" [ref=f4e210] [cursor=pointer]:
+        - /url: /products
+  - contentinfo [ref=f4e140]:
+    - generic [ref=f4e141]:
+      - generic [ref=f4e142]:
+        - paragraph [ref=f4e143]: HoloVista
+        - paragraph [ref=f4e144]: Browse the current HoloVista catalog. Product listings show the details, price, and availability provided for each item.
+      - generic [ref=f4e145]:
+        - paragraph [ref=f4e146]: Store
+        - generic [ref=f4e147]:
+          - link "Home" [ref=f4e148] [cursor=pointer]:
+            - /url: /
+          - link "Products" [ref=f4e149] [cursor=pointer]:
+            - /url: /products
+          - link "Wishlist" [ref=f4e150] [cursor=pointer]:
+            - /url: /wishlist
+          - link "Cart" [ref=f4e151] [cursor=pointer]:
+            - /url: /cart
+          - link "Contact" [ref=f4e152] [cursor=pointer]:
+            - /url: /contact
+          - link "Privacy Policy" [ref=f4e153] [cursor=pointer]:
+            - /url: /privacy-policy
+          - link "Terms & Conditions" [ref=f4e154] [cursor=pointer]:
+            - /url: /terms-and-conditions
+          - link "Shipping Policy" [ref=f4e155] [cursor=pointer]:
+            - /url: /shipping-policy
+          - link "Return / Refund Policy" [ref=f4e156] [cursor=pointer]:
+            - /url: /return-refund-policy
+  - button "Open Next.js Dev Tools" [ref=f4e162] [cursor=pointer]
+  - alert [ref=f4e166]: Wishlist | HoloVista

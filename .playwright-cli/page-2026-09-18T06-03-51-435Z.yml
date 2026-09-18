@@ -1,0 +1,43 @@
+- generic [active] [ref=f7e1]:
+  - banner [ref=f7e2]:
+    - generic [ref=f7e3]:
+      - link "HoloVista Holographic display systems" [ref=f7e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f7e9]:
+          - generic [ref=f7e10]: HoloVista
+          - generic [ref=f7e11]: Holographic display systems
+      - generic [ref=f7e12]:
+        - button "Toggle dark mode" [ref=f7e13]
+        - link "Cart" [ref=f7e16] [cursor=pointer]:
+          - /url: /cart
+          - generic [ref=f7e20]: "2"
+        - button "Open menu" [ref=f7e21]
+  - main [ref=f7e23]
+  - contentinfo [ref=f7e32]:
+    - generic [ref=f7e33]:
+      - generic [ref=f7e34]:
+        - paragraph [ref=f7e35]: HoloVista
+        - paragraph [ref=f7e36]: Browse the current HoloVista catalog. Product listings show the details, price, and availability provided for each item.
+      - generic [ref=f7e37]:
+        - paragraph [ref=f7e38]: Store
+        - generic [ref=f7e39]:
+          - link "Home" [ref=f7e40] [cursor=pointer]:
+            - /url: /
+          - link "Products" [ref=f7e41] [cursor=pointer]:
+            - /url: /products
+          - link "Wishlist" [ref=f7e42] [cursor=pointer]:
+            - /url: /wishlist
+          - link "Cart" [ref=f7e43] [cursor=pointer]:
+            - /url: /cart
+          - link "Contact" [ref=f7e44] [cursor=pointer]:
+            - /url: /contact
+          - link "Privacy Policy" [ref=f7e45] [cursor=pointer]:
+            - /url: /privacy-policy
+          - link "Terms & Conditions" [ref=f7e46] [cursor=pointer]:
+            - /url: /terms-and-conditions
+          - link "Shipping Policy" [ref=f7e47] [cursor=pointer]:
+            - /url: /shipping-policy
+          - link "Return / Refund Policy" [ref=f7e48] [cursor=pointer]:
+            - /url: /return-refund-policy
+  - button "Open Next.js Dev Tools" [ref=f7e54] [cursor=pointer]
+  - alert [ref=f7e58]

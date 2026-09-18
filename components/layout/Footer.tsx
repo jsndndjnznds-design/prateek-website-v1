@@ -5,6 +5,7 @@ import { storefrontContent } from "@/data/storefront-content";
 const footerLinks = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Products" },
+  { href: "/wishlist", label: "Wishlist" },
   { href: "/cart", label: "Cart" },
   { href: "/contact", label: "Contact" },
   { href: "/privacy-policy", label: "Privacy Policy" },

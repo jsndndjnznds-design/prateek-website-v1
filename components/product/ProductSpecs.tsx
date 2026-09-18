@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Product } from "@/types";
 
 export function ProductSpecs({ product }: { product: Product }) {
@@ -12,8 +13,13 @@ export function ProductSpecs({ product }: { product: Product }) {
             Product details
           </h2>
           <p className="mt-4 text-base leading-7 text-slate-600 dark:text-slate-400">{product.description}</p>
+          <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">
+            <Link href="/shipping-policy" className="text-cyan-700 underline decoration-cyan-200 underline-offset-4 transition hover:text-cyan-900 dark:text-cyan-300 dark:decoration-cyan-300/30 dark:hover:text-cyan-100">Shipping information</Link>
+            <Link href="/return-refund-policy" className="text-cyan-700 underline decoration-cyan-200 underline-offset-4 transition hover:text-cyan-900 dark:text-cyan-300 dark:decoration-cyan-300/30 dark:hover:text-cyan-100">Returns and refunds</Link>
+          </div>
         </div>
         <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white dark:border-white/10 dark:bg-white/5">
+          <h3 className="border-b border-slate-200 px-4 py-4 text-sm font-semibold uppercase tracking-[0.14em] text-slate-700 dark:border-white/10 dark:text-slate-300">Specifications</h3>
           {product.specifications.map((spec) => (
             <div
               key={spec.label}
