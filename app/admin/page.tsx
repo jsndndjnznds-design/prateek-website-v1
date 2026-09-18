@@ -2,7 +2,7 @@ import { AdminDashboard } from "@/components/admin/AdminDashboard";
 import { requireAdmin } from "@/lib/auth-server";
 
 export const metadata = {
-  title: "Admin Dashboard | HoloVista",
+  title: "Admin Dashboard | ClamCart",
 };
 
 export default async function AdminPage() {

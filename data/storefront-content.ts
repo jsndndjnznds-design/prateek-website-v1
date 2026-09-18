@@ -1,18 +1,18 @@
 export const storefrontContent = {
   store: {
-    name: "HoloVista",
-    descriptor: "Holographic display systems",
-    footerDescription: "Browse the current HoloVista catalog. Product listings show the details, price, and availability provided for each item.",
+    name: "ClamCart",
+    descriptor: "",
+    footerDescription: "Products, pricing, and availability are shown in the catalog.",
   },
   hero: {
-    eyebrow: "HoloVista store",
-    title: "Holographic display products",
+    eyebrow: "",
+    title: "Products",
     description: "",
     primaryAction: "Shop all",
     secondaryAction: "",
   },
   support: {
-    eyebrow: "Shopping with HoloVista",
+    eyebrow: "Shopping with ClamCart",
     title: "A straightforward way to shop the catalog.",
     description: "Review the product information, save items for later, and submit an order request when ready.",
     steps: [
@@ -31,7 +31,7 @@ export const storefrontContent = {
     ],
   },
   contact: {
-    title: "Contact HoloVista",
+    title: "Contact ClamCart",
     description: "Add the store's verified customer contact information here before publishing the storefront.",
     email: "",
     phone: "",

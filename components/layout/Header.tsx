@@ -13,7 +13,7 @@ import { storefrontContent } from "@/data/storefront-content";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/products", label: "Shop" },
+  { href: "/products", label: "Products" },
   { href: "/wishlist", label: "Wishlist" },
   { href: "/cart", label: "Cart" },
   { href: "/admin", label: "Admin" },
@@ -96,13 +96,8 @@ export function Header() {
           <span className="grid h-11 w-11 place-items-center rounded-2xl bg-slate-950 text-white shadow-lg shadow-cyan-500/20 transition group-hover:-translate-y-0.5 dark:bg-white dark:text-slate-950">
             <Sparkles className="h-5 w-5" />
           </span>
-          <span className="leading-tight">
-            <span className="block text-base font-semibold tracking-tight text-slate-950 dark:text-white">
-              {storefrontContent.store.name}
-            </span>
-            <span className="block text-xs font-medium text-slate-500 dark:text-slate-400">
-              {storefrontContent.store.descriptor}
-            </span>
+          <span className="text-base font-semibold tracking-tight text-slate-950 dark:text-white">
+            {storefrontContent.store.name}
           </span>
         </Link>
 
@@ -129,6 +124,7 @@ export function Header() {
               onChange={(event) => setQuery(event.target.value)}
               onFocus={() => setQuery((value) => value)}
               placeholder="Search store"
+              aria-label="Search products"
               className="h-11 w-full rounded-full border border-slate-200 bg-white/80 pl-10 pr-4 text-sm outline-none transition placeholder:text-slate-400 focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/10 dark:border-white/10 dark:bg-white/5 dark:text-white"
             />
             <div className="invisible absolute right-0 top-[3.25rem] w-80 overflow-hidden rounded-3xl border border-slate-200 bg-white p-2 opacity-0 shadow-2xl shadow-slate-950/10 transition group-focus-within:visible group-focus-within:opacity-100 dark:border-white/10 dark:bg-slate-900">
@@ -183,24 +179,26 @@ export function Header() {
             <UserRound className="h-4 w-4" />
           </Link>
           <button
-            aria-label="Open menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-controls="mobile-navigation"
+            aria-expanded={menuOpen}
             onClick={() => setMenuOpen(true)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-slate-700 shadow-sm shadow-slate-200/60 xl:hidden dark:border-white/10 dark:bg-white/10 dark:text-slate-100"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-900 shadow-sm shadow-slate-300/70 transition hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 xl:hidden dark:border-white/20 dark:bg-slate-900 dark:text-white dark:shadow-black/30 dark:hover:bg-white/15"
           >
-            <Menu className="h-4 w-4" />
+            <Menu className="h-5 w-5" strokeWidth={2.5} />
           </button>
         </div>
       </div>
 
       {menuOpen && (
         <div className="fixed inset-0 z-50 bg-slate-950/50 backdrop-blur-sm xl:hidden">
-          <div className="ml-auto h-full w-full max-w-sm border-l border-white/10 bg-white p-5 shadow-2xl dark:bg-slate-950">
+          <div id="mobile-navigation" className="ml-auto h-full w-full max-w-sm border-l border-white/10 bg-white p-5 shadow-2xl dark:bg-slate-950">
             <div className="flex items-center justify-between">
               <span className="text-sm font-semibold text-slate-950 dark:text-white">Menu</span>
               <button
                 aria-label="Close menu"
                 onClick={() => setMenuOpen(false)}
-                className="grid h-10 w-10 place-items-center rounded-full border border-slate-200 dark:border-white/10"
+                className="grid h-11 w-11 place-items-center rounded-full border border-slate-300 text-slate-900 transition hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 dark:border-white/20 dark:text-white dark:hover:bg-white/10"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -231,6 +229,7 @@ export function Header() {
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder="Search store"
+                  aria-label="Search products"
                   className="h-11 w-full rounded-full border border-slate-200 bg-white pl-10 pr-4 text-sm outline-none dark:border-white/10 dark:bg-white/5"
                 />
               </div>

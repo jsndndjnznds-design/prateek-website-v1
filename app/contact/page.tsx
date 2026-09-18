@@ -1,7 +1,7 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import { storefrontContent } from "@/data/storefront-content";
 
-export const metadata = { title: "Contact | HoloVista" };
+export const metadata = { title: "Contact | ClamCart" };
 
 export default function ContactPage() {
   const { contact } = storefrontContent;

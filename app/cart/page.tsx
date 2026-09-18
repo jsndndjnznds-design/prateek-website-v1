@@ -1,7 +1,7 @@
 import { CartPageClient } from "@/components/cart/CartPageClient";
 
 export const metadata = {
-  title: "Cart | HoloVista",
+  title: "Cart | ClamCart",
 };
 
 export default function CartPage() {

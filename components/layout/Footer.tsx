@@ -17,12 +17,9 @@ const footerLinks = [
 export function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-white dark:border-white/10 dark:bg-slate-950">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.3fr_0.9fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[1.3fr_0.9fr] lg:px-8">
         <div>
           <p className="text-lg font-semibold text-slate-950 dark:text-white">{storefrontContent.store.name}</p>
-          <p className="mt-3 max-w-md text-sm leading-6 text-slate-600 dark:text-slate-400">
-            {storefrontContent.store.footerDescription}
-          </p>
           {storefrontContent.contact.email || storefrontContent.contact.phone || storefrontContent.contact.location ? (
             <div className="mt-6 grid gap-3 text-sm text-slate-600 dark:text-slate-400">
               {storefrontContent.contact.location ? <span className="inline-flex items-center gap-2"><MapPin className="h-4 w-4 text-cyan-500" />{storefrontContent.contact.location}</span> : null}

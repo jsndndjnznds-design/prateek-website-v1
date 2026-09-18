@@ -46,7 +46,14 @@ export function WishlistPageClient({ products }: { products: Product[] }) {
             return (
               <article key={product.id} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-white/10 dark:bg-white/[0.03]">
                 <Link href={`/product/${product.slug}`} className="block bg-slate-100 dark:bg-white/5">
-                  <Image src={image.src} alt={image.alt} width={780} height={620} className="aspect-[5/4] w-full object-cover" />
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={780}
+                    height={620}
+                    sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                    className="aspect-[5/4] w-full object-cover"
+                  />
                 </Link>
                 <div className="p-5">
                   <Link href={`/product/${product.slug}`} className="text-lg font-semibold text-slate-950 transition hover:text-cyan-700 dark:text-white dark:hover:text-cyan-300">

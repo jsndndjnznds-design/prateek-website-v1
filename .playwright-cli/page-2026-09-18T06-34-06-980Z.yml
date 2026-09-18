@@ -1,0 +1,127 @@
+- generic [active] [ref=f5e1]:
+  - banner [ref=f5e2]:
+    - generic [ref=f5e3]:
+      - link "ClamCart" [ref=f5e4] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f5e10]:
+        - button "Toggle dark mode" [ref=f5e11]
+        - link "Wishlist" [ref=f5e14] [cursor=pointer]:
+          - /url: /wishlist
+        - link "Cart" [ref=f5e17] [cursor=pointer]:
+          - /url: /cart
+        - link "Account" [ref=f5e21] [cursor=pointer]:
+          - /url: /login
+        - button "Open menu" [ref=f5e25]
+  - main [ref=f5e27]:
+    - generic [ref=f5e29]:
+      - generic [ref=f5e30]:
+        - heading "Featured" [level=1] [ref=f5e32]
+        - link "View all" [ref=f5e33] [cursor=pointer]:
+          - /url: /products
+      - generic [ref=f5e36]:
+        - generic [ref=f5e37]:
+          - button "Show previous featured products" [ref=f5e38]
+          - button "Show next featured products" [ref=f5e41]
+        - region "Featured products" [ref=f5e44]:
+          - article [ref=f5e46]:
+            - button "Add football set to wishlist" [ref=f5e47]
+            - link [ref=f5e50] [cursor=pointer]:
+              - /url: /product/6f711c6e-f04a-4ca6-9462-5751a6402d95
+              - img "football set product image 1" [ref=f5e51]
+            - generic [ref=f5e52]:
+              - paragraph [ref=f5e53]: football player
+              - link [ref=f5e54] [cursor=pointer]:
+                - /url: /product/6f711c6e-f04a-4ca6-9462-5751a6402d95
+                - heading "football set" [level=3] [ref=f5e55]
+              - generic [ref=f5e56]:
+                - paragraph [ref=f5e57]: ₹9,999
+                - paragraph [ref=f5e58]: ₹10,000
+              - generic [ref=f5e59]: Low stock
+              - generic [ref=f5e60]:
+                - button "Buy now" [ref=f5e61]
+                - button "Add to cart" [ref=f5e64]
+              - paragraph [ref=f5e69]
+          - article [ref=f5e71]:
+            - button "Add hi to wishlist" [ref=f5e72]
+            - link [ref=f5e75] [cursor=pointer]:
+              - /url: /product/abdd0711-1796-4a7e-9119-68da344f6cc0
+              - img "hi product image 1" [ref=f5e76]
+            - generic [ref=f5e77]:
+              - paragraph [ref=f5e78]: idk
+              - link [ref=f5e79] [cursor=pointer]:
+                - /url: /product/abdd0711-1796-4a7e-9119-68da344f6cc0
+                - heading "hi" [level=3] [ref=f5e80]
+              - generic [ref=f5e81]:
+                - paragraph [ref=f5e82]: ₹10,000
+                - paragraph [ref=f5e83]: ₹30,000
+              - generic [ref=f5e84]: In stock
+              - generic [ref=f5e85]:
+                - button "Buy now" [ref=f5e86]
+                - button "Add to cart" [ref=f5e89]
+              - paragraph [ref=f5e94]
+      - generic [ref=f5e95]:
+        - heading "football player" [level=2] [ref=f5e96]
+        - region "football player products" [ref=f5e98]:
+          - article [ref=f5e100]:
+            - button "Add football set to wishlist" [ref=f5e101]
+            - link [ref=f5e104] [cursor=pointer]:
+              - /url: /product/6f711c6e-f04a-4ca6-9462-5751a6402d95
+              - img "football set product image 1" [ref=f5e105]
+            - generic [ref=f5e106]:
+              - paragraph [ref=f5e107]: football player
+              - link [ref=f5e108] [cursor=pointer]:
+                - /url: /product/6f711c6e-f04a-4ca6-9462-5751a6402d95
+                - heading "football set" [level=3] [ref=f5e109]
+              - generic [ref=f5e110]:
+                - paragraph [ref=f5e111]: ₹9,999
+                - paragraph [ref=f5e112]: ₹10,000
+              - generic [ref=f5e113]: Low stock
+              - generic [ref=f5e114]:
+                - button "Buy now" [ref=f5e115]
+                - button "Add to cart" [ref=f5e118]
+              - paragraph [ref=f5e123]
+      - generic [ref=f5e124]:
+        - heading "idk" [level=2] [ref=f5e125]
+        - region "idk products" [ref=f5e127]:
+          - article [ref=f5e129]:
+            - button "Add hi to wishlist" [ref=f5e130]
+            - link [ref=f5e133] [cursor=pointer]:
+              - /url: /product/abdd0711-1796-4a7e-9119-68da344f6cc0
+              - img "hi product image 1" [ref=f5e134]
+            - generic [ref=f5e135]:
+              - paragraph [ref=f5e136]: idk
+              - link [ref=f5e137] [cursor=pointer]:
+                - /url: /product/abdd0711-1796-4a7e-9119-68da344f6cc0
+                - heading "hi" [level=3] [ref=f5e138]
+              - generic [ref=f5e139]:
+                - paragraph [ref=f5e140]: ₹10,000
+                - paragraph [ref=f5e141]: ₹30,000
+              - generic [ref=f5e142]: In stock
+              - generic [ref=f5e143]:
+                - button "Buy now" [ref=f5e144]
+                - button "Add to cart" [ref=f5e147]
+              - paragraph [ref=f5e152]
+  - contentinfo [ref=f5e153]:
+    - generic [ref=f5e154]:
+      - paragraph [ref=f5e156]: ClamCart
+      - generic [ref=f5e157]:
+        - paragraph [ref=f5e158]: Store
+        - generic [ref=f5e159]:
+          - link "Home" [ref=f5e160] [cursor=pointer]:
+            - /url: /
+          - link "Products" [ref=f5e161] [cursor=pointer]:
+            - /url: /products
+          - link "Wishlist" [ref=f5e162] [cursor=pointer]:
+            - /url: /wishlist
+          - link "Cart" [ref=f5e163] [cursor=pointer]:
+            - /url: /cart
+          - link "Contact" [ref=f5e164] [cursor=pointer]:
+            - /url: /contact
+          - link "Privacy Policy" [ref=f5e165] [cursor=pointer]:
+            - /url: /privacy-policy
+          - link "Terms & Conditions" [ref=f5e166] [cursor=pointer]:
+            - /url: /terms-and-conditions
+          - link "Shipping Policy" [ref=f5e167] [cursor=pointer]:
+            - /url: /shipping-policy
+          - link "Return / Refund Policy" [ref=f5e168] [cursor=pointer]:
+            - /url: /return-refund-policy

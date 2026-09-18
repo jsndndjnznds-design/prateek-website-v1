@@ -4,8 +4,8 @@ import { getProducts } from "@/lib/storefront-service";
 import { Product } from "@/types";
 
 export const metadata = {
-  title: "Products | HoloVista",
-  description: "Browse the current HoloVista product catalog.",
+  title: "Products | ClamCart",
+  description: "Browse the current ClamCart product catalog.",
 };
 
 export const dynamic = "force-dynamic";

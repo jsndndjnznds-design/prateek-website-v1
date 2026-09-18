@@ -1,6 +1,4 @@
-import { HeroSection } from "@/components/home/HeroSection";
 import { ProductCatalogSection } from "@/components/home/ProductCatalogSection";
-import { StorefrontInfoSection } from "@/components/home/StorefrontInfoSection";
 import { getProducts } from "@/lib/storefront-service";
 import { Product } from "@/types";
 
@@ -11,16 +9,14 @@ export default async function HomePage() {
   let catalogError = false;
 
   try {
-    products = await getProducts(8);
+    products = await getProducts();
   } catch {
     catalogError = true;
   }
 
   return (
     <>
-      <HeroSection />
       <ProductCatalogSection products={products} errorMessage={catalogError ? "Unable to load products." : undefined} />
-      <StorefrontInfoSection />
     </>
   );
 }

@@ -70,6 +70,7 @@ export function ProductCard({ product, eager = false }: { product: Product; eage
           width={780}
           height={620}
           loading={eager ? "eager" : "lazy"}
+          sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1535px) 33vw, 25vw"
           className="aspect-[5/4] w-full object-cover transition duration-300 group-hover:scale-[1.02]"
         />
       </Link>

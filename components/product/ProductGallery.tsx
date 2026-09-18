@@ -29,7 +29,8 @@ export function ProductGallery({ product }: { product: Product }) {
           alt={selected.alt}
           width={1400}
           height={980}
-          priority
+          preload
+          sizes="(max-width: 1023px) 100vw, 52vw"
           style={{ transformOrigin: origin }}
           className={cn(
             "aspect-[1.08/1] w-full object-cover transition duration-500",
@@ -58,6 +59,7 @@ export function ProductGallery({ product }: { product: Product }) {
               alt={image.alt}
               width={260}
               height={210}
+              sizes="(max-width: 1023px) 33vw, 17vw"
               className="aspect-[1.25/1] w-full rounded-xl object-cover"
             />
           </button>

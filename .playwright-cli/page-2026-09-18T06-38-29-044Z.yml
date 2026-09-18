@@ -1,0 +1,123 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "ClamCart" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e10]:
+        - button "Toggle dark mode" [ref=e11]
+        - link "Cart" [ref=e17] [cursor=pointer]:
+          - /url: /cart
+          - generic [ref=e198]: "2"
+        - button "Open menu" [ref=e197]
+  - main [ref=e27]:
+    - generic [ref=e212]:
+      - generic [ref=e213]:
+        - paragraph [ref=e214]: Checkout
+        - heading "Complete your order" [level=1] [ref=e215]
+        - paragraph [ref=e216]: "* Required fields"
+      - generic [ref=e217]:
+        - generic [ref=e218]:
+          - generic [ref=e219]:
+            - heading "Customer Information" [level=2] [ref=e220]
+            - generic [ref=e221]:
+              - generic [ref=e222]:
+                - generic [ref=e223]: Full name*
+                - textbox "Full name" [ref=e224]:
+                  - /placeholder: Priya Mehta
+              - generic [ref=e225]:
+                - generic [ref=e226]: Email*
+                - textbox "Email" [ref=e227]:
+                  - /placeholder: priya@example.com
+              - generic [ref=e228]:
+                - generic [ref=e229]: Phone*
+                - textbox "Phone" [ref=e230]:
+                  - /placeholder: +91 98765 43210
+              - generic [ref=e231]:
+                - text: Company
+                - textbox "Company" [ref=e232]:
+                  - /placeholder: Aurum Retail Studio
+          - generic [ref=e233]:
+            - heading "Shipping Address" [level=2] [ref=e234]
+            - generic [ref=e238]:
+              - generic [ref=e239]:
+                - generic [ref=e240]: Address line*
+                - textbox "Address line" [ref=e241]:
+                  - /placeholder: 12 Carter Road, Bandra West
+              - generic [ref=e242]:
+                - text: Apartment, suite
+                - textbox "Apartment, suite" [ref=e243]:
+                  - /placeholder: Studio 4B
+              - generic [ref=e244]:
+                - generic [ref=e245]: City*
+                - textbox "City" [ref=e246]:
+                  - /placeholder: Mumbai
+              - generic [ref=e247]:
+                - generic [ref=e248]: State*
+                - textbox "State" [ref=e249]:
+                  - /placeholder: Maharashtra
+              - generic [ref=e250]:
+                - generic [ref=e251]: PIN code*
+                - textbox "PIN code" [ref=e252]:
+                  - /placeholder: "400050"
+              - generic [ref=e253]:
+                - text: Installation note
+                - textbox "Installation note" [ref=e254]:
+                  - /placeholder: Countertop demo before wall mount
+          - generic [ref=e255]:
+            - heading "Payment" [level=2] [ref=e256]
+            - paragraph [ref=e257]: Payment is not collected through this website. Submitting this form records an order request; payment details are not processed here.
+        - complementary [ref=e258]:
+          - heading "Order Summary" [level=2] [ref=e259]
+          - generic [ref=e260]:
+            - generic [ref=e261]:
+              - img "football set" [ref=e262]
+              - generic [ref=e263]:
+                - paragraph [ref=e264]: football set
+                - paragraph [ref=e265]: Qty 1
+              - paragraph [ref=e266]: ₹9,999
+            - generic [ref=e267]:
+              - img "hi" [ref=e268]
+              - generic [ref=e269]:
+                - paragraph [ref=e270]: hi
+                - paragraph [ref=e271]: Qty 1
+              - paragraph [ref=e272]: ₹10,000
+          - generic [ref=e273]:
+            - generic [ref=e274]:
+              - generic [ref=e275]: Subtotal
+              - generic [ref=e276]: ₹19,999
+            - generic [ref=e277]:
+              - generic [ref=e278]: Tax
+              - generic [ref=e279]: ₹3,600
+            - generic [ref=e280]:
+              - generic [ref=e281]: Shipping
+              - generic [ref=e282]: ₹1,490
+            - generic [ref=e283]:
+              - generic [ref=e284]: Total
+              - generic [ref=e285]: ₹25,089
+          - generic [ref=e286]: This site records your order request. It does not process a payment or provide a delivery estimate.
+          - button "Submit order request" [ref=e287]
+  - contentinfo [ref=e153]:
+    - generic [ref=e154]:
+      - paragraph [ref=e156]: ClamCart
+      - generic [ref=e157]:
+        - paragraph [ref=e158]: Store
+        - generic [ref=e159]:
+          - link "Home" [ref=e160] [cursor=pointer]:
+            - /url: /
+          - link "Products" [ref=e161] [cursor=pointer]:
+            - /url: /products
+          - link "Wishlist" [ref=e162] [cursor=pointer]:
+            - /url: /wishlist
+          - link "Cart" [ref=e163] [cursor=pointer]:
+            - /url: /cart
+          - link "Contact" [ref=e164] [cursor=pointer]:
+            - /url: /contact
+          - link "Privacy Policy" [ref=e165] [cursor=pointer]:
+            - /url: /privacy-policy
+          - link "Terms & Conditions" [ref=e166] [cursor=pointer]:
+            - /url: /terms-and-conditions
+          - link "Shipping Policy" [ref=e167] [cursor=pointer]:
+            - /url: /shipping-policy
+          - link "Return / Refund Policy" [ref=e168] [cursor=pointer]:
+            - /url: /return-refund-policy
+  - alert [ref=e169]: Checkout | ClamCart

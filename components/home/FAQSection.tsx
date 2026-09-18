@@ -5,7 +5,7 @@ const faqs = [
   {
     question: "Can my team upload content without technical help?",
     answer:
-      "Yes. HoloVista supports Wi-Fi upload from the companion app and browser dashboard. Most teams can replace product videos, menu loops, and campaign graphics in minutes.",
+      "Product availability and details are shown on each catalog listing.",
   },
   {
     question: "Is the hologram fan suitable for a retail counter?",

@@ -1,5 +1,5 @@
-import { LoadingSkeleton } from "@/components/ui/LoadingSkeleton";
+import { CatalogLoadingSkeleton } from "@/components/ui/CatalogLoadingSkeleton";
 
 export default function Loading() {
-  return <LoadingSkeleton />;
+  return <CatalogLoadingSkeleton />;
 }

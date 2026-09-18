@@ -4,7 +4,7 @@ import { getOrderItemsLabel, listOrders } from "@/lib/order-service";
 import { cn, formatCurrency } from "@/lib/utils";
 
 export const metadata = {
-  title: "Orders | HoloVista Admin",
+  title: "Orders | ClamCart Admin",
 };
 
 export const dynamic = "force-dynamic";

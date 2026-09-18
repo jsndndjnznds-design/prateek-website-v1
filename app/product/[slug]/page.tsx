@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const currentProduct = await getProduct(slug);
 
   return {
-    title: currentProduct ? `${currentProduct.name} | HoloVista` : "Product | HoloVista",
+    title: currentProduct ? `${currentProduct.name} | ClamCart` : "Product | ClamCart",
     description: currentProduct?.shortDescription,
   };
 }

@@ -12,6 +12,8 @@ try {
 
 const nextConfig: NextConfig = {
   images: {
+    formats: ["image/webp"],
+    qualities: [75],
     remotePatterns: [
       {
         protocol: "https",

@@ -36,7 +36,7 @@ export function BenefitsSection() {
             LEDs spin faster than the eye can track, creating a crisp floating display.
           </h2>
           <p className="mt-4 text-base leading-7 text-slate-600 dark:text-slate-400">
-            HoloVista maps each frame onto precision-timed LEDs along the blades, turning ordinary campaign assets into a dimensional visual that works in real retail spaces.
+            Product details and availability are shown on each catalog listing.
           </p>
         </div>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
